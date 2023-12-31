@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BasicAttack
+  - Enemy
+  - PopUpUI
+  - HealSpell
+  - Undefined
+  - DamageSpell
+  - Confine
+  - PickUpManager
+  - DamageCanvas
+  - Pit
   layers:
   - Default
   - TransparentFX
@@ -11,13 +21,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Background
+  - Midground
+  - Enemy
+  - Player
+  - Projectile
+  - AbovePlayer
+  - Pit
   - 
   - 
   - 
@@ -40,4 +50,31 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3047332931
+    locked: 0
+  - name: Midground
+    uniqueID: 3008229393
+    locked: 0
+  - name: Enemy
+    uniqueID: 3699834551
+    locked: 0
+  - name: Player
+    uniqueID: 4032495773
+    locked: 0
+  - name: AbovePlayer
+    uniqueID: 116002669
+    locked: 0
+  - name: Projectile
+    uniqueID: 3348737213
+    locked: 0
+  - name: DPS
+    uniqueID: 2022935885
+    locked: 0
+  - name: Pit
+    uniqueID: 4278819453
+    locked: 0
+  - name: 
+    uniqueID: 660743455
     locked: 0

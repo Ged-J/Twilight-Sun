@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class MenuController : MonoBehaviour
+public class MenuController2 : MonoBehaviour
 {
 
     [Header("Volume Setting")]
