@@ -48,6 +48,9 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement playerMovement;
     private Animator animator;
     
+    public AudioSource backgroundMusicSource;
+    public AudioSource enemyMusicSource;
+    
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -186,7 +189,7 @@ public class PlayerController : MonoBehaviour
         //Basic attack
         if (Input.GetButtonDown("BasicAttack") && myTimeBasicAttack > nextFire & canCast)
         {
-            //print("yes");
+            //print("cock");
             nextFire = myTimeBasicAttack + fireDelta;
             if (basicAttackProjectile != null)
             {
@@ -282,13 +285,62 @@ public class PlayerController : MonoBehaviour
         return transform.position;
     }
     
+    private bool isInCombat = false;
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Pit"))
         {
             SceneManager.LoadScene("Main_Menu"); 
         }
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            isInCombat = true;
+            Debug.Log("Collided with Enemy");
+
+            // Stop the current background music
+            if (backgroundMusicSource.isPlaying)
+            {
+                backgroundMusicSource.Stop();
+            }
+
+            // Start playing the enemy's music
+            AudioSource enemyAudio = collision.gameObject.GetComponent<AudioSource>();
+            if (enemyAudio != null)
+            {
+                Debug.Log("Enemy Audio Source found");
+
+                if (!enemyAudio.isPlaying)
+                {
+                    enemyMusicSource.clip = enemyAudio.clip;
+                    enemyMusicSource.Play();
+                    Debug.Log("Playing Enemy Music");
+                }
+                else
+                {
+                    Debug.Log("Enemy music is already playing");
+                }
+            }
+            else
+            {
+                Debug.Log("No AudioSource found on Enemy");
+            }
+        }
     }
     
-    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            isInCombat = false;
+            // Check if enemy music is playing, stop it and resume background music
+            if (enemyMusicSource.isPlaying)
+            {
+                enemyMusicSource.Stop();
+                backgroundMusicSource.Play();
+            }
+        }
+    }
+
+
 }

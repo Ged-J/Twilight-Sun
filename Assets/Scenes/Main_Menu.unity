@@ -4943,7 +4943,7 @@ GameObject:
   - component: {fileID: 1273632353}
   - component: {fileID: 1273632352}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Music Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

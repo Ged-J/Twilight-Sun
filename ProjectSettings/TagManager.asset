@@ -28,7 +28,7 @@ TagManager:
   - Projectile
   - AbovePlayer
   - Pit
-  - 
+  - Door
   - 
   - 
   - 
@@ -54,6 +54,9 @@ TagManager:
   - name: Background
     uniqueID: 3047332931
     locked: 0
+  - name: Door
+    uniqueID: 660743455
+    locked: 0
   - name: Midground
     uniqueID: 3008229393
     locked: 0
@@ -74,7 +77,4 @@ TagManager:
     locked: 0
   - name: Pit
     uniqueID: 4278819453
-    locked: 0
-  - name: 
-    uniqueID: 660743455
     locked: 0

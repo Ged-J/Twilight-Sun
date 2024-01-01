@@ -126,7 +126,7 @@ public class EnemyAI : MonoBehaviour
     //{
     //    if (collision.tag == "Player")
     //    {
-    //        print("step the fuck up bruh");
+    //        print("step up bruh");
     //        attack();
     //    }
     //}

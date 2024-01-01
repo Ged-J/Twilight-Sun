@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator Wait()
     {
-        print("yes");
+        print("cock");
         yield return new WaitForSeconds(3);
         direction = player.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

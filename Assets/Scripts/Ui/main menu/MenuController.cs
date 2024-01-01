@@ -34,7 +34,14 @@ public class MenuController2 : MonoBehaviour
 
     public void NewGameDialogYes()
     {
+        ResetGameState();
         SceneManager.LoadScene(_newGameLevel);
+    }
+    
+    private void ResetGameState()
+    {
+        
+        PlayerPrefs.DeleteAll(); 
     }
 
     public void LoadGameDialogYes()
