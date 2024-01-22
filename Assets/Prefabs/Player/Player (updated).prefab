@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -1021605813
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1793516431, guid: 82a68b2918a56a64e9cb7f81bb9bcf3b, type: 3}
+  m_Sprite: {fileID: 1623203006, guid: 1d1deed52994e8d43b65eed5a76368f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,6 +187,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   newAbilityInstance: {fileID: 0}
+  backgroundMusicSource: {fileID: 0}
+  enemyMusicSource: {fileID: 0}
 --- !u!70 &2930765398659120664
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
