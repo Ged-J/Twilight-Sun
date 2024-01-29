@@ -103,7 +103,6 @@ public class PlayerController : MonoBehaviour
         shootDir = (dir - transform.position).normalized;
         myTimeBasicAttack = myTimeBasicAttack + Time.deltaTime;
         myTimeTeleport = myTimeTeleport + Time.deltaTime;
-        //might need to shoot right to work https://cdn.discordapp.com/attachments/897093586816991242/952340518619185172/unknown.png
         //world or local can be interchanged dependant on the effect wanted
         mousePosTest = cam.ScreenToWorldPoint(Input.mousePosition);
         lookdir = mousePosTest - rb.position;
@@ -189,7 +188,7 @@ public class PlayerController : MonoBehaviour
         //Basic attack
         if (Input.GetButtonDown("BasicAttack") && myTimeBasicAttack > nextFire & canCast)
         {
-            //print("cock");
+            //print("yup");
             nextFire = myTimeBasicAttack + fireDelta;
             if (basicAttackProjectile != null)
             {

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d1cf946e2a9574fb71e66cf673cb13, type: 3}
+  m_Name: Wata
+  m_EditorClassIdentifier: 
+  id: 
+  icon: {fileID: 0}
+  isHealing: 0
+  baseDamage: 77
+  baseHealing: 0
+  hasHealing: 0
+  elementalDamage: 0
+  critChance: 0
+  damageMultiplier: 0
+  manaCost: 35
+  cooldown: 10
+  spellRadius: 0.5
+  lifeTime: 10
+  projectileSpeed: 6
+  castEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  critEffect: {fileID: 0}
+  damageText: {fileID: 0}
+  damageTextCrit: {fileID: 0}
+  myElementalDamageType: 0

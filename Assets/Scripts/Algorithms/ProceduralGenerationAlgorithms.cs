@@ -24,7 +24,6 @@ public static class ProceduralGenerationAlgorithms
 
     }
     
-    
 }
 
 public static class Direction2D
