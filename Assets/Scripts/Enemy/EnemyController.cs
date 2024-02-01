@@ -4,6 +4,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine;
 using TMPro;
 using Pathfinding;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
@@ -56,6 +57,9 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
+            
+            LoadNextLevel();
+            
             if (this.GetComponent<DropItems>() != null)
             {
                 this.GetComponent<DropItems>().OnBossExecute();
@@ -80,4 +84,17 @@ public class EnemyController : MonoBehaviour
             //Destroy(newBloodSpatter, 3);
         }
     }
+    
+    void LoadNextLevel()
+    {
+        // Load a specific scene
+        SceneManager.LoadScene("End Credits");
+
+        // Load the next scene in the build settings
+        // int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+    
+    
+    
 }

@@ -245,11 +245,13 @@ public class PlayerController : MonoBehaviour
     IEnumerator death()
     {
         yield return new WaitForSeconds(.5f);
-        SceneTransitions.Fadeout();
+        /*SceneTransitions.Fadeout();*/
         SavedPositionManager.savedPositions.Clear();
         
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(2);
+        
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
     
     IEnumerator DamageAnim()

@@ -18,9 +18,8 @@ GameObject:
   - component: {fileID: 6252387065265948927}
   - component: {fileID: 6252387065265948919}
   - component: {fileID: 6797112635854745248}
-  - component: {fileID: -9029747402322253460}
   m_Layer: 0
-  m_Name: DarkFireWixard
+  m_Name: Death_Knight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +84,7 @@ SpriteRenderer:
   m_SortingLayerID: -595132745
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 519515992, guid: b9211cea768c2fa499c535856b146d87, type: 3}
+  m_Sprite: {fileID: 514778357, guid: 3dcff93064884a341842c2facfbff647, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,7 +105,7 @@ Animator:
   m_GameObject: {fileID: 6252387065265948926}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7eedf4b44bfd07d43aa34697e746b59f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 07be21985d487304abeb12f0021c1c1d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -152,17 +151,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0036420822, y: 0.16026974}
+  m_Offset: {x: 0.0014441013, y: -0.0026888847}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.03125, y: 1.75}
+    oldSize: {x: 0.75, y: 1.53125}
     newSize: {x: 1.03125, y: 1.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7133732, y: 1.3722878}
+  m_Size: {x: 0.7631717, y: 1.5661211}
   m_EdgeRadius: 0
 --- !u!114 &6252387065265948922
 MonoBehaviour:
@@ -225,10 +224,11 @@ MonoBehaviour:
   speed: 400
   nextWaypointDistance: 1.3
   slashGO: {fileID: 3169508740969938502, guid: b9ff9a4170649ec4db641dd9df2c67f0, type: 3}
-  projectileGO: {fileID: 3446402631160572449, guid: 53eb0552d6aebe24b98f412a90b8a7a7, type: 3}
+  projectileGO: {fileID: 0}
   slashDamage: 10
   projectileDamage: 20
-  isRanged: 1
+  isRanged: 0
+  animator: {fileID: 0}
 --- !u!50 &6252387065265948927
 Rigidbody2D:
   serializedVersion: 4
@@ -306,18 +306,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 159468907697258072, guid: b93792fc4d2da41479a663d68fa2e556, type: 3}
---- !u!114 &-9029747402322253460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6252387065265948926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeb4b45c0eb8fdc4b848c5d21ed535fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7075623354296960440
 GameObject:
   m_ObjectHideFlags: 0

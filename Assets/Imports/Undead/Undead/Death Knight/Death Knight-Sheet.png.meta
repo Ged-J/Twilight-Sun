@@ -3,7 +3,7 @@ guid: 3dcff93064884a341842c2facfbff647
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -134,7 +134,1687 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Death Knight-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 896
+        width: 24
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fa36a8543079914cbd5e6ed94f54489
+      internalID: 514778357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 896
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41e24b0593862eb47bda54be9debe121
+      internalID: 1956661135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 896
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d42f0a55ee7568499b06098ca36446d
+      internalID: -545811787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 896
+        width: 24
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 587a7054af341c842b1344d9c45551a5
+      internalID: 686240805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 896
+        width: 24
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63fe2e4972c07ca49b33c461c68eb483
+      internalID: 1890888352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 896
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77adbc2829ff4b045844d4fbda48f96b
+      internalID: -1880334611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 896
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d3228574ed2c7d4b9ee806df81fa857
+      internalID: 731667753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 896
+        width: 24
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 101f8998ae877444ab7f207088172e66
+      internalID: 139780613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 816
+        width: 33
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b7a46088e52369438f59df34c66dd09
+      internalID: 183314804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 816
+        width: 33
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a04a577a42074745a40908d9b8f2ffd
+      internalID: 602856647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 816
+        width: 37
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fba5aecaf730cfa4fbdd0b9c4b1dee8f
+      internalID: 1121461555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 816
+        width: 37
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad35aad008fe5148b2f04ff67cb7c4d
+      internalID: -1668088622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 816
+        width: 37
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beea8908d2d0bd34180737b6dce42a80
+      internalID: -2141333934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 816
+        width: 37
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93a163d7fa00cdf4eaf3e2eba11fc9e4
+      internalID: -742657818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 816
+        width: 37
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dab7f1211ebb209428eb67dd5b2f6058
+      internalID: 1873896247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 816
+        width: 33
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54e0b228a1209854998fbdf9088a8ba3
+      internalID: 909179918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 736
+        width: 43
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86040c026075bcc4baf7cb0b27c34554
+      internalID: 631929163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 736
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6d166d88033dd648b4b4b44431a6990
+      internalID: 1847486758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 736
+        width: 40
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aecfd37de4168de429d5be050fc0a86d
+      internalID: -1332362330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 736
+        width: 44
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12f723a1074a5224697c99aee284ae72
+      internalID: 751554637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 736
+        width: 44
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f53d767af53f9448b908f642104e472
+      internalID: -1065273131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 736
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2e6cc525b7968459c56e2ccab2ba62
+      internalID: 1789983614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 736
+        width: 40
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b894f116dd4968b4b9e7f1336d4e7dde
+      internalID: -2074500181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 736
+        width: 43
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a041006cde181648a4bb2a7116f12c7
+      internalID: -35629670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 656
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 558339b619a03144185cd4680ba2be95
+      internalID: 1141868285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 656
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cda43734c089a1b4c88daa1ed61a60f9
+      internalID: 542253393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 656
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a8de86f52f69874799198d7c3392fa4
+      internalID: 1818442106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 656
+        width: 26
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f7c1e112e2cd2440ab54394eb29723f
+      internalID: 889618274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 576
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fcf24dd0631ffc46ad66bf78736d9ef
+      internalID: -462191802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 576
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5c9316c8a8987740ba5094078e421a5
+      internalID: 273062621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 576
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d42e627d113da048a2959df0a7a4a5e
+      internalID: -843195435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 576
+        width: 26
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21510c14bcc365c43b12b979aaef0616
+      internalID: 1135268268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 496
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37db885e38ca39a4f8ab4ea5ddbbda5a
+      internalID: -1767120238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 496
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c826b20f8ac297440991f757ed7c7939
+      internalID: 1348061690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 496
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb21bc38662107d479473f786bbbabbd
+      internalID: -1439766500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 496
+        width: 26
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74690dfe1e35da54c8c5494a8a25ab30
+      internalID: 1653092494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 496
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4da6f752325b134e9d72a333d553a5a
+      internalID: 946642910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 496
+        width: 31
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c85b95299fb168c4da2df50a1e5482fd
+      internalID: -1337194755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 496
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce30fc45d8e3dae4f84a2d67ed80e99d
+      internalID: -1269854764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 496
+        width: 38
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb8bb01645e14849bf7686672d336c5
+      internalID: 45947567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 496
+        width: 54
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 153c7fc21db16e1438fa09198e13b291
+      internalID: -1177575493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 496
+        width: 54
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3d855c5325d1a1499e051bcd2632a77
+      internalID: 1958827586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 1144
+        y: 496
+        width: 54
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66bde0ea7ad358c4eb0a0094455a7954
+      internalID: -745817189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 416
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a0106f0295c15458060d4f60176a0a
+      internalID: 341389349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 416
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff94f04803b25964a858b6fa5f74cd5a
+      internalID: 1390422012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 416
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d44dad3ca8385c4cae850b54073fde5
+      internalID: -520305116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 416
+        width: 26
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80197c8ca9abb484daf4f4f7d1fac823
+      internalID: 1262255142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 416
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 821b8283cf6f6e847bdc64b05e269d69
+      internalID: -1229193262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 416
+        width: 31
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 752246231cceb264c9a2452622f6d42a
+      internalID: 1964244612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 416
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32c56177a2fdb89499f3381f0484a3f8
+      internalID: 956166160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 416
+        width: 38
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e61663c2e02fab40b166856aead3755
+      internalID: -107982281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 416
+        width: 54
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d055faf479d626841aa59384c57f295d
+      internalID: -395462265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 416
+        width: 54
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49cf8413858b8764b8e8cc2c034d5e20
+      internalID: 839590603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 1144
+        y: 416
+        width: 54
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 609c007c298a6d942a89c0e32231168b
+      internalID: -994551788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 336
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e1edc22b798a3e4881bdc5b5e5b4e3e
+      internalID: 97542327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 336
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f0d7da62ae2a8142bb28980c45bcde9
+      internalID: -296021492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 336
+        width: 33
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e4f782e8b7f5e34b942d8789f880cdd
+      internalID: -1054960621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 336
+        width: 56
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91bb6e6460f7dac428f386de2f1f3a12
+      internalID: 1813391315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 336
+        width: 51
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a81276c12a5d41e4bafa51dfe06db7fb
+      internalID: -1732662655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 336
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31944971a15d9894cbce52f671fa6388
+      internalID: 2043760550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 336
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af79e9ea304174e4eb3e301bdbf5faea
+      internalID: -1226590502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 256
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 161db087aac5e384f8c90a0d95158241
+      internalID: 763903837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_62
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 256
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dea9baa417ffb04f8181e6b61a5cb7a
+      internalID: 2080648041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_63
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 256
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b351d145523a5ce489f74a0c9e0b6ad4
+      internalID: 1626405995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_64
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 256
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2477bf164b64a74bb5479a681d0a35c
+      internalID: -1684550547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_65
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 256
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab0a6caf41dd7964ab53bfce790e6062
+      internalID: 40795923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_66
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 256
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fbf570aad836c64e9b54ff1212fa430
+      internalID: 1276849307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_67
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 256
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ee80635d9a14b94f9b5d5f3fe62a4ee
+      internalID: -166029300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_68
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 256
+        width: 37
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70ba553a98f1aa64894a959f08230233
+      internalID: -882705526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_69
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 256
+        width: 33
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 541c8edf11192974b8b9f448df3b41a8
+      internalID: 1246755042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_70
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 256
+        width: 24
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e27e189754a47664397a47ef2c993620
+      internalID: 1513505366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_71
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 176
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11df15ee39be2a74ca890c4d799332df
+      internalID: -1490334587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_72
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 176
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce43b2fde2eeb04a8cf3d029aa5b5fa
+      internalID: -1436179697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_73
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 176
+        width: 41
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b24701b213a8cb4096e0c6f1accc4f4
+      internalID: 1232728861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_74
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 97
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c41ad1897899b94e98c4b67464a21d0
+      internalID: -1290063318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_75
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 99
+        width: 30
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0174c5e3e9b534149bb23e7964dc855d
+      internalID: -1003150139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_76
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 98
+        width: 39
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cb103948107fdb4c953c3fbf26e3a8c
+      internalID: 59325136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_77
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 17
+        width: 36
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9a4cf40ec83024f824f145ea90b26e
+      internalID: -163376027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_78
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 17
+        width: 37
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 811e679014a928f438f091dab6ca5fcb
+      internalID: 790780549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Knight-Sheet_79
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 17
+        width: 30
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 353fcd2c6c12fa94b8e8d40fcbcb7504
+      internalID: -179511934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +1825,87 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Death Knight-Sheet_0: 514778357
+      Death Knight-Sheet_1: 1956661135
+      Death Knight-Sheet_10: 1121461555
+      Death Knight-Sheet_11: -1668088622
+      Death Knight-Sheet_12: -2141333934
+      Death Knight-Sheet_13: -742657818
+      Death Knight-Sheet_14: 1873896247
+      Death Knight-Sheet_15: 909179918
+      Death Knight-Sheet_16: 631929163
+      Death Knight-Sheet_17: 1847486758
+      Death Knight-Sheet_18: -1332362330
+      Death Knight-Sheet_19: 751554637
+      Death Knight-Sheet_2: -545811787
+      Death Knight-Sheet_20: -1065273131
+      Death Knight-Sheet_21: 1789983614
+      Death Knight-Sheet_22: -2074500181
+      Death Knight-Sheet_23: -35629670
+      Death Knight-Sheet_24: 1141868285
+      Death Knight-Sheet_25: 542253393
+      Death Knight-Sheet_26: 1818442106
+      Death Knight-Sheet_27: 889618274
+      Death Knight-Sheet_28: -462191802
+      Death Knight-Sheet_29: 273062621
+      Death Knight-Sheet_3: 686240805
+      Death Knight-Sheet_30: -843195435
+      Death Knight-Sheet_31: 1135268268
+      Death Knight-Sheet_32: -1767120238
+      Death Knight-Sheet_33: 1348061690
+      Death Knight-Sheet_34: -1439766500
+      Death Knight-Sheet_35: 1653092494
+      Death Knight-Sheet_36: 946642910
+      Death Knight-Sheet_37: -1337194755
+      Death Knight-Sheet_38: -1269854764
+      Death Knight-Sheet_39: 45947567
+      Death Knight-Sheet_4: 1890888352
+      Death Knight-Sheet_40: -1177575493
+      Death Knight-Sheet_41: 1958827586
+      Death Knight-Sheet_42: -745817189
+      Death Knight-Sheet_43: 341389349
+      Death Knight-Sheet_44: 1390422012
+      Death Knight-Sheet_45: -520305116
+      Death Knight-Sheet_46: 1262255142
+      Death Knight-Sheet_47: -1229193262
+      Death Knight-Sheet_48: 1964244612
+      Death Knight-Sheet_49: 956166160
+      Death Knight-Sheet_5: -1880334611
+      Death Knight-Sheet_50: -107982281
+      Death Knight-Sheet_51: -395462265
+      Death Knight-Sheet_52: 839590603
+      Death Knight-Sheet_53: -994551788
+      Death Knight-Sheet_54: 97542327
+      Death Knight-Sheet_55: -296021492
+      Death Knight-Sheet_56: -1054960621
+      Death Knight-Sheet_57: 1813391315
+      Death Knight-Sheet_58: -1732662655
+      Death Knight-Sheet_59: 2043760550
+      Death Knight-Sheet_6: 731667753
+      Death Knight-Sheet_60: -1226590502
+      Death Knight-Sheet_61: 763903837
+      Death Knight-Sheet_62: 2080648041
+      Death Knight-Sheet_63: 1626405995
+      Death Knight-Sheet_64: -1684550547
+      Death Knight-Sheet_65: 40795923
+      Death Knight-Sheet_66: 1276849307
+      Death Knight-Sheet_67: -166029300
+      Death Knight-Sheet_68: -882705526
+      Death Knight-Sheet_69: 1246755042
+      Death Knight-Sheet_7: 139780613
+      Death Knight-Sheet_70: 1513505366
+      Death Knight-Sheet_71: -1490334587
+      Death Knight-Sheet_72: -1436179697
+      Death Knight-Sheet_73: 1232728861
+      Death Knight-Sheet_74: -1290063318
+      Death Knight-Sheet_75: -1003150139
+      Death Knight-Sheet_76: 59325136
+      Death Knight-Sheet_77: -163376027
+      Death Knight-Sheet_78: 790780549
+      Death Knight-Sheet_79: -179511934
+      Death Knight-Sheet_8: 183314804
+      Death Knight-Sheet_9: 602856647
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
 
     Seeker seeker;
     Rigidbody2D rb;
-    Animator animator;
+    public Animator animator;
 
     void Start()
     {
@@ -56,32 +56,58 @@ public class EnemyAI : MonoBehaviour
     void FixedUpdate()
     {
         if (path == null)
+        {
+            animator.SetBool("isMoving", false);
             return;
+        }
 
         if (currentWaypoint >= path.vectorPath.Count)
         {
             reachedEndOfPath = true;
+            animator.SetBool("isMoving", false);
             return;
-        } else
+        }
+        else
         {
             reachedEndOfPath = false;
         }
 
-        Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - rb.position).normalized;
+        // Calculate direction and force for movement
+        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
 
+        // Apply force for movement
         rb.AddForce(force);
 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        // Check if the enemy is moving significantly and update the animator
+        animator.SetBool("isMoving", force.magnitude > 0.01f); // Adjust threshold as needed
 
+        // Check the direction to the player
+        Vector2 playerDirection = target.position - transform.position;
+        if (playerDirection.x > 0)
+        {
+            // Player is to the right, face right
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (playerDirection.x < 0)
+        {
+            // Player is to the left, face left
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
+        // Check if we're close enough to the next waypoint
+        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
         }
 
+        // Set the animator parameters for X and Y directions
         animator.SetFloat("X", (target.position.x - transform.position.x));
         animator.SetFloat("Y", (target.position.y - transform.position.y));
     }
+
+
 
     void attack()
     {
