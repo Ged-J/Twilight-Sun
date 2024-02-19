@@ -22083,7 +22083,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &961542432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22096,10 +22096,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf9980ca3658c647a9f99fde2a72d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeTextValue: {fileID: 0}
+  volumeTextValue: {fileID: 2069868378}
   volumeSlider: {fileID: 0}
-  confirmationPrompt: {fileID: 0}
-  defaultVolume: 1
+  confirmationPrompt: {fileID: 1977188941}
+  defaultVolume: 0.5
   ControllerSenTextValue: {fileID: 0}
   controllerSenSlider: {fileID: 0}
   defaultSen: 50
@@ -22136,7 +22136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1427589531638912822, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: orthographic size
-      value: 5.625
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1427589531638912822, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -23252,6 +23252,18 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1449681814}
+    - target: {fileID: 6038079604055239186, guid: e7013347b38f97e47beac9e62a720620, type: 3}
+      propertyPath: volumeSlider
+      value: 
+      objectReference: {fileID: 2069868376}
+    - target: {fileID: 6038079604055239186, guid: e7013347b38f97e47beac9e62a720620, type: 3}
+      propertyPath: volumeTextValue
+      value: 
+      objectReference: {fileID: 2069868378}
+    - target: {fileID: 6038079604055239186, guid: e7013347b38f97e47beac9e62a720620, type: 3}
+      propertyPath: confirmationPrompt
+      value: 
+      objectReference: {fileID: 1977188941}
     - target: {fileID: 8102328865466210416, guid: e7013347b38f97e47beac9e62a720620, type: 3}
       propertyPath: m_LocalPosition.x
       value: 986.005

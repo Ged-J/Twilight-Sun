@@ -2897,7 +2897,7 @@ MonoBehaviour:
   defaultSen: 50
   mainControllerSen: 50
   invertYToggle: {fileID: 0}
-  _newGameLevel: DemoScene
+  _newGameLevel: Tutorial
   noSavedGameDialog: {fileID: 1796817663}
 --- !u!4 &907618904
 Transform:
