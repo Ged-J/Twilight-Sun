@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7524ab797bdb634b9258d57e50789dc, type: 3}
-  m_Name: SimpleRandomWalkParameters_LargeDungeon
+  m_Name: DrunkardsWalkParameters_Island
   m_EditorClassIdentifier: 
   iterations: 100
-  walkLength: 100
-  startRandomlyEachIteration: 1
+  walkLength: 10
+  startRandomlyEachIteration: 0

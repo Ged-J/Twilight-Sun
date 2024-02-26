@@ -48,8 +48,8 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement playerMovement;
     private Animator animator;
     
-    public AudioSource backgroundMusicSource;
-    public AudioSource enemyMusicSource;
+    /*public AudioSource backgroundMusicSource;
+    public AudioSource enemyMusicSource;*/
     
     private void Awake()
     {
@@ -76,6 +76,9 @@ public class PlayerController : MonoBehaviour
         {
             currentMana = maxMana;
         }
+        
+        // Find and assign the main camera
+        cam = Camera.main;
     }
 
     public void SaveAbilities()
@@ -198,7 +201,7 @@ public class PlayerController : MonoBehaviour
             newBasicAttackProjectile.transform.GetComponent<BasicAttackProjectile>().Setup(shootDir);
             
             //if fails uncomment this line and add rigidbody to fireball
-            //newBasicAttackProjectile.GetComponent<Rigidbody2D>().rotation = angle;
+            /*newBasicAttackProjectile.GetComponent<Rigidbody2D>().rotation = angle;*/
             newBasicAttackProjectile.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
 
             // code if animated
@@ -294,16 +297,16 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("Main_Menu"); 
         }
-        else if (collision.gameObject.CompareTag("Enemy"))
+        /*else if (collision.gameObject.CompareTag("Enemy"))
         {
             isInCombat = true;
             Debug.Log("Collided with Enemy");
 
             // Stop the current background music
-            if (backgroundMusicSource.isPlaying)
+            /*if (backgroundMusicSource.isPlaying)
             {
                 backgroundMusicSource.Stop();
-            }
+            }#1#
 
             // Start playing the enemy's music
             AudioSource enemyAudio = collision.gameObject.GetComponent<AudioSource>();
@@ -326,10 +329,10 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("No AudioSource found on Enemy");
             }
-        }
+        }*/
     }
     
-    private void OnTriggerExit2D(Collider2D collision)
+    /*private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -341,7 +344,7 @@ public class PlayerController : MonoBehaviour
                 backgroundMusicSource.Play();
             }
         }
-    }
+    }*/
 
 
 }

@@ -26,6 +26,8 @@ public class EnemyAI : MonoBehaviour
     Rigidbody2D rb;
     public Animator animator;
 
+    public float detectionRange = 10f; 
+    
     void Start()
     {
         seeker = GetComponent<Seeker>();
@@ -40,7 +42,13 @@ public class EnemyAI : MonoBehaviour
     {
         if (seeker.IsDone() && !isAttacking && target != null)
         {
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
+            // Calculate the distance to the target
+            float distanceToTarget = Vector2.Distance(transform.position, target.position);
+            // Only updates the path if the target is within the detection range
+            if (distanceToTarget <= detectionRange)
+            {
+                seeker.StartPath(rb.position, target.position, OnPathComplete);
+            }
         }
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGenerator
+public class RoomFirstDungeonGenerator : DrunkardsWalkMapGenerator
 {
     [SerializeField]
     private int minRoomWidth = 4, minRoomHeight = 4;
@@ -26,8 +26,19 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGenerator
         var roomList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPos, new Vector3Int(dungeonWidth, dungeonHeight, 0)), minRoomWidth, minRoomHeight);
 
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
-        
-        floor = CreateSimpleRooms(roomList);
+
+        if (drunkardsWalkRooms)
+        {
+            
+            floor = CreateRoomsRandomly(roomList);
+            
+        }
+        else
+        {
+                
+            floor = CreateSimpleRooms(roomList);
+                
+        }
         
         List<Vector2Int> roomCenters = new List<Vector2Int>();
         
@@ -42,6 +53,29 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGenerator
         tilemapVisualizer.PaintFloorTiles(floor);
         WallGenerator.CreateWalls(floor, tilemapVisualizer);
 
+    }
+    
+    private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsList)
+    {
+        HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
+        
+        for(int i = 0; i < roomsList.Count; i++)
+        {
+            var roomBounds = roomsList[i];
+            var roomCenter = new Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
+            var roomFloor = RunDrunkardsWalk(drunkardsWalkParameters, roomCenter);
+
+            foreach (var pos in roomFloor)
+            {
+                if(pos.x >= (roomBounds.xMin + offset) && pos.x <= (roomBounds.xMax - offset) && pos.y >= (roomBounds.yMin + offset) && pos.y <= (roomBounds.yMax - offset)) // could be this if it doesnt work properly if(pos.x >= (roomBounds.xMin + offset) && pos.x <= (roomBounds.xMax - offset) && pos.y >= (roomBounds.yMin - offset) && pos.y <= (roomBounds.yMax - offset))
+                {
+                    floor.Add(pos);
+                }
+                
+            }
+        }
+
+        return floor;
     }
     
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
@@ -64,41 +98,6 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGenerator
     }
     
     private HashSet<Vector2Int> CreateCorridor(Vector2Int currentRoomCenter, Vector2Int destination)
-    {
-        HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
-        var pos = currentRoomCenter;
-
-        corridor.Add(pos);
-        
-        while (pos.y != destination.y)
-        {
-            if(destination.y > pos.y)
-            {
-                pos += Vector2Int.up;
-            }
-            else if(destination.y < pos.y)
-            {
-                pos += Vector2Int.down;
-            }
-            corridor.Add(pos);
-        }
-        while(pos.x != destination.x)
-        {
-            if(destination.x > pos.x)
-            {
-                pos += Vector2Int.right;
-            }
-            else if(destination.x < pos.x)
-            {
-                pos += Vector2Int.left;
-            }
-            corridor.Add(pos);
-        }
-
-        return corridor;
-    }
-    
-    /*private HashSet<Vector2Int> CreateCorridor(Vector2Int currentRoomCenter, Vector2Int destination)
     {
         HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
         var pos = currentRoomCenter;
@@ -144,7 +143,6 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGenerator
             corridor.Add(new Vector2Int(position.x, position.y + i));
         }
     }
-    */
 
     
     private Vector2Int FindClosestPointTo(Vector2Int currentRoomCenter, List<Vector2Int> roomCenters)

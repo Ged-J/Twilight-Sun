@@ -93107,7 +93107,7 @@ PrefabInstance:
       objectReference: {fileID: 410904450}
     - target: {fileID: 1427589531638912822, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: orthographic size
-      value: 4
+      value: 5.625
       objectReference: {fileID: 0}
     - target: {fileID: 1427589531638912822, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
@@ -93119,7 +93119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1427589531638912823, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.6992598
+      value: -4.6992593
       objectReference: {fileID: 0}
     - target: {fileID: 1427589531638912823, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: m_LocalPosition.y
@@ -93127,7 +93127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1427589532492005402, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.6992598
+      value: -4.6992593
       objectReference: {fileID: 0}
     - target: {fileID: 1427589532492005402, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: m_LocalPosition.y
@@ -100369,6 +100369,10 @@ PrefabInstance:
       objectReference: {fileID: 457853576}
     - target: {fileID: 1280712701724936354, guid: 2f01e7b5f130efa4d8d0eb898b88abfe, type: 3}
       propertyPath: enemyMusicSource
+      value: 
+      objectReference: {fileID: 791473952}
+    - target: {fileID: 1280712701724936354, guid: 2f01e7b5f130efa4d8d0eb898b88abfe, type: 3}
+      propertyPath: backgroundMusicSource
       value: 
       objectReference: {fileID: 791473952}
     - target: {fileID: 1280712701724936354, guid: 2f01e7b5f130efa4d8d0eb898b88abfe, type: 3}

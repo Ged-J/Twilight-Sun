@@ -3,25 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class SimpleRandomWalkMapGenerator : AbstractDungeonGenerator
+public class DrunkardsWalkMapGenerator : AbstractDungeonGenerator
 {
     
     [SerializeField]
-    protected SimpleRandomWalkData randomWalkParameters;
+    protected DrunkardsWalkData drunkardsWalkParameters;
     
     protected override void RunProceduralGeneration()
     {
 
-        HashSet<Vector2Int> floorPos = RunRandomWalk(randomWalkParameters, startPos);
+        HashSet<Vector2Int> floorPos = RunDrunkardsWalk(drunkardsWalkParameters, startPos);
         tilemapVisualizer.Clear();
         tilemapVisualizer.PaintFloorTiles(floorPos);
         WallGenerator.CreateWalls(floorPos, tilemapVisualizer);
 
     }
 
-    protected HashSet<Vector2Int> RunRandomWalk(SimpleRandomWalkData parameter, Vector2Int position)
+    protected HashSet<Vector2Int> RunDrunkardsWalk(DrunkardsWalkData parameter, Vector2Int position)
     {
 
         var currentPos = position;
@@ -30,7 +31,7 @@ public class SimpleRandomWalkMapGenerator : AbstractDungeonGenerator
         for (int i = 0; i < parameter.iterations; i++)
         {
             
-            var path = ProceduralGenerationAlgorithms.SimpleRandomWalk(currentPos, parameter.walkLength);
+            var path = ProceduralGenerationAlgorithms.DrunkardsWalk(currentPos, parameter.walkLength);
             floorPos.UnionWith(path);
             if (parameter.startRandomlyEachIteration)
                 currentPos = floorPos.ElementAt(Random.Range(0, floorPos.Count));
