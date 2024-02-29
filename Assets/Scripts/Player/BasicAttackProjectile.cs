@@ -67,14 +67,29 @@ public class BasicAttackProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Enemy" || collision.GetType() == typeof(CircleCollider2D))
-            return;
+        // Check if the collision is with an enemy and has the correct collider type
+        if (collision.tag == "Enemy" && collision.GetType() != typeof(CircleCollider2D))
+        {
+            EnemyController enemy = collision.GetComponent<EnemyController>();
+            if (enemy != null) // Ensure there is an EnemyController to call TakeDamage on
+            {
+                enemy.TakeDamage(5);
+            }
 
-        EnemyController enemy = collision.GetComponent<EnemyController>();
-        enemy.TakeDamage(5);
-        var newExplosion = Instantiate(explosionGO, transform.position, transform.rotation); //needs audio source
-        Destroy(newExplosion, 5);
-        Destroy(this.gameObject);
+            TriggerExplosion();
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Midground")) // Check if the collision is with a wall
+        {
+            TriggerExplosion();
+        }
     }
+
+    private void TriggerExplosion()
+    {
+        var newExplosion = Instantiate(explosionGO, transform.position, Quaternion.identity); // Instantiate the explosion effect
+        Destroy(newExplosion, 5); // Destroy the explosion GameObject after 5 seconds to clean up
+        Destroy(this.gameObject); // Destroy the fireball
+    }
+
 }
 

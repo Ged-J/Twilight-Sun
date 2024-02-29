@@ -23,6 +23,18 @@ public class RoomContentGenerator : MonoBehaviour
 
     public UnityEvent RegenerateDungeon;
     
+    /*private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            foreach (var item in spawnedObjects)
+            {
+                Destroy(item);
+            }
+            RegenerateDungeon?.Invoke();
+        }
+    }*/
+    
     public void GenerateRoomContent(DungeonData dungeonData)
     {
         foreach (GameObject item in spawnedObjects)
@@ -39,6 +51,8 @@ public class RoomContentGenerator : MonoBehaviour
             if(item != null)
                 item.transform.SetParent(itemParent, false);
         }
+        
+        
         
     }
 
@@ -84,5 +98,23 @@ public class RoomContentGenerator : MonoBehaviour
 
         }
     }
+    
+    public void Regenerate()
+    {
+        foreach (var item in spawnedObjects)
+        {
+            Destroy(item);
+        }
+        spawnedObjects.Clear();
+        RegenerateDungeon?.Invoke();
+
+        // After regeneration, find and call StartScan on ScanRuntime
+        var scanRuntime = FindObjectOfType<ScanRuntime>();
+        if(scanRuntime != null)
+        {
+            scanRuntime.StartScan();
+        }
+    }
+
 
 }

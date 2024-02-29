@@ -248,13 +248,21 @@ public class PlayerController : MonoBehaviour
     IEnumerator death()
     {
         yield return new WaitForSeconds(.5f);
-        /*SceneTransitions.Fadeout();*/
+        // Assuming you want to clear saved positions and other state-related tasks
         SavedPositionManager.savedPositions.Clear();
-        
+
         yield return new WaitForSeconds(1f);
-        
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+
+        // Find the RoomContentGenerator and call Regenerate
+        var roomContentGenerator = FindObjectOfType<RoomContentGenerator>();
+        if(roomContentGenerator != null)
+        {
+            roomContentGenerator.Regenerate();
+        }
+
+        // Reload the scene or do other necessary cleanup
+        /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);*/
     }
     
     IEnumerator DamageAnim()

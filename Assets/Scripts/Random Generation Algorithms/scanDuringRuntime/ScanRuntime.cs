@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class ScanRuntime : MonoBehaviour
 {
-    // Optionally, add a delay before scanning to ensure all game setup processes have completed
     public float scanDelay = 0.1f;
 
-    IEnumerator Start()
+    void Start()
     {
-        // Wait for a short delay to ensure all initialization processes have completed
+        
+        StartScan();
+    }
+    
+    public void StartScan()
+    {
+        StartCoroutine(ScanAfterDelay());
+    }
+
+    private IEnumerator ScanAfterDelay()
+    {
         yield return new WaitForSeconds(scanDelay);
 
-        // Check if the AstarPath is active and not null
         if (AstarPath.active != null)
         {
-            // Scan the graph
             AstarPath.active.Scan();
             Debug.Log("Pathfinding graph has been scanned and updated.");
         }
@@ -25,3 +32,4 @@ public class ScanRuntime : MonoBehaviour
         }
     }
 }
+
