@@ -31,6 +31,7 @@ public class CorridorFirstDungeonGenerator : DrunkardsWalkMapGenerator
     protected override void RunProceduralGeneration()
     {
         CorridorFirstDungeonGeneration();
+        
         DungeonData data = new DungeonData
         {
             roomsDictionary = this.roomsDictionary,
@@ -38,6 +39,7 @@ public class CorridorFirstDungeonGenerator : DrunkardsWalkMapGenerator
             floorPositions = this.floorPositions
         };
         OnDungeonFloorReady?.Invoke(data);
+        
     }
 
     private void CorridorFirstDungeonGeneration()
@@ -56,11 +58,6 @@ public class CorridorFirstDungeonGenerator : DrunkardsWalkMapGenerator
         
     }
     
-    private void UpdatePathfindingGraph()
-    {
-        // Assuming you are using A* Pathfinding Project
-        AstarPath.active.Scan();
-    }
     
     private void GenerateRooms(HashSet<Vector2Int> potentialRoomPositions)
     {
@@ -74,9 +71,6 @@ public class CorridorFirstDungeonGenerator : DrunkardsWalkMapGenerator
 
         tilemapVisualizer.PaintFloorTiles(floorPositions);
         WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
-        
-        // Update the pathfinding graph after dungeon generation is complete
-        UpdatePathfindingGraph();
         
     }
     
@@ -155,7 +149,8 @@ public class CorridorFirstDungeonGenerator : DrunkardsWalkMapGenerator
         roomColors.Add(UnityEngine.Random.ColorHSV());
     }
     
-    private void CreateCorridors(HashSet<Vector2Int> floorPositions, 
+    // corridor 1 tiles wide
+    /*private void CreateCorridors(HashSet<Vector2Int> floorPositions, 
         HashSet<Vector2Int> potentialRoomPositions)
     {
         var currentPosition = startPos;
@@ -169,7 +164,37 @@ public class CorridorFirstDungeonGenerator : DrunkardsWalkMapGenerator
             floorPositions.UnionWith(corridor);
         }
         corridorPositions = new HashSet<Vector2Int>(floorPositions);
+    }*/
+    
+    // Extends the corridor to make it 3 tiles wide
+    private void CreateCorridors(HashSet<Vector2Int> floorPositions, HashSet<Vector2Int> potentialRoomPositions) {
+        var currentPosition = startPos;
+        potentialRoomPositions.Add(currentPosition);
+
+        for (int i = 0; i < corridorCount; i++) {
+            var corridor = ProceduralGenerationAlgorithms.RandomWalkCorridor(currentPosition, corridorLength);
+            currentPosition = corridor[corridor.Count - 1];
+            potentialRoomPositions.Add(currentPosition);
+        
+            foreach (var position in corridor) {
+                // Add the main corridor position
+                floorPositions.Add(position);
+            
+                // Expand the corridor to 2-tiles wide by adding adjacent tiles
+                foreach (var dir in Direction2D.cardinalDirectionsList) {
+                    var adjacentPosition = position + dir;
+                
+                    // Optionally, check if the adjacentPosition is not part of the room or other corridors
+                    // This depends on your game's logic and needs
+                    if (!floorPositions.Contains(adjacentPosition)) {
+                        floorPositions.Add(adjacentPosition);
+                    }
+                }
+            }
+        }
+        corridorPositions = new HashSet<Vector2Int>(floorPositions);
     }
+    
     
     private void OnDrawGizmosSelected()
     {

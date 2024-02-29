@@ -383,6 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1137672413354296113}
   - component: {fileID: 7447052734563124879}
+  - component: {fileID: 7679177912600129293}
   m_Layer: 5
   m_Name: BossUI
   m_TagString: Untagged
@@ -426,6 +427,18 @@ MonoBehaviour:
   name: {fileID: 245426693168098307}
   frontHealthbar: {fileID: 5050910817874626647}
   backHealthbar: {fileID: 8905010399797969838}
+--- !u!114 &7679177912600129293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3855865060910152785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb1664db3a82f04790c3877df7934ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4768278960293011468
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,6 +615,7 @@ GameObject:
   - component: {fileID: 2086303687965057153}
   - component: {fileID: 1449855519240906405}
   - component: {fileID: 245426693168098307}
+  - component: {fileID: 6377610100650725267}
   m_Layer: 5
   m_Name: BossName
   m_TagString: Untagged
@@ -727,6 +741,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6377610100650725267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798482747612695707}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb1664db3a82f04790c3877df7934ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6830702209680626403
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,7 +771,7 @@ GameObject:
   - component: {fileID: 4308472263224453793}
   - component: {fileID: 35592875931989756}
   - component: {fileID: 6626848752791907049}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Death_Knight2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -949,8 +975,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7ce3944e3c4f74c9711e81069fd42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 400
-  nextWaypointDistance: 1.3
+  speed: 300
+  nextWaypointDistance: 3
   slashGO: {fileID: 3169508740969938502, guid: b9ff9a4170649ec4db641dd9df2c67f0, type: 3}
   projectileGO: {fileID: 0}
   slashDamage: 10
@@ -1176,17 +1202,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 16
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 960, y: 600}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &107774515279365549
 MonoBehaviour:
   m_ObjectHideFlags: 0

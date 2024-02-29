@@ -42,6 +42,13 @@ public class MPBar : MonoBehaviour
 
     private void UpdateSlider()
     {
+        
+        /*if (player == null)
+    {
+        player = FindObjectOfType<PlayerController>();
+        if (player == null) return; // Player still not found, exit the method to avoid errors
+    }*/
+        
         float fillF = frontHealthbar.fillAmount;
         float fillB = backHealthbar.fillAmount;
         float hFraction = (float) player.currentMana / player.maxMana;

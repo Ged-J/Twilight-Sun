@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Pathfinding;
+using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -51,15 +52,21 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
-
+    
     void OnPathComplete(Path p)
     {
         if (!p.error)
         {
             path = p;
             currentWaypoint = 0;
-        }
+        } 
     }
+    
+    void Update() {
+        // Update the target regularly to ensure it's always aiming for the current player position.
+        target = FindObjectOfType<PlayerController>().transform;
+    }
+
 
     void FixedUpdate()
     {
@@ -88,7 +95,7 @@ public class EnemyAI : MonoBehaviour
         rb.AddForce(force);
 
         // Check if the enemy is moving significantly and update the animator
-        animator.SetBool("isMoving", force.magnitude > 0.01f); // Adjust threshold as needed
+        animator.SetBool("isMoving", force.magnitude > 0.00001f); // Adjust threshold as needed
 
         // Check the direction to the player
         Vector2 playerDirection = target.position - transform.position;
@@ -180,5 +187,12 @@ public class EnemyAI : MonoBehaviour
         canAttack = false;
         yield return new WaitForSeconds(2);
         canAttack = true;
+    }
+    
+    void OnDrawGizmosSelected() {
+        if (target != null) {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(target.position, 0.5f); // Visualize the current target position
+        }
     }
 }

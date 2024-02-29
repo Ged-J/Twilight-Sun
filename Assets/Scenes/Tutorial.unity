@@ -92721,7 +92721,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 2.7473783, y: -2.797329}
+  m_Offset: {x: 3.2763243, y: -2.797329}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -92731,7 +92731,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 22.279688, y: 9.092274}
+  m_Size: {x: 21.221796, y: 9.092274}
   m_EdgeRadius: 0
 --- !u!1 &386060246
 GameObject:
@@ -93105,6 +93105,10 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 410904450}
+    - target: {fileID: 1427589531638912818, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 1427589531638912822, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: orthographic size
       value: 5.625
@@ -93180,6 +93184,10 @@ PrefabInstance:
     - target: {fileID: 6300273305541655713, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300273305541655713, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -93759,6 +93767,10 @@ PrefabInstance:
     - target: {fileID: 578933551255191048, guid: cf6791e40fe5d1e4d9c81028f44d32bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578933551255191049, guid: cf6791e40fe5d1e4d9c81028f44d32bd, type: 3}
+      propertyPath: data.dataString
+      value: UEsDBBQAAAgIAAAAIewFjRl0XQIAABQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMty2zAM/BUPz03GrzzcW6s4Tg9JPHU7uegCiZDFMUVq+IjtZPzvBSnJUt3pyfTuAliAoD6ZULbG3GmzMoI/a47s64iFM/sy6sknPMBWq434wE7zJrgrgwii5ic4oQmfhDCrK3RG5N/UVgbxmECvRKFNteRbTLR1luACpEWijHYhWhH0OWIH+rlahJAjnaZ34fRBp8V4dKJjjsqh6aWdsJM1Kq9yCVWNPFjuxfPbVj1fRJmiZlpFMJ5rKYVtnTB3rGOnCdTWUx8k4AKos1h+cj0joESxLV3wOQx/LQqLrjVl4PggDI2oycu+62ZuFdhd4+wdpI8WpvfRVZP0+R/+ahLpwujqqas7GYcarhT57iccc7BuMNgh/DCwHge0B7mDTOJbiepFr4z2ihPpjA+h3uL0of97bi0pMd/1eGP1AvT1/68n9HCK3R8SKaosUNfzBthIHSceLx8N3c0PMhxXw7YpCA0uflv8BdvhDrXEozDWEdV2qYK9THsTpGwZZxa68S7RRmGEW9M1KpDuuKY07vIKL7hB2QvmEcJraYu3XPcILkIi3OvH4wtqrffny7Kl3j+jLV+9k0JhbzoQLzSnRCvVbNhwJl3YxpsC8kHY1gv+92qx+8UsLzCDxd3kBmd8enWTFbeTcTYrYA5Zdp+xuHtCUZ8g143Rdjx0a6pPrmjPuo/IaGWgjtvODexX4qPSg5ELVehNbhDVa5PhbBwNFaF3yZdc0IA26JxQ8b7ZZ8qkznfI03OiNHa6PDgDaZ8lZbV41y4gKUviVyNlAT7v8trgu8B9KN4lO7HTH1BLAwQUAAAICAAAACHsgM+79m0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0koWlcXJaalKipbmhaapxipGuaVKamaFBknFaokliUpJFklIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAACHsBY0ZdF0CAAAUBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAACHsgM+79m0AAAB4AAAACQAkAAAAAAAAAAAAAACqAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAGIDAAAAAA==
       objectReference: {fileID: 0}
     - target: {fileID: 578933551255191050, guid: cf6791e40fe5d1e4d9c81028f44d32bd, type: 3}
       propertyPath: m_Name
@@ -100390,6 +100402,18 @@ PrefabInstance:
     - target: {fileID: 1280712701731256993, guid: 2f01e7b5f130efa4d8d0eb898b88abfe, type: 3}
       propertyPath: dashLayerMask.m_Bits
       value: 144
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280712701731257004, guid: 2f01e7b5f130efa4d8d0eb898b88abfe, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280712701731257004, guid: 2f01e7b5f130efa4d8d0eb898b88abfe, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280712701731257004, guid: 2f01e7b5f130efa4d8d0eb898b88abfe, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1280712701731257004, guid: 2f01e7b5f130efa4d8d0eb898b88abfe, type: 3}
       propertyPath: m_LocalPosition.x
