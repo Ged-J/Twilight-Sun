@@ -78,7 +78,8 @@ public class PrefabPlacer : MonoBehaviour
         }
         else
         {
-            newItem = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+            /*newItem = PrefabUtility.InstantiatePrefab(prefab) as GameObject;*/
+            newItem = Instantiate(prefab) as GameObject;
             newItem.transform.position = placementPosition;
             newItem.transform.rotation = Quaternion.identity;
         }

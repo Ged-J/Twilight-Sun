@@ -32,7 +32,7 @@ public class MusicManager : MonoBehaviour
     
     public static void SetMusic(string i)
     {
-        audioSource.clip = Resources.Load<AudioClip>("Audio/BGM/" + i);
+        audioSource.clip = Resources.Load<AudioClip>("Sounds/BGM/" + i);
         audioSource.Play();
     }
 

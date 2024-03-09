@@ -29,7 +29,7 @@ public class SFXManager : MonoBehaviour
     
     public static void PlaySFX(string sfxName, float pitch = 1f, float volume = 1f)
     {
-        audioSource.PlayOneShot(Resources.Load<AudioClip>("Audio/SFX/" + sfxName));
+        audioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SFX/" + sfxName));
         audioSource.volume = volume;
         audioSource.pitch = pitch;
     }

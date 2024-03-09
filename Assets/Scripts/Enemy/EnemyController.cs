@@ -20,9 +20,12 @@ public class EnemyController : MonoBehaviour
 
     private GameObject newBloodSpatter;
 
+    private EnemyManager enemyManager;
 
     private void Start()
     {
+        enemyManager = FindObjectOfType<EnemyManager>();
+        
         DPSCanvas = GameObject.FindGameObjectWithTag("DamageCanvas");
         text = textGO.GetComponentInChildren<TextMeshProUGUI>();
         print(text);
@@ -84,6 +87,7 @@ public class EnemyController : MonoBehaviour
             {
                 spawner.EnemyDefeated(gameObject);
             }
+            enemyManager.EnemyDefeated();
             Destroy(this.gameObject);
             //newBloodSpatter = Instantiate(bloodSplatter, transform.position, transform.rotation);
             //Destroy(newBloodSpatter, 3);

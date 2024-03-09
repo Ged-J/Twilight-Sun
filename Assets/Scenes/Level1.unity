@@ -22052,6 +22052,16 @@ MonoBehaviour:
   wallTilemap: {fileID: 516751072}
   floorTile: {fileID: 11400000, guid: b2680bfd3c65ab44291e282d47f0033f, type: 2}
   wallTop: {fileID: 11400000, guid: 25fc05093961881458602997a8425625, type: 2}
+  wallSideRight: {fileID: 0}
+  wallSideLeft: {fileID: 0}
+  wallBottom: {fileID: 0}
+  wallFull: {fileID: 0}
+  wallInnerCornerDownLeft: {fileID: 0}
+  wallInnerCornerDownRight: {fileID: 0}
+  wallDiagonalCornerDownRight: {fileID: 0}
+  wallDiagonalCornerDownLeft: {fileID: 0}
+  wallDiagonalCornerUpRight: {fileID: 0}
+  wallDiagonalCornerUpLeft: {fileID: 0}
 --- !u!4 &808877456
 Transform:
   m_ObjectHideFlags: 0
@@ -22136,7 +22146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1427589531638912822, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: orthographic size
-      value: 4
+      value: 5.625
       objectReference: {fileID: 0}
     - target: {fileID: 1427589531638912822, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -22359,7 +22369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemapVisualizer: {fileID: 808877455}
   startPos: {x: 0, y: 0}
-  randomWalkParameters: {fileID: 11400000, guid: 997eb95357724544dba1af9cb6fcba25, type: 2}
+  drunkardsWalkParameters: {fileID: 0}
 --- !u!4 &1287504765
 Transform:
   m_ObjectHideFlags: 0
@@ -22841,7 +22851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4805369344632330177, guid: 2cb969bb10786404f8a3fe7710cc7c2a, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4805369344632330177, guid: 2cb969bb10786404f8a3fe7710cc7c2a, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -22849,7 +22859,7 @@ PrefabInstance:
       objectReference: {fileID: 1676487661}
     - target: {fileID: 4805369344632330177, guid: 2cb969bb10786404f8a3fe7710cc7c2a, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: VolumeApply
+      value: SetVolume
       objectReference: {fileID: 0}
     - target: {fileID: 4805369344632330177, guid: 2cb969bb10786404f8a3fe7710cc7c2a, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

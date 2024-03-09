@@ -110,7 +110,20 @@ public class PlayerController : MonoBehaviour
         mousePosTest = cam.ScreenToWorldPoint(Input.mousePosition);
         lookdir = mousePosTest - rb.position;
         angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;
+        
+        // Get a reference to your SpriteRenderer component (do this in Awake or Start)
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
+        // Then, in the Update method, where you're checking the mouse position:
+        if (lookdir.x >= 0)
+        {
+            spriteRenderer.flipX = false; // Face right
+        }
+        else
+        {
+            spriteRenderer.flipX = true; // Face left
+        }
+        
         //first spell slot
         if (!castingMagic & canCast) {
             if (Input.GetKeyDown(KeyCode.Q))
@@ -247,7 +260,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator death()
     {
-        yield return new WaitForSeconds(.5f);
+        /*yield return new WaitForSeconds(.5f);*/
         // Assuming you want to clear saved positions and other state-related tasks
         SavedPositionManager.savedPositions.Clear();
 

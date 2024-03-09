@@ -21,7 +21,7 @@ MonoBehaviour:
   elementalDamage: 0
   critChance: 0
   damageMultiplier: 0
-  manaCost: 10
+  manaCost: 50
   cooldown: 5
   spellRadius: 0.5
   lifeTime: 10
