@@ -984,6 +984,7 @@ MonoBehaviour:
   isRanged: 0
   animator: {fileID: 0}
   detectionRange: 10
+  separationDistance: 1.5
 --- !u!50 &4308472263224453793
 Rigidbody2D:
   serializedVersion: 4
@@ -1007,9 +1008,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &35592875931989756
 CircleCollider2D:

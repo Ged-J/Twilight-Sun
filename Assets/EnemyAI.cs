@@ -29,6 +29,13 @@ public class EnemyAI : MonoBehaviour
 
     public float detectionRange = 10f; 
     
+    /*private bool isStuck = false;
+    private float stuckTimer = 0f;
+    private Vector2 lastPosition;
+    private float checkStuckInterval = 0.5f; // Check every half second
+
+    public float separationDistance = 1.5f; // The distance to maintain from other enemies*/
+    
     void Start()
     {
         seeker = GetComponent<Seeker>();
@@ -120,7 +127,72 @@ public class EnemyAI : MonoBehaviour
         // Set the animator parameters for X and Y directions
         animator.SetFloat("X", (target.position.x - transform.position.x));
         animator.SetFloat("Y", (target.position.y - transform.position.y));
+        
+        /*// Check if we have moved since the last check
+        if ((Vector2)transform.position == lastPosition) {
+            stuckTimer += Time.fixedDeltaTime;
+        } else {
+            stuckTimer = 0;
+            isStuck = false;
+        }
+
+        // Update the lastPosition for the next check
+        lastPosition = transform.position;
+
+        // If we've been stuck for more than the interval, consider us stuck
+        if (stuckTimer > checkStuckInterval) {
+            isStuck = true;
+        }
+
+        // If stuck, try to recalculate the path
+        if (isStuck) {
+            UpdatePath();
+            isStuck = false; // Reset stuck status after attempting to find a new path
+        }
+        
+        SeparateFromOtherEnemies();
+        
+        DetectAndAvoidWalls();*/
     }
+    
+    /*void SeparateFromOtherEnemies()
+    {
+        // Find all enemies within the separationDistance
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, separationDistance, LayerMask.GetMask("Enemy"));
+        Vector2 separationForce = Vector2.zero;
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.gameObject != gameObject && hit is BoxCollider2D) // Ignore self
+            {
+                Vector2 awayFromEnemy = transform.position - hit.transform.position;
+                // Adjust the force based on distance (closer enemies push harder)
+                separationForce += awayFromEnemy.normalized / awayFromEnemy.magnitude;
+            }
+        }
+
+        // Apply a force that separates this enemy from others
+        if (separationForce != Vector2.zero)
+        {
+            rb.AddForce(separationForce * speed);
+        }
+    }
+    
+    void DetectAndAvoidWalls()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, detectionRange, LayerMask.GetMask("Midground"));
+        if (hit.collider != null)
+        {
+            // Wall detected between enemy and player
+            Debug.DrawLine(transform.position, hit.point, Color.red);
+
+            // Force a path update if we hit a wall
+            UpdatePath();
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, direction * detectionRange, Color.green);
+        }
+    }*/
 
 
 
