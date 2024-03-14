@@ -69,7 +69,7 @@ public class HPBar : MonoBehaviour
     {
         player.currentHealth = player.currentHealth - value;
         lerpTimer = 0;
-        Debug.Log(player.currentHealth);
+        /*Debug.Log(player.currentHealth);*/
     }
     
     public void RestoreHP(int value)

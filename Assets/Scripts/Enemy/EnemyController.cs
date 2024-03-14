@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
@@ -21,6 +22,9 @@ public class EnemyController : MonoBehaviour
     private GameObject newBloodSpatter;
 
     private EnemyManager enemyManager;
+    
+    public event Action<int, int> OnHealthChanged;
+
 
     private void Start()
     {
@@ -28,12 +32,44 @@ public class EnemyController : MonoBehaviour
         
         DPSCanvas = GameObject.FindGameObjectWithTag("DamageCanvas");
         text = textGO.GetComponentInChildren<TextMeshProUGUI>();
-        print(text);
+        /*print(text);*/
+        
+        // If for some reason it's not desirable or possible to call AdjustDifficulty here, make sure to directly invoke any necessary updates:
+        AdjustDifficulty();
     }
 
     private void Awake()
     {
-        health = maxHealth;
+        health = CalculateHealthBasedOnDifficulty();
+        DifficultyManager.instance.OnDifficultyChanged += AdjustDifficulty;
+    }
+    
+    private void OnDestroy()
+    {
+        DifficultyManager.instance.OnDifficultyChanged -= AdjustDifficulty;
+    }
+
+    private void AdjustDifficulty()
+    {
+        int previousMaxHealth = maxHealth;
+        maxHealth = CalculateMaxHealthBasedOnDifficulty();
+        health = Mathf.Clamp(health, 0, maxHealth); // Adjust current health proportionally, if desired
+    
+        // Notify UI to update (this part will be implemented in a moment)
+        OnHealthChanged?.Invoke(health, maxHealth);
+    }
+    
+    private int CalculateMaxHealthBasedOnDifficulty()
+    {
+        int difficultyScore = DifficultyManager.instance.GetCurrentDifficultyScore();
+        return 1 + (difficultyScore * 10); // Example formula, adjust as needed
+    }
+
+    private int CalculateHealthBasedOnDifficulty()
+    {
+        int difficultyScore = DifficultyManager.instance.GetCurrentDifficultyScore();
+        // Decrease or increase health based on difficulty score. Adjust formula as needed.
+        return 100 + (difficultyScore * 20); // Example: Starting at 100 health, plus 20 for each difficulty level
     }
 
     // Update is called once per frame
@@ -46,7 +82,9 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         health -= dmg;
-        print(health);
+        health = Mathf.Max(0, health); // Ensure health doesn't go below 0
+        OnHealthChanged?.Invoke(health, maxHealth);
+        /*print(health);*/
 
         //newText = Instantiate(text, transform.position, transform.rotation);
         newText = Instantiate(text, damagePosition.transform.position, transform.rotation);

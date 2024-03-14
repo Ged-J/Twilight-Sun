@@ -272,6 +272,15 @@ public class PlayerController : MonoBehaviour
         {
             roomContentGenerator.Regenerate();
         }
+        
+        DifficultyManager.instance.PlayerDied();
+        
+        // Recount enemies after regeneration
+        var enemyManager = FindObjectOfType<EnemyManager>();
+        if (enemyManager != null)
+        {
+            enemyManager.RecountEnemies();
+        }
 
         // Reload the scene or do other necessary cleanup
         /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -287,7 +296,7 @@ public class PlayerController : MonoBehaviour
 
     public void Heal(int heal)
     {
-        print("cock");
+        print("healed");
         if (currentHealth < maxHealth)
         {
             currentHealth += heal;

@@ -17,6 +17,29 @@ public class EnemyHealthUI : MonoBehaviour
     {
         enemyController = controller;
         nameText.text = enemyController.gameObject.name;
+
+        // Subscribe to the OnHealthChanged event
+        enemyController.OnHealthChanged += UpdateHealthDisplay;
+        // Initialize the health bar display
+        UpdateHealthDisplay(enemyController.health, enemyController.maxHealth);
+    }
+    
+    private void OnDestroy()
+    {
+        // Unsubscribe to prevent memory leaks
+        if(enemyController != null) 
+        {
+            enemyController.OnHealthChanged -= UpdateHealthDisplay;
+        }
+    }
+
+    private void UpdateHealthDisplay(int currentHealth, int maxHealth)
+    {
+        float healthPercentage = (float)currentHealth / maxHealth;
+        frontHealthbar.fillAmount = healthPercentage;
+        // Add logic to adjust backHealthbar if using a delayed effect
+        backHealthbar.fillAmount = Mathf.Lerp(backHealthbar.fillAmount, healthPercentage, lerpTimer * chipSpeed);
+        lerpTimer += Time.deltaTime;
     }
 
     private void Update()
@@ -27,12 +50,16 @@ public class EnemyHealthUI : MonoBehaviour
 
     private void UpdateSlider()
     {
-        float fillF = frontHealthbar.fillAmount;
-        float fillB = backHealthbar.fillAmount;
-        float hFraction = (float)enemyController.health / enemyController.maxHealth;
-
-        // Existing logic for updating health bar...
-
+        if(backHealthbar.fillAmount > frontHealthbar.fillAmount)
+        {
+            lerpTimer += Time.deltaTime;
+            float fill = Mathf.Lerp(backHealthbar.fillAmount, frontHealthbar.fillAmount, lerpTimer * chipSpeed);
+            backHealthbar.fillAmount = fill;
+        }
+        else
+        {
+            lerpTimer = 0;
+        }
     }
 
     private void UpdatePosition()

@@ -29,12 +29,12 @@ public class EnemyAI : MonoBehaviour
 
     public float detectionRange = 10f; 
     
-    /*private bool isStuck = false;
+    private bool isStuck = false;
     private float stuckTimer = 0f;
     private Vector2 lastPosition;
     private float checkStuckInterval = 0.5f; // Check every half second
 
-    public float separationDistance = 1.5f; // The distance to maintain from other enemies*/
+    public float separationDistance = 1.5f; // The distance to maintain from other enemies
     
     void Start()
     {
@@ -42,19 +42,30 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = FindObjectOfType<PlayerController>().transform;
+        
+        AdjustDamageBasedOnDifficulty();
+        DifficultyManager.instance.OnDifficultyChanged += AdjustDamageBasedOnDifficulty;
 
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
-
-    void UpdatePath()
+    
+    private void OnDestroy()
     {
-        if (seeker.IsDone() && !isAttacking && target != null)
-        {
-            // Calculate the distance to the target
+        DifficultyManager.instance.OnDifficultyChanged -= AdjustDamageBasedOnDifficulty;
+    }
+
+    private void AdjustDamageBasedOnDifficulty()
+    {
+        int difficultyScore = DifficultyManager.instance.GetCurrentDifficultyScore();
+        // Adjust slashDamage and projectileDamage based on the difficulty score. Adjust formula as needed.
+        slashDamage = 10 + (difficultyScore * 2); // Example: Starting at 10 damage, plus 2 for each difficulty level
+        projectileDamage = 20 + (difficultyScore * 4); // Adjust as needed
+    }
+
+    void UpdatePath() {
+        if (seeker.IsDone() && !isAttacking && target != null) {
             float distanceToTarget = Vector2.Distance(transform.position, target.position);
-            // Only updates the path if the target is within the detection range
-            if (distanceToTarget <= detectionRange)
-            {
+            if (distanceToTarget <= detectionRange) {
                 seeker.StartPath(rb.position, target.position, OnPathComplete);
             }
         }
@@ -124,11 +135,18 @@ public class EnemyAI : MonoBehaviour
             currentWaypoint++;
         }
 
-        // Set the animator parameters for X and Y directions
+        /*// Set the animator parameters for X and Y directions
         animator.SetFloat("X", (target.position.x - transform.position.x));
-        animator.SetFloat("Y", (target.position.y - transform.position.y));
+        animator.SetFloat("Y", (target.position.y - transform.position.y));*/
         
-        /*// Check if we have moved since the last check
+        // Add simple forward obstacle detection to trigger path recalculation
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1f, LayerMask.GetMask("Midground")); // Adjust the distance as needed
+        if (hit.collider != null) {
+            // Detected an obstacle, trigger path recalculation
+            UpdatePath();
+        }
+        
+        // Check if we have moved since the last check
         if ((Vector2)transform.position == lastPosition) {
             stuckTimer += Time.fixedDeltaTime;
         } else {
@@ -152,10 +170,11 @@ public class EnemyAI : MonoBehaviour
         
         SeparateFromOtherEnemies();
         
-        DetectAndAvoidWalls();*/
+        DetectAndAvoidWalls();
+        
     }
     
-    /*void SeparateFromOtherEnemies()
+    void SeparateFromOtherEnemies()
     {
         // Find all enemies within the separationDistance
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, separationDistance, LayerMask.GetMask("Enemy"));
@@ -192,10 +211,8 @@ public class EnemyAI : MonoBehaviour
         {
             Debug.DrawRay(transform.position, direction * detectionRange, Color.green);
         }
-    }*/
-
-
-
+    }
+    
     void attack()
     {
         isAttacking = true;
@@ -209,11 +226,11 @@ public class EnemyAI : MonoBehaviour
             animator.SetBool("isInRange", true);
         }
     }
-
+    
     IEnumerator MeleeAttack()
     {
         yield return new WaitForSeconds(.5f);
-        print("enemy melee attack");
+        /*print("enemy melee attack");*/
         direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         var newSlash = Instantiate(slashGO, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle));
@@ -226,7 +243,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator RangedAttack()
     {
         yield return new WaitForSeconds(.5f);
-        print("Ranged enemy attack");
+        /*print("Ranged enemy attack");*/
         direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         var newFireBall = Instantiate(projectileGO, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle));
@@ -248,7 +265,7 @@ public class EnemyAI : MonoBehaviour
 
         if (collision.tag == "Player" && canAttack)
         {
-            print("step up bruh");
+            /*print("step up bruh");*/
             attack();
             StartCoroutine("TimeAttack");
         }

@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TwilightSunTextImage3_0: -6867769032377197735
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

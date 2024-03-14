@@ -19,11 +19,15 @@ public class EnemyManager : MonoBehaviour
 
         // Count all enemies present after the delay
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+        print("Enemy count" + enemyCount);
     }
 
     public void EnemyDefeated()
     {
         enemyCount--;
+        
+        print("Enemy count after defeat" + enemyCount);
 
         if (enemyCount <= 0)
         {
@@ -31,4 +35,11 @@ public class EnemyManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
+    
+    public void RecountEnemies()
+    {
+        StopAllCoroutines(); // Stop any existing counting coroutines to prevent duplicate counts
+        StartCoroutine(CountEnemiesAfterDelay(0.5f)); // Short delay to ensure all enemies are loaded
+    }
+
 }

@@ -11,9 +11,9 @@ public class slash : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            print("you got got");
+            /*print("you got got");*/
             player.TakeDamage(damage);
-            print(player.currentHealth);
+            /*print(player.currentHealth);*/
         }
     }
 

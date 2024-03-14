@@ -10352,6 +10352,59 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 1427589531638912822, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
   m_PrefabInstance: {fileID: 979316935}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1111002224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1111002225}
+  - component: {fileID: 1111002226}
+  m_Layer: 0
+  m_Name: RVO Simulator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1111002225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111002224}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2066202522}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1111002226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111002224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1764de1de43cc4d19af52679d3eaae06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  desiredSimulationFPS: 20
+  workerThreads: 2
+  doubleBuffering: 0
+  hardCollisions: 1
+  symmetryBreakingBias: 0.1
+  movementPlane: 1
+  useNavmeshAsObstacle: 1
+  drawQuadtree: 0
 --- !u!1 &1115088236
 GameObject:
   m_ObjectHideFlags: 0
@@ -11097,7 +11150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 578933551255191049, guid: cf6791e40fe5d1e4d9c81028f44d32bd, type: 3}
       propertyPath: data.dataString
-      value: UEsDBBQAAAgIAAAAIewnQ0mAYAIAABoFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMziVjIDTQW2sI6YHAhHZy4SJba6xBljz64HP4713JNnboieXt29Xbp5WvhEtTQmqVXmjOlooB+dEjPibfem3yDU50p+SGX6DhfHJmc0+igfNBLVeID3yZUQVYzdOfcic8OULQSZ4pXczZDmJlrEE4o8IAprSyvloidO2RE/70p77kjNHwxUcXjKZR74ZhCtKC7lCjp3HNrSLP7Y8D18lU0KIE5oW3JaOo6Y5RIEocqub4AVIlBDe1ImLPZZg4pqVxOA8SGKc4YZAxeBohkAPf5dbr7ZavssyArQ3Q9DzjGq2q+pJfqvKvoGZfaTtQ4YKE4SSoqpou/8v3ByGdaVW8NecOwkw25+n+g55TamzH4C4860gPFh2p2NNEwGcO8l0ttHKSYdJq50udgeGs/XsfLc4h3bd4JfUBdGXreeN4c5t+hluY/hQLXiTh+p4rYCNUcDwsAWi8m98oOKyIqVsg6lX8NfCH7rq7VCdeuTYWU/WU0stLlNOeSubBMz+Ns7HSEgJciy5BUmHPa2xjH6/wIdc59iHzSv2rqQ+vc81jeCgJcMuPoofUWh3vl2VydVyCyVfOCi6hFe0T7+hTrKSsNqzrSVO2cTqjaads5zj7ulpkMh2lGSR0+jIYw4gN++Mk+z6IklFGn2mSTBISdo9LnJOKdSW0tgdvTbbNJe5Z8zHpLTQtw7YzTY8LfilUx3IuM7VJNYBcfelgQOMZ+CzZnHH0ZwPWchmum1y3RKh0D2x752/DoPOT1bQLlvygrAe2JA7fji3x8H2T1xoOHI7+6KbsRm7/AFBLAwQUAAAICAAAACHsgM+79m0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0koWlcXJaalKipbmhaapxipGuaVKamaFBknFaokliUpJFklIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAACHsJ0NJgGACAAAaBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAACHsgM+79m0AAAB4AAAACQAkAAAAAAAAAAAAAACtAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAGUDAAAAAA==
+      value: UEsDBBQAAAgIAAAAIewvjzcKtAIAAPIFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFtVE1v4jAQ/SvI521FoN3Sve0CpXtoi0pXPSw9OPGEWBg78keBVvz3zpiEhOxKSAlvPvze80w+mdSuhMwbO7NSPBgB7EeP0Tv71muC97DjK6MX8gPqnFcpfEFJPOY8cy8N4gmVObMBb2X2U68UJfcRDFrmxm6mYgVj47xDOOfKAYas8VStEfrssR0+BjdUsq9KP+jZO+BbBtqDbfIukv+mBZ0pvilBEOEme9ivu+JbTNQopsqhTplRSrqKCfP7Miod89IF1IEJQnJUFhn0L0cIFCBXhSfG7fKnPHfgK1qW7yfSokXHvuyXOfq24W595PbOVYgUBqPI6tj04Z/4RRLDuTWb+/rcJGryhczWz3yfcedbxrbhSUM9iRZtuVrzVMFrAfrRzKwJWmDQ20ClwcFg0vw9SRsXkK0b/Ei1A4ay8bx7j6ThENXvFh7Kk47+5VWD/nHgFspE+2stFKqgW2oGFu/uNwqKo+OqIxAlltjgha/aM1YF7qR1HkOVCxVKuXO8IhCgM6iMj7OliV9qgqVebBrJkh3Bj43VEOFKdQmaK7+fY0ffnYFOrMWrE7njtG4VuypWb1GnJMJNfr/fCc3N9nTbFufXxaGu3/6+0S24wmwfwBVPwSupoRFDgUc0eGy0Po5u28y6bBFszrNWmYedDxYm3PN4GtLBCRPtUvQyVuigFA1zFBAZoQD6vZG/BcdzVYTZo9Fx+c6ekf4qSHG+Imx0O8xySPntTXINQzG4uE7z70k/Heb8iqfpKGVxh6RGu7maH/2qbgmnSzdaNO5L/THszSwv49YKy7cz+bExrZuXOjeLzALop7MODiyegZ8XMRUSVS7Ae6njWLLPJVMmW4NYnvKX0dfpzlveBkv5bjwBSzaOn78lI/i0kTi47xK2dPRZL1B4cSBepIINLymUHNjhC1BLAwQUAAAICAAAACHs4QrNCGsAAAB3AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDVM9Az1FFQSi9KLMgoBgqAOaWZKSB2tJKFpXFyWmpSoqW5oWmqcYqRrmlSmpmhQZJxWqJJYlKSRZJSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAAh7C+PNwq0AgAA8gUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAAh7OEKzQhrAAAAdwAAAAkAJAAAAAAAAAAAAAAAAQMAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAC3AwAAAAA=
       objectReference: {fileID: 0}
     - target: {fileID: 578933551255191049, guid: cf6791e40fe5d1e4d9c81028f44d32bd, type: 3}
       propertyPath: batchGraphUpdates
@@ -11159,6 +11212,8 @@ Transform:
   - {fileID: 36637891}
   - {fileID: 1281335669}
   - {fileID: 754762386}
+  - {fileID: 1111002225}
+  - {fileID: 2115164432}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &2086875335 stripped
@@ -11166,6 +11221,50 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 820716598371531885, guid: e19e70157b3d87848bb8c75a2dc3a5cb, type: 3}
   m_PrefabInstance: {fileID: 67610300}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2115164431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2115164432}
+  - component: {fileID: 2115164433}
+  m_Layer: 0
+  m_Name: Difficulty Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2115164432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115164431}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2066202522}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2115164433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115164431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826316fe954c414fae9c874a8585d6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
