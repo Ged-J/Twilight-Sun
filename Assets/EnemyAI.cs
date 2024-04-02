@@ -115,7 +115,7 @@ public class EnemyAI : MonoBehaviour
         // Check if the enemy is moving significantly and update the animator
         animator.SetBool("isMoving", force.magnitude > 0.00001f); // Adjust threshold as needed
 
-        // Check the direction to the player
+        /*// Check the direction to the player
         Vector2 playerDirection = target.position - transform.position;
         if (playerDirection.x > 0)
         {
@@ -126,7 +126,15 @@ public class EnemyAI : MonoBehaviour
         {
             // Player is to the left, face left
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        }
+        }*/
+        
+        // Access the SpriteRenderer component
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Assuming the enemy moves right when the target is to its right, and left when the target is to its left
+        Vector2 directionToTarget = (Vector2)target.position - rb.position;
+        spriteRenderer.flipX = directionToTarget.x < 0; // Flip the sprite based on the direction
+
 
         // Check if we're close enough to the next waypoint
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);

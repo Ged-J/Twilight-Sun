@@ -29,7 +29,17 @@ public TMP_Text name;
     {
         instance = this;
         enemyController = FindObjectOfType<EnemyController>();
-        name.text = enemyController.gameObject.name;
+        if (enemyController != null)
+        {
+            // First, split the name to remove the "(Clone)" part, if any
+            string enemyName = enemyController.gameObject.name.Split(new string[] {"(Clone)"}, System.StringSplitOptions.None)[0].Trim();
+        
+            // Next, replace underscores with an empty string to remove them
+            enemyName = enemyName.Replace("_", " ");
+        
+            // Assign the processed name to the text component
+            name.text = enemyName;
+        }
     }
 
     // Update is called once per frame

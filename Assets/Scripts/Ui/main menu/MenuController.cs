@@ -38,7 +38,7 @@ public class MenuController2 : MonoBehaviour
         /*SceneManager.LoadScene(_newGameLevel);*/
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    
+
     private void ResetGameState()
     {
         

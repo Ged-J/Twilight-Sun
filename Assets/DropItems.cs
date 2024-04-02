@@ -10,6 +10,11 @@ public class DropItems : MonoBehaviour
     {
         GameSession.addKey();
         print(GameSession.keys.ToString());
-        Instantiate(items[0], transform.position, transform.rotation);
+
+        // Check if the items array is not null and has elements before instantiating
+        if (items != null && items.Length > 0)
+        {
+            Instantiate(items[0], transform.position, transform.rotation);
+        }
     }
 }

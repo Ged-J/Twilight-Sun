@@ -774,7 +774,7 @@ GameObject:
   - component: {fileID: -799878729224816816}
   - component: {fileID: 1922623888553142387}
   m_Layer: 8
-  m_Name: Death_Knight2
+  m_Name: Skeleton_Archer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,7 +840,7 @@ SpriteRenderer:
   m_SortingLayerID: -595132745
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 514778357, guid: 3dcff93064884a341842c2facfbff647, type: 3}
+  m_Sprite: {fileID: 851274420, guid: ed7c14bcc94eb1d4e8f248d6be923c21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -861,7 +861,7 @@ Animator:
   m_GameObject: {fileID: 6830702209680626403}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 07be21985d487304abeb12f0021c1c1d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 71c9b00f642a5474784d48fb985e5d2a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -907,17 +907,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0014441013, y: -0.0026888847}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 1.53125}
+    oldSize: {x: 1, y: 1.34375}
     newSize: {x: 1.03125, y: 1.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7631717, y: 1.5661211}
+  m_Size: {x: 0.97, y: 1.35}
   m_EdgeRadius: 0
 --- !u!114 &5442724127295591631
 MonoBehaviour:
@@ -979,11 +979,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 500
   nextWaypointDistance: 3
-  slashGO: {fileID: 3169508740969938502, guid: b9ff9a4170649ec4db641dd9df2c67f0, type: 3}
-  projectileGO: {fileID: 0}
+  slashGO: {fileID: 0}
+  projectileGO: {fileID: 8030311311283235054, guid: 2976891a97f607f49ae6e2584bf75d95, type: 3}
   slashDamage: 10
   projectileDamage: 20
-  isRanged: 0
+  isRanged: 1
   animator: {fileID: 0}
   detectionRange: 10
   separationDistance: 1.5
@@ -1062,8 +1062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77871279b8b8a0b4c8808238215f57db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 159468907697258072, guid: b93792fc4d2da41479a663d68fa2e556, type: 3}
+  items: []
 --- !u!114 &-799878729224816816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1077,8 +1076,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1073741824
-  radiusBackingField: 0.55
-  heightBackingField: 1.55
+  radiusBackingField: 0.7
+  heightBackingField: 1.35
   centerBackingField: 0
   locked: 0
   lockWhenNotMoving: 0
