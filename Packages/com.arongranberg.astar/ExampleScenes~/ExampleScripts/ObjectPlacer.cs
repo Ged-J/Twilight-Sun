@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Pathfinding.Examples {
 	/// <summary>Small sample script for placing obstacles</summary>
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_examples_1_1_object_placer.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/objectplacer.html")]
 	public class ObjectPlacer : MonoBehaviour {
 		/// <summary>
 		/// GameObject to place.

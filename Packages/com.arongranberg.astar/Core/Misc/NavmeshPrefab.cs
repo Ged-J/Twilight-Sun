@@ -5,6 +5,7 @@ namespace Pathfinding {
 	using Pathfinding.Drawing;
 	using Pathfinding.Graphs.Navmesh;
 	using Pathfinding.Jobs;
+	using Pathfinding.Serialization;
 	using Pathfinding.Util;
 	using Unity.Jobs;
 
@@ -58,15 +59,24 @@ namespace Pathfinding {
 	/// See: <see cref="TileMeshes"/>
 	/// </summary>
 	[AddComponentMenu("Pathfinding/Navmesh Prefab")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/navmeshprefab.html")]
 	public class NavmeshPrefab : VersionedMonoBehaviour {
 		/// <summary>Reference to the serialized tile data</summary>
 		public TextAsset serializedNavmesh;
 
 		/// <summary>
-		/// If true, the tiles stored in this prefab will be loaded and applied to the first recast graph in the scene when this GameObject is created.
+		/// If true, the tiles stored in this prefab will be loaded and applied to the first recast graph in the scene when this component is enabled.
 		/// If false, you will have to call the <see cref="Apply(RecastGraph)"/> method manually.
+		///
+		/// If this component is disabled and then enabled again, the tiles will be reloaded.
 		/// </summary>
 		public bool applyOnStart = true;
+
+		/// <summary>
+		/// If true, the tiles that this prefab loaded into the graph will be removed when this component is disabled or destroyed.
+		/// If false, the tiles will remain in the graph.
+		/// </summary>
+		public bool removeTilesWhenDisabled = true;
 
 		/// <summary>
 		/// Bounding box for the navmesh to be stored in this prefab.
@@ -76,6 +86,8 @@ namespace Pathfinding {
 		/// See: <see cref="RecastGraph.TileWorldSizeX"/>
 		/// </summary>
 		public Bounds bounds = new Bounds(Vector3.zero, new Vector3(10, 10, 10));
+
+		bool startHasRun = false;
 
 		protected override void Reset () {
 			base.Reset();
@@ -218,7 +230,26 @@ namespace Pathfinding {
 
 		/// <summary>Start is called before the first frame update</summary>
 		void Start () {
+			startHasRun = true;
 			if (applyOnStart && serializedNavmesh != null && AstarPath.active != null && AstarPath.active.data.recastGraph != null) Apply(AstarPath.active.data.recastGraph);
+		}
+
+		void OnEnable () {
+			if (startHasRun && applyOnStart && serializedNavmesh != null && AstarPath.active != null && AstarPath.active.data.recastGraph != null) Apply(AstarPath.active.data.recastGraph);
+		}
+
+		void OnDisable () {
+			if (removeTilesWhenDisabled && serializedNavmesh != null && AstarPath.active != null) {
+				var pos = transform.position;
+				var rot = transform.rotation;
+				AstarPath.active.AddWorkItem(ctx => {
+					var graph = AstarPath.active.data.recastGraph;
+					if (graph != null) {
+						SnapToGraph(new TileLayout(graph), pos, rot, bounds, out IntRect tileRect, out int rotation, out float yOffset);
+						graph.ClearTiles(tileRect);
+					}
+				});
+			}
 		}
 
 		/// <summary>
@@ -423,5 +454,13 @@ namespace Pathfinding {
 			SaveToFile(Scan());
 		}
 #endif
+
+		protected override void OnUpgradeSerializedData (ref Migrations migrations, bool unityThread) {
+			migrations.TryMigrateFromLegacyFormat(out var _);
+			if (migrations.AddAndMaybeRunMigration(1 << 0)) {
+				removeTilesWhenDisabled = false;
+			}
+			base.OnUpgradeSerializedData(ref migrations, unityThread);
+		}
 	}
 }

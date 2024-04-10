@@ -226,7 +226,7 @@ namespace Pathfinding {
 
 		#endregion
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::GetRemainingPath</summary>
+		/// <summary>\copydocref{IAstarAI.GetRemainingPath(List<Vector3>,bool)}</summary>
 		public void GetRemainingPath (List<Vector3> buffer, out bool stale) {
 			buffer.Clear();
 			buffer.Add(position);
@@ -237,6 +237,16 @@ namespace Pathfinding {
 
 			stale = false;
 			interpolator.GetRemainingPath(buffer);
+		}
+
+		/// <summary>\copydocref{IAstarAI.GetRemainingPath(List<Vector3>,List<PathPartWithLinkInfo>,bool)}</summary>
+		public void GetRemainingPath (List<Vector3> buffer, List<PathPartWithLinkInfo> partsBuffer, out bool stale) {
+			GetRemainingPath(buffer, out stale);
+			// This movement script doesn't keep track of path parts, so we just add the whole path as a single part
+			if (partsBuffer != null) {
+				partsBuffer.Clear();
+				partsBuffer.Add(new PathPartWithLinkInfo { startIndex = 0, endIndex = buffer.Count - 1 });
+			}
 		}
 
 		protected override void OnDisable () {
@@ -466,7 +476,7 @@ namespace Pathfinding {
 				if (rvoController != null && rvoController.enabled) {
 					// Inform the RVO system about the edges of the navmesh which will allow
 					// it to better keep inside the navmesh in the first place.
-					rvoController.rvoAgent.SetObstacleQuery(nearestOnNavmesh.node, seeker.traversableTags, movementPlane.ToSimpleMovementPlane());
+					rvoController.SetObstacleQuery(nearestOnNavmesh.node);
 				}
 
 				// We cannot simply check for equality because some precision may be lost

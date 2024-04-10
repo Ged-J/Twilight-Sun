@@ -222,9 +222,11 @@ namespace Pathfinding {
 
 			graph.rotation = RoundVector3(EditorGUILayout.Vector3Field("Rotation", graph.rotation));
 
-			if (GUILayout.Button(new GUIContent("Snap bounds to scene", "Will snap the bounds of the graph to exactly contain all meshes in the scene that matches the masks."))) {
-				graph.SnapForceBoundsToScene();
-				GUI.changed = true;
+			if (!editor.isPrefab) {
+				if (GUILayout.Button(new GUIContent("Snap bounds to scene", "Will snap the bounds of the graph to exactly contain all meshes in the scene that matches the masks."))) {
+					graph.SnapForceBoundsToScene();
+					GUI.changed = true;
+				}
 			}
 
 			Separator();
@@ -249,7 +251,7 @@ namespace Pathfinding {
 			GUILayout.Label(new GUIContent("Advanced"), EditorStyles.boldLabel);
 
 			if (GUILayout.Button("Export to .obj file")) {
-				ExportToFile(graph);
+				editor.RunTask(() => ExportToFile(graph));
 			}
 
 			graph.relevantGraphSurfaceMode = (RecastGraph.RelevantGraphSurfaceMode)EditorGUILayout.EnumPopup(new GUIContent("Relevant Graph Surface Mode",

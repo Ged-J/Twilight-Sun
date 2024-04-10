@@ -39,7 +39,11 @@ namespace Pathfinding {
 							avg += pendingScanProgress[i].Progress;
 
 							if (pendingScanProgress[i].IsCompleted) {
-								pendingScanTargets[i].SaveToFile(pendingScanProgress[i].Complete().data);
+								var data = pendingScanProgress[i].Complete().data;
+								// Data can be null if some exception has been thrown during the scan
+								if (data != null) {
+									pendingScanTargets[i].SaveToFile(data);
+								}
 								pendingScanProgress[i].Dispose();
 								pendingScanTargets[i] = null;
 								pendingScanProgress[i] = default;
@@ -113,6 +117,7 @@ namespace Pathfinding {
 			}
 			Section("Settings");
 			PropertyField("applyOnStart");
+			PropertyField("removeTilesWhenDisabled");
 			Section("Serialized Data");
 			EditorGUILayout.BeginHorizontal();
 			PropertyField("serializedNavmesh");

@@ -1,5 +1,4 @@
 #if MODULE_ENTITIES
-using System.ComponentModel;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -48,8 +47,9 @@ namespace Pathfinding.ECS {
 				var linearDecay = (LINEAR_DECAY_AMOUNT/movementSettings.rotationSmoothing)*dt;
 
 				if (math.abs(state.rotationOffset2) > 0) state.rotationOffset2 *= math.max(0, 1 - exponentialDecay - linearDecay/math.abs(state.rotationOffset2));
-			} else {
-				state.rotationOffset2 = 0;
+			} else if (state.rotationOffset2 != 0) {
+				// Rotation smoothing is disabled, decay the rotation offset very quickly, but still avoid jarring changes
+				state.rotationOffset2 += math.clamp(-state.rotationOffset2, -extraRotationSpeed * dt, extraRotationSpeed * dt);
 			}
 
 			transform.Rotation = movementPlane.value.ToWorldRotation(newInternalRotation + state.rotationOffset + state.rotationOffset2);

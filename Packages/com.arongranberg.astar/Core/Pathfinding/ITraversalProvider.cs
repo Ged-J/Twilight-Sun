@@ -99,7 +99,7 @@ namespace Pathfinding {
 		}
 
 		public static uint GetTraversalCost (Path path, GraphNode node) {
-			return path.GetTagPenalty((int)node.Tag) + node.Penalty;
+			return node.Penalty + (path != null ? path.GetTagPenalty((int)node.Tag) : 0);
 		}
 	}
 }

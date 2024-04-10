@@ -77,22 +77,62 @@ namespace Pathfinding {
 			PendingRemoval = 1 << 5,
 		}
 
+		/// <summary>
+		/// Information about an off-mesh link.
+		///
+		/// Off-mesh links connect two points on the navmesh which are not necessarily connected by a normal navmesh connection.
+		///
+		/// See: <see cref="NodeLink2"/>
+		/// See: <see cref="OffMeshLinks"/>
+		/// </summary>
 		public readonly struct OffMeshLinkTracer {
-			public readonly bool reversed;
-			public readonly OffMeshLinkConcrete link;
-
 			public OffMeshLinkTracer(OffMeshLinkConcrete link, bool reversed) {
 				this.link = link;
-				this.reversed = reversed;
+				this.relativeStart = reversed ? link.end.center : link.start.center;
+				this.relativeEnd = reversed ? link.start.center : link.end.center;
+				this.isReverse = reversed;
 			}
 
-			public Anchor start => reversed ? link.end : link.start;
-			public Anchor end => reversed ? link.start : link.end;
+
+			public OffMeshLinkTracer(OffMeshLinkConcrete link, Vector3 relativeStart, Vector3 relativeEnd, bool isReverse) {
+				this.link = link;
+				this.relativeStart = relativeStart;
+				this.relativeEnd = relativeEnd;
+				this.isReverse = isReverse;
+			}
+
+			/// <summary>
+			/// The off-mesh link that the agent is traversing.
+			///
+			/// Note: If the off-mesh link is destroyed while the agent is traversing it, properties like <see cref="OffMeshLinkConcrete.gameObject"/>, may refer to a destroyed gameObject.
+			/// </summary>
+			public readonly OffMeshLinkConcrete link;
+
+			/// <summary>
+			/// The start point of the off-mesh link from the agent's perspective.
+			///
+			/// This is the point where the agent starts traversing the off-mesh link, regardless of if the link is traversed from the start to end or from end to start.
+			/// </summary>
+			public readonly Vector3 relativeStart;
+
+			/// <summary>
+			/// The end point of the off-mesh link from the agent's perspective.
+			///
+			/// This is the point where the agent will finish traversing the off-mesh link, regardless of if the link is traversed from start to end or from end to start.
+			/// </summary>
+			public readonly Vector3 relativeEnd;
+
+			/// <summary>
+			/// True if the agent is traversing the off-mesh link from original link's end to its start point.
+			///
+			/// Note: The <see cref="relativeStart"/> and <see cref="relativeEnd"/> fields are always set from the agent's perspective. So the agent always moves from <see cref="relativeStart"/> to <see cref="relativeEnd"/>.
+			/// </summary>
+			public readonly bool isReverse;
+
 			/// <summary>\copydocref{OffMeshLinkSource.component}</summary>
 			public Component component => link.component;
 			/// <summary>\copydocref{OffMeshLinkSource.gameObject}</summary>
 			public GameObject gameObject => link.gameObject;
-			// public Quaternion startRotation => reversed ? link.endRotation : link.startRotation;
 		}
 
 		public class OffMeshLinkSource {
@@ -191,12 +231,17 @@ namespace Pathfinding {
 			/// <summary>\copydocref{OffMeshLinkSource.tag}</summary>
 			public PathfindingTag tag;
 			public float costFactor;
+			internal bool staleConnections;
+			internal OffMeshLinkSource source;
+
+			/// <summary>\copydocref{OffMeshLinkSource.handler}</summary>
+			public IOffMeshLinkHandler handler => source.handler;
+
 			/// <summary>\copydocref{OffMeshLinkSource.component}</summary>
-			public Component component;
-			public bool staleConnections;
+			public Component component => source.component;
 
 			/// <summary>\copydocref{OffMeshLinkSource.gameObject}</summary>
-			public GameObject gameObject => component != null ? component.gameObject : null;
+			public GameObject gameObject => source.component != null ? source.component.gameObject : null;
 
 			// public Bounds bounds {
 			// 	get {
@@ -554,7 +599,7 @@ namespace Pathfinding {
 					end = concreteEnd,
 					startNodes = startNodes.ToArrayFromPool(),
 					endNodes = endNodes.ToArrayFromPool(),
-					component = source.component,
+					source = source,
 					directionality = source.directionality,
 					tag = source.tag,
 					costFactor = source.costFactor,

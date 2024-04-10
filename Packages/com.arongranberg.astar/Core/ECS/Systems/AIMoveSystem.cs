@@ -14,6 +14,7 @@ namespace Pathfinding.ECS {
 	using Pathfinding.ECS.RVO;
 	using Pathfinding.Drawing;
 	using Pathfinding.Util;
+	using Unity.Profiling;
 
 	[BurstCompile]
 	[UpdateAfter(typeof(FollowerControlSystem))]
@@ -27,6 +28,7 @@ namespace Pathfinding.ECS {
 		EntityQuery entityQueryWithoutGravity;
 		EntityQuery entityQueryRotation;
 		EntityQuery entityQueryGizmos;
+		EntityQuery entityQueryMovementOverride;
 		ComponentTypeHandle<LocalTransform> LocalTransformTypeHandleRO;
 		ComponentTypeHandle<MovementState> MovementStateTypeHandleRW;
 		ComponentTypeHandle<AgentCylinderShape> AgentCylinderShapeTypeHandleRO;
@@ -116,7 +118,28 @@ namespace Pathfinding.ECS {
 
 				ComponentType.ReadOnly<SimulateMovement>()
 				);
+
+			entityQueryMovementOverride = state.GetEntityQuery(
+				ComponentType.ReadWrite<ManagedMovementOverrideBeforeMovement>(),
+
+				ComponentType.ReadWrite<LocalTransform>(),
+				ComponentType.ReadWrite<AgentCylinderShape>(),
+				ComponentType.ReadWrite<AgentMovementPlane>(),
+				ComponentType.ReadWrite<DestinationPoint>(),
+				ComponentType.ReadWrite<MovementState>(),
+				ComponentType.ReadWrite<MovementStatistics>(),
+				ComponentType.ReadWrite<ManagedState>(),
+				ComponentType.ReadWrite<MovementSettings>(),
+				ComponentType.ReadWrite<ResolvedMovement>(),
+				ComponentType.ReadWrite<MovementControl>(),
+
+				ComponentType.Exclude<AgentOffMeshLinkTraversal>(),
+				ComponentType.ReadOnly<SimulateMovement>(),
+				ComponentType.ReadOnly<SimulateMovementControl>()
+				);
 		}
+
+		static readonly ProfilerMarker MarkerMovementOverride = new ProfilerMarker("MovementOverrideBeforeMovement");
 
 		public void OnDestroy (ref SystemState state) {
 			entityManagerHandle.Free();
@@ -136,6 +159,15 @@ namespace Pathfinding.ECS {
 			systemState.Dependency = new JobAlignAgentWithMovementDirection {
 				dt = dt,
 			}.Schedule(entityQueryRotation, systemState.Dependency);
+
+			if (!entityQueryMovementOverride.IsEmptyIgnoreFilter) {
+				MarkerMovementOverride.Begin();
+				systemState.CompleteDependency();
+				new JobManagedMovementOverrideBeforeMovement {
+					dt = dt,
+				}.Run();
+				MarkerMovementOverride.End();
+			}
 
 			// Move all agents which do not have a GravityState component
 			systemState.Dependency = new JobMoveAgent {
@@ -176,7 +208,7 @@ namespace Pathfinding.ECS {
 			// It should be safe to run it in parallel with other systems, but I'm not 100% sure.
 			// This job also accesses graph data, but this is safe because the AIMovementSystemGroup
 			// holds a read lock on the graph data while its subsystems are running.
-			systemState.Dependency = new RepairPathJob {
+			systemState.Dependency = new JobRepairPath {
 				LocalTransformTypeHandleRO = LocalTransformTypeHandleRO,
 				MovementStateTypeHandleRW = MovementStateTypeHandleRW,
 				AgentCylinderShapeTypeHandleRO = AgentCylinderShapeTypeHandleRO,
@@ -195,7 +227,7 @@ namespace Pathfinding.ECS {
 			// The movement calculations may run multiple times per frame when using high time-scales,
 			// but rendering gizmos more than once would just lead to clutter.
 			if (Application.isEditor && AIMovementSystemGroup.TimeScaledRateManager.IsLastSubstep) {
-				gizmosDependency = new DrawGizmosJob {
+				gizmosDependency = new JobDrawFollowerGizmos {
 					draw = draw,
 					entityManagerHandle = entityManagerHandle,
 					LocalTransformTypeHandleRO = LocalTransformTypeHandleRO,

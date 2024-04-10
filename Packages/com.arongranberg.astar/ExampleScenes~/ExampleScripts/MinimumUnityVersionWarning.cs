@@ -2,20 +2,22 @@
 
 using System.Collections;
 using UnityEngine;
+using Pathfinding.Util;
 
 namespace Pathfinding.Examples {
 	[ExecuteInEditMode]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/minimumunityversionwarning.html")]
 	public class MinimumUnityVersionWarning : MonoBehaviour {
-#if !MODULE_ENTITIES || !UNITY_2022_1_OR_NEWER
-		bool requiresUnity2022_1;
+#if !MODULE_ENTITIES || !UNITY_2022_2_OR_NEWER
+		bool requiresUnity2022_2;
 		bool requiresEntities;
 
 
 		void Awake () {
-			requiresEntities = FindFirstObjectByType<Pathfinding.FollowerEntity>() != null || FindFirstObjectByType<Pathfinding.Examples.LightweightRVO>() != null;
+			requiresEntities = UnityCompatibility.FindAnyObjectByType<Pathfinding.FollowerEntity>() != null || UnityCompatibility.FindAnyObjectByType<Pathfinding.Examples.LightweightRVO>() != null;
 			// Box colliders from scenes created in Unity 2022+ are not compatible with older versions of Unity. They will end with the wrong size.
 			// The minimum version of the entitites package also requires Unity 2022
-			requiresUnity2022_1 = FindFirstObjectByType<BoxCollider>() != null || requiresEntities;
+			requiresUnity2022_2 = UnityCompatibility.FindAnyObjectByType<BoxCollider>() != null || requiresEntities;
 		}
 
 		IEnumerator Start () {
@@ -26,11 +28,11 @@ namespace Pathfinding.Examples {
 #endif
 
 		void OnGUI () {
-#if !UNITY_2022_1_OR_NEWER
-			if (requiresUnity2022_1) {
+#if !UNITY_2022_2_OR_NEWER
+			if (requiresUnity2022_2) {
 				var rect = new Rect(Screen.width/2 - 325, Screen.height/2 - 30, 650, 60);
 				GUILayout.BeginArea(rect, "", "box");
-				GUILayout.Label("<b>Unity version too low</b>\nThis example scene can unfortunately not be played in your version of Unity, due to compatibility issues.\nYou must upgrade to Unity 2022.1 or later");
+				GUILayout.Label("<b>Unity version too low</b>\nThis example scene can unfortunately not be played in your version of Unity, due to compatibility issues.\nYou must upgrade to Unity 2022.2 or later");
 				GUILayout.EndArea();
 				return;
 			}

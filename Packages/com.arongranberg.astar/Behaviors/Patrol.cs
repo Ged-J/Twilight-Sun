@@ -16,7 +16,7 @@ namespace Pathfinding {
 	/// </summary>
 	[UniqueComponent(tag = "ai.destination")]
 	[AddComponentMenu("Pathfinding/AI/Behaviors/Patrol")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_patrol.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/patrol.html")]
 	public class Patrol : VersionedMonoBehaviour {
 		/// <summary>Target points to move to in order</summary>
 		public Transform[] targets;

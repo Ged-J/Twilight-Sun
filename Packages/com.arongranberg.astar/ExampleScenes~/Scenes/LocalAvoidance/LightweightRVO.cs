@@ -568,7 +568,7 @@ namespace Pathfinding.Examples {
 }
 #else
 namespace Pathfinding.Examples {
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_examples_1_1_lightweight_r_v_o.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/lightweightrvo.html")]
 	public class LightweightRVO : MonoBehaviour {
 		public void Start () {
 			Debug.LogError("Lightweight RVO example script requires the entities package to be installed.");

@@ -5,6 +5,7 @@ using Pathfinding;
 using System.Linq;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsui.html")]
 	public class RTSUI : MonoBehaviour {
 		public static RTSUI active;
 		public RectTransform selectionBox;

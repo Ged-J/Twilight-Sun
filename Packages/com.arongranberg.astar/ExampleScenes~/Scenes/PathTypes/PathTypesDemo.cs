@@ -17,7 +17,7 @@ namespace Pathfinding.Examples {
 	/// See: Pathfinding.FloodPath
 	/// See: Pathfinding.FloodPathTracer
 	/// </summary>
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_examples_1_1_path_types_demo.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/pathtypesdemo.html")]
 	public class PathTypesDemo : MonoBehaviour {
 		public DemoMode activeDemo = DemoMode.ABPath;
 

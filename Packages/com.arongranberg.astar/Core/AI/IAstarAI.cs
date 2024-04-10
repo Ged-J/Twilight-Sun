@@ -328,6 +328,29 @@ namespace Pathfinding {
 		void GetRemainingPath(List<Vector3> buffer, out bool stale);
 
 		/// <summary>
+		/// Fills buffer with the remaining path.
+		///
+		/// <code>
+		/// var buffer = new List<Vector3>();
+		/// var parts = new List<PathPartWithLinkInfo>();
+		///
+		/// ai.GetRemainingPath(buffer, parts, out bool stale);
+		/// foreach (var part in parts) {
+		///     for (int i = part.startIndex; i < part.endIndex; i++) {
+		///         Debug.DrawLine(buffer[i], buffer[i+1], part.type == Funnel.PartType.NodeSequence ? Color.red : Color.green);
+		///     }
+		/// }
+		/// </code>
+		/// [Open online documentation to see images]
+		///
+		/// Note: The <see cref="AIPath"/> and <see cref="AILerp"/> movement scripts do not know about off-mesh links, so the partsBuffer will always be filled with a single node-sequence part.
+		/// </summary>
+		/// <param name="buffer">The buffer will be cleared and replaced with the path. The first point is the current position of the agent.</param>
+		/// <param name="partsBuffer">If not null, this list will be cleared and filled with information about the different parts of the path. A part is a sequence of nodes or an off-mesh link.</param>
+		/// <param name="stale">May be true if the path is invalid in some way. For example if the agent has no path or (for the RichAI/FollowerEntity components only) if the agent has detected that some nodes in the path have been destroyed.</param>
+		void GetRemainingPath(List<Vector3> buffer, List<PathPartWithLinkInfo> partsBuffer, out bool stale);
+
+		/// <summary>
 		/// Recalculate the current path.
 		/// You can for example use this if you want very quick reaction times when you have changed the <see cref="destination"/>
 		/// so that the agent does not have to wait until the next automatic path recalculation (see <see cref="canSearch)"/>.

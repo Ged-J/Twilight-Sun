@@ -557,6 +557,7 @@ namespace Pathfinding {
 			///
 			/// See: http://digestingduck.blogspot.se/2010/03/simple-stupid-funnel-algorithm.html
 			/// </summary>
+			/// <param name="maxCorners">The maximum number of corners to add to the result array. Should be positive.</param>
 			/// <param name="result">Output indices. Contains an index as well as possibly the \reflink{RightSideBit} set. Corresponds to an index of the left or right portals, depending on if \reflink{RightSideBit} is set. This must point to an array which is at least maxCorners long.</param>
 			/// <param name="startPoint">Start point of the funnel. The agent will move from here to the best point along the first portal.</param>
 			/// <param name="endPoint">End point of the funnel.</param>

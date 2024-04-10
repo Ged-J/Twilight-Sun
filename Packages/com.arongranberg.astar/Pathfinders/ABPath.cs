@@ -83,9 +83,9 @@ namespace Pathfinding {
 		/// Current best target for the partial path.
 		/// This is the node with the lowest H score.
 		/// </summary>
-		protected uint partialBestTargetPathNodeIndex = uint.MaxValue;
-		protected uint partialBestTargetHScore = uint.MinValue;
-		protected uint partialBestTargetGScore = uint.MinValue;
+		protected uint partialBestTargetPathNodeIndex = GraphNode.InvalidNodeIndex;
+		protected uint partialBestTargetHScore = uint.MaxValue;
+		protected uint partialBestTargetGScore = uint.MaxValue;
 
 		/// <summary>
 		/// Optional ending condition for the path.
@@ -213,7 +213,9 @@ namespace Pathfinding {
 			startPoint = Vector3.zero;
 			endPoint = Vector3.zero;
 			calculatePartial = false;
-			partialBestTargetPathNodeIndex = uint.MaxValue;
+			partialBestTargetPathNodeIndex = GraphNode.InvalidNodeIndex;
+			partialBestTargetHScore = uint.MaxValue;
+			partialBestTargetGScore = uint.MaxValue;
 			cost = 0;
 			endingCondition = null;
 		}
@@ -250,17 +252,17 @@ namespace Pathfinding {
 		/// Image below shows paths when this special case has been disabled
 		/// [Open online documentation to see images]
 		/// </summary>
-		protected virtual bool EndPointGridGraphSpecialCase (GraphNode closestWalkableEndNode, int targetIndex) {
+		protected virtual bool EndPointGridGraphSpecialCase (GraphNode closestWalkableEndNode, Vector3 originalEndPoint, int targetIndex) {
 			var gridNode = closestWalkableEndNode as GridNode;
 
 			if (gridNode != null) {
 				var gridGraph = GridNode.GetGridGraph(gridNode.GraphIndex);
 
 				// Find the closest node, not neccessarily walkable
-				var endNNInfo2 = AstarPath.active.GetNearest(originalEndPoint, NNConstraintNone);
+				var endNNInfo2 = gridGraph.GetNearest(originalEndPoint, NNConstraintNone);
 				var gridNode2 = endNNInfo2.node as GridNode;
 
-				if (gridNode != gridNode2 && gridNode2 != null && gridNode.GraphIndex == gridNode2.GraphIndex) {
+				if (gridNode != gridNode2 && gridNode2 != null) {
 					// Calculate the coordinates of the nodes
 					var x1 = gridNode.NodeInGridIndex % gridGraph.width;
 					var z1 = gridNode.NodeInGridIndex / gridGraph.width;
@@ -327,7 +329,7 @@ namespace Pathfinding {
 			return false;
 		}
 
-		/// <summary>Helper method to set PathNode.flag1 to a specific value for all nodes adjacent to a grid node</summary>
+		/// <summary>Helper method to add endpoints around a specific unwalkable grid node</summary>
 		void AddEndpointsForSurroundingGridNodes (GridNode gridNode, Vector3 desiredPoint, int targetIndex) {
 			// Loop through all adjacent grid nodes
 			var gridGraph = GridNode.GetGridGraph(gridNode.GraphIndex);
@@ -350,9 +352,9 @@ namespace Pathfinding {
 					nz = z + GridGraph.neighbourZOffsets[i];
 				}
 
+				var adjacentNode = gridGraph.GetNode(nx, nz);
 				// Check if the position is still inside the grid
-				if (nx >= 0 && nz >= 0 && nx < gridGraph.width && nz < gridGraph.depth) {
-					var adjacentNode = gridGraph.nodes[nz*gridGraph.width + nx];
+				if (adjacentNode != null) {
 					pathHandler.AddTemporaryNode(new TemporaryNode {
 						type = TemporaryNodeType.End,
 						position = (Int3)adjacentNode.ClosestPointOnNode(desiredPoint),
@@ -398,7 +400,7 @@ namespace Pathfinding {
 			// Some path types might want to use most of the ABPath code, but will not have an explicit end point at this stage
 			uint endNodeIndex = 0;
 			if (hasEndPoint) {
-				var endNNInfo = AstarPath.active.GetNearest(endPoint, nnConstraint);
+				var endNNInfo = AstarPath.active.GetNearest(originalEndPoint, nnConstraint);
 				endPoint = endNNInfo.position;
 
 				if (endNNInfo.node == null) {
@@ -423,9 +425,7 @@ namespace Pathfinding {
 #if !ASTAR_NO_GRID_GRAPH
 				// Potentially we want to special case grid graphs a bit
 				// to better support some kinds of games
-				// If this returns true it will overwrite the
-				// endNode, endPoint, heuristicObjective fields
-				if (!EndPointGridGraphSpecialCase(endNNInfo.node, 0))
+				if (!EndPointGridGraphSpecialCase(endNNInfo.node, originalEndPoint, 0))
 #endif
 				{
 					pathHandler.AddTemporaryNode(new TemporaryNode {
@@ -486,6 +486,9 @@ namespace Pathfinding {
 		}
 
 		public override void OnVisitNode (uint pathNode, uint hScore, uint gScore) {
+			// This method may be called multiple times without checking if the path is complete yet.
+			if (CompleteState != PathCompleteState.NotCalculated) return;
+
 			if (endingCondition != null) {
 				var node = pathHandler.GetNode(pathNode);
 				if (endingCondition.TargetFound(node, hScore, gScore)) {

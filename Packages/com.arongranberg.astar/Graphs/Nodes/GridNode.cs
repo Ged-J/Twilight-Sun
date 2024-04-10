@@ -98,7 +98,23 @@ namespace Pathfinding {
 
 		/// <summary>
 		/// Enables or disables a connection in a specified direction on the graph.
+		///
+		/// Note: This only changes the connection from this node to the other node. You may also want to call the same method on the other node with the opposite direction.
+		///
 		/// See: <see cref="HasConnectionInDirection"/>
+		/// See: <see cref="OppositeConnectionDirection"/>
+		/// </summary>
+		public void SetConnection (int dir, bool value) {
+			SetConnectionInternal(dir, value);
+			var grid = GetGridGraph(GraphIndex);
+			grid.nodeDataRef.connections[NodeInGridIndex] = (ulong)GetAllConnectionInternal();
+		}
+
+		/// <summary>
+		/// Enables or disables a connection in a specified direction on the graph.
+		/// See: <see cref="HasConnectionInDirection"/>
+		///
+		/// Warning: Using this method can make the graph data inconsistent. It's recommended to use other ways to update the graph, instead, for example <see cref="SetConnection"/>.
 		/// </summary>
 		public void SetConnectionInternal (int dir, bool value) {
 			// Set bit number #dir to 1 or 0 depending on #value
@@ -110,6 +126,8 @@ namespace Pathfinding {
 		/// Sets the state of all grid connections.
 		///
 		/// See: SetConnectionInternal
+		///
+		/// Warning: Using this method can make the graph data inconsistent. It's recommended to use other ways to update the graph, instead.
 		/// </summary>
 		/// <param name="connections">a bitmask of the connections (bit 0 is the first connection, bit 1 the second connection, etc.).</param>
 		public void SetAllConnectionInternal (int connections) {
@@ -128,6 +146,8 @@ namespace Pathfinding {
 		/// Disables all grid connections from this node.
 		/// Note: Other nodes might still be able to get to this node.
 		/// Therefore it is recommended to also disable the relevant connections on adjacent nodes.
+		///
+		/// Warning: Using this method can make the graph data inconsistent. It's recommended to use other ways to update the graph, instead.
 		/// </summary>
 		public override void ResetConnectionsInternal () {
 			unchecked {

@@ -9,7 +9,7 @@ namespace Pathfinding {
 	/// It can be used with grid graphs, layered grid graphs, navmesh graphs and recast graphs.
 	/// </summary>
 	[AddComponentMenu("Pathfinding/Navmesh Clamp")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_navmesh_clamp.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/navmeshclamp.html")]
 	public class NavmeshClamp : MonoBehaviour {
 		GraphNode prevNode;
 		Vector3 prevPos;

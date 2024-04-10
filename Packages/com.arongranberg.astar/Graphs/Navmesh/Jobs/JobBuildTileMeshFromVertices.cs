@@ -66,6 +66,7 @@ namespace Pathfinding.Graphs.Navmesh.Jobs {
 
 		public void Execute () {
 			var int3vertices = new NativeArray<Int3>(vertices.Length, Allocator.Temp);
+			var tags = new NativeArray<int>(indices.Length / 3, Allocator.Temp, NativeArrayOptions.ClearMemory);
 
 			new JobTransformTileCoordinates {
 				vertices = vertices,
@@ -85,16 +86,11 @@ namespace Pathfinding.Graphs.Navmesh.Jobs {
 				new MeshUtility.JobRemoveDuplicateVertices {
 					vertices = int3vertices,
 					triangles = indices,
+					tags = tags,
 					outputVertices = outputVertices,
 					outputTriangles = outputTriangles,
+					outputTags = outputTags,
 				}.Execute();
-
-				var nodeCount = outputTriangles->Length / 3;
-				outputTags->SetCapacity(nodeCount);
-				outputTags->Reset();
-				for (int i = 0; i < nodeCount; i++) {
-					outputTags->Add((uint)0);
-				}
 
 				if (recalculateNormals) {
 					var verticesSpan = outputVertices->AsUnsafeSpan<Int3>();

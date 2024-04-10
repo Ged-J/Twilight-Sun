@@ -252,8 +252,7 @@ namespace Pathfinding.Graphs.Navmesh.Jobs {
 
 					MarkerConvertAreasToTags.Begin();
 					new JobConvertAreasToTags {
-						inputAreas = tileBuilder.voxelMesh.areas,
-						outputTags = &outputTileMesh->tags,
+						areas = tileBuilder.voxelMesh.areas,
 					}.Execute();
 					MarkerConvertAreasToTags.End();
 
@@ -261,6 +260,8 @@ namespace Pathfinding.Graphs.Navmesh.Jobs {
 					new MeshUtility.JobRemoveDuplicateVertices {
 						vertices = tileBuilder.voxelMesh.verts.AsArray(),
 						triangles = tileBuilder.voxelMesh.tris.AsArray(),
+						tags = tileBuilder.voxelMesh.areas.AsArray(),
+						outputTags = &outputTileMesh->tags,
 						outputVertices = &outputTileMesh->verticesInTileSpace,
 						outputTriangles = &outputTileMesh->triangles,
 					}.Execute();

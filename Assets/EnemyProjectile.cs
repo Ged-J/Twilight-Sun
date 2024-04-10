@@ -8,21 +8,32 @@ public class EnemyProjectile : MonoBehaviour
     public GameObject newHitEffect;
     PlayerController player;
     int damage;
-    float projectileSpeed = 1f;
+    float projectileSpeed = 1.5f;
     Vector3 shootDir;
     bool isRanged;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
+            // This block will execute if the projectile hits the player
             print("you got got");
             player.TakeDamage(damage);
             print(player.currentHealth);
-            newHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);
-            Destroy(newHitEffect, 3);
-            Destroy(this.gameObject);
+            TriggerHitEffect();
         }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Midground"))
+        {
+            // This block will execute if the projectile hits the midground/wall
+            TriggerHitEffect();
+        }
+    }
+
+    private void TriggerHitEffect()
+    {
+        newHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);
+        Destroy(newHitEffect, 3);
+        Destroy(gameObject);
     }
 
     public void Setup(int damage, Vector3 shootDir, bool isRanged)
@@ -31,7 +42,7 @@ public class EnemyProjectile : MonoBehaviour
         this.damage = damage;
         this.shootDir = shootDir;
         this.isRanged = isRanged;
-        Destroy(this.gameObject, 10);
+        Destroy(gameObject, 10);
     }
 
     private void Update()

@@ -1,13 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Pathfinding.RVO;
+using Pathfinding.Util;
 
 namespace Pathfinding.Examples {
 	/// <summary>
 	/// RVO Example Scene Unit Controller.
 	/// Controls AIs and camera in the RVO example scene.
 	/// </summary>
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_examples_1_1_group_controller.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/groupcontroller.html")]
 	public class GroupController : MonoBehaviour {
 		public GUIStyle selectionBox;
 		public bool adjustCamera = true;
@@ -108,7 +109,7 @@ namespace Pathfinding.Examples {
 
 			selection.Clear();
 
-			RVOExampleAgent[] rvo = FindObjectsByType<RVOExampleAgent>(FindObjectsSortMode.InstanceID);
+			RVOExampleAgent[] rvo = UnityCompatibility.FindObjectsByTypeSorted<RVOExampleAgent>();
 			for (int i = 0; i < rvo.Length; i++) {
 				Vector2 sp = cam.WorldToScreenPoint(rvo[i].transform.position);
 				if (sp.x > start.x && sp.y > start.y && sp.x < end.x && sp.y < end.y) {

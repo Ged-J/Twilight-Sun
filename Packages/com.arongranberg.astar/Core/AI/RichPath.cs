@@ -153,7 +153,7 @@ namespace Pathfinding {
 		/// Replaces the buffer with the remaining path.
 		/// See: <see cref="Pathfinding.IAstarAI.GetRemainingPath"/>
 		/// </summary>
-		public void GetRemainingPath (List<Vector3> buffer, Vector3 currentPosition, out bool requiresRepath) {
+		public void GetRemainingPath (List<Vector3> buffer, List<PathPartWithLinkInfo> partsBuffer, Vector3 currentPosition, out bool requiresRepath) {
 			buffer.Clear();
 			buffer.Add(currentPosition);
 			requiresRepath = false;
@@ -161,13 +161,17 @@ namespace Pathfinding {
 				var part = parts[i];
 				if (part is RichFunnel funnel) {
 					bool lastCorner;
+					var startIndex = buffer.Count;
 					if (i != 0) buffer.Add(funnel.exactStart);
 					funnel.Update(i == 0 ? currentPosition : funnel.exactStart, buffer, int.MaxValue, out lastCorner, out requiresRepath);
+					if (partsBuffer != null) partsBuffer.Add(new PathPartWithLinkInfo(startIndex, buffer.Count-1));
 					if (requiresRepath) {
 						return;
 					}
-				} else if (part is RichSpecial) {
+				} else if (part is RichSpecial rs) {
 					// By adding all points above the link will look like just a stright line, which is reasonable
+					// The part's start/end indices refer to the last point in previous part and first point in the next part, respectively
+					if (partsBuffer != null) partsBuffer.Add(new PathPartWithLinkInfo(buffer.Count-1, buffer.Count, rs.nodeLink));
 				}
 			}
 		}
@@ -776,9 +780,9 @@ namespace Pathfinding {
 
 	public class RichSpecial : RichPathPart {
 		public OffMeshLinks.OffMeshLinkTracer nodeLink;
-		public FakeTransform first => new FakeTransform { position = nodeLink.start.center, rotation = nodeLink.start.rotation };
-		public FakeTransform second => new FakeTransform { position = nodeLink.end.center, rotation = nodeLink.start.rotation };
-		public bool reverse => nodeLink.reversed;
+		public FakeTransform first => new FakeTransform { position = nodeLink.relativeStart, rotation = nodeLink.isReverse ? nodeLink.link.end.rotation : nodeLink.link.start.rotation };
+		public FakeTransform second => new FakeTransform { position = nodeLink.relativeEnd, rotation = nodeLink.isReverse ? nodeLink.link.start.rotation : nodeLink.link.end.rotation };
+		public bool reverse => nodeLink.isReverse;
 
 		public override void OnEnterPool () {
 			nodeLink = default;

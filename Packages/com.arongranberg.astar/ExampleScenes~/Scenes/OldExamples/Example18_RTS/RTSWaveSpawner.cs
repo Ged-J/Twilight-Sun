@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtswavespawner.html")]
 	public class RTSWaveSpawner : MonoBehaviour {
 		public Wave[] waves;
 

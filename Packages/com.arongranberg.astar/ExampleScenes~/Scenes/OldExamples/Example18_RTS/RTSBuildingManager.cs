@@ -4,6 +4,7 @@ using Pathfinding;
 using System.Linq;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsbuildingmanager.html")]
 	public class RTSBuildingManager : MonoBehaviour {
 		public static bool IsValidBuildingPlacement (GameObject building) {
 			var onNavmesh = AstarPath.active.data.recastGraph.PointOnNavmesh(building.transform.position, NNConstraint.None);

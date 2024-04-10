@@ -520,10 +520,10 @@ namespace Pathfinding {
 		/// The GetNearest method will return the closest node to a point,
 		/// which is not necessarily the one which contains it when seen from above.
 		///
-		/// Uses NNConstraint.projectionAxis to define the "up" direction. The up direction of the graph will be used if it is not set.
+		/// Uses <see cref="NNConstraint.distanceMetric"/> to define the "up" direction. The up direction of the graph will be used if it is not set.
 		/// The up direction defines what "inside" a node means. A point is inside a node if it is inside the triangle when seen from above.
 		///
-		/// See: GetNearest
+		/// See: <see cref="GetNearest"/>
 		/// </summary>
 		public GraphNode PointOnNavmesh (Vector3 position, NNConstraint constraint) {
 			if (tiles == null) return null;
@@ -549,10 +549,7 @@ namespace Pathfinding {
 			}
 		}
 
-		/// <summary>
-		/// Create connections between all nodes.
-		/// Version: Since 3.7.6 the implementation is thread safe
-		/// </summary>
+		/// <summary>Create connections between all nodes</summary>
 		protected static void CreateNodeConnections (TriangleMeshNode[] nodes, bool keepExistingConnections) {
 			List<Connection> connections = ListPool<Connection>.Claim();
 
@@ -834,6 +831,23 @@ namespace Pathfinding {
 			DirtyBounds(GetTileBounds(tileRect));
 		}
 
+		/// <summary>Clears the tiles in the specified rectangle.</summary>
+		/// <param name="tileRect">The rectangle in tile coordinates to clear. The coordinates are in tile coordinates, not world coordinates.</param>
+		public void ClearTiles (IntRect tileRect) {
+			AssertSafeToUpdateGraph();
+			var wasBatching = batchTileUpdate;
+			if (!wasBatching) StartBatchTileUpdate();
+			var graphTileRect = new IntRect(0, 0, tileXCount-1, tileZCount-1);
+			tileRect = IntRect.Intersection(tileRect, graphTileRect);
+
+			for (int z = tileRect.ymin; z <= tileRect.ymax; z++) {
+				for (int x = tileRect.xmin; x <= tileRect.xmax; x++) {
+					ClearTile(x, z);
+				}
+			}
+			if (!wasBatching) EndBatchTileUpdate();
+		}
+
 		/// <summary>
 		/// Clear the tile at the specified coordinate.
 		/// Must be called during a batch update, see <see cref="StartBatchTileUpdate"/>.
@@ -915,11 +929,12 @@ namespace Pathfinding {
 		/// Replace tile at index with nodes created from specified navmesh.
 		/// This will create new nodes and link them to the adjacent tile (unless batching has been started in which case that will be done when batching ends).
 		///
-		/// The vertices are assumed to be in 'tile space', that is being in a rectangle with
-		/// one corner at the origin and one at (<see cref="TileWorldSizeX"/>, 0, <see cref="TileWorldSizeZ)"/>.
-		///
 		/// See: <see cref="StartBatchTileUpdate"/>
 		/// </summary>
+		/// <param name="x">X coordinate of the tile to replace.</param>
+		/// <param name="z">Z coordinate of the tile to replace.</param>
+		/// <param name="verts">Vertices of the new tile. The vertices are assumed to be in 'tile space', that is being in a rectangle with one corner at the origin and one at (#TileWorldSizeX, 0, #TileWorldSizeZ).</param>
+		/// <param name="tris">Triangles of the new tile. If #RecalculateNormals is enabled, the triangles will be converted to clockwise order (when seen from above), if they are not already.</param>
 		public void ReplaceTile (int x, int z, Int3[] verts, int[] tris) {
 			AssertSafeToUpdateGraph();
 			int w = 1, d = 1;

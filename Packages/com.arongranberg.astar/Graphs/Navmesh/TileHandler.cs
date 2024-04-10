@@ -448,8 +448,11 @@ namespace Pathfinding.Graphs.Navmesh {
 		/// <param name="perturbate">Move navmesh cuts around randomly a bit, the larger the value the more they are moved around.
 		///      Used to prevent edge cases that can cause the clipping to fail.</param>
 		CuttingResult CutPoly (Int3[] verts, int[] tris, Int3[] extraShape, GraphTransform graphTransform, IntRect tiles, CutMode mode = CutMode.CutAll | CutMode.CutDual, int perturbate = -1) {
+			// Find all NavmeshAdd components that could be inside the bounds
+			List<NavmeshAdd> navmeshAdds = cuts.QueryRect<NavmeshAdd>(tiles);
+
 			// Nothing to do here
-			if (verts.Length == 0 || tris.Length == 0) {
+			if ((verts.Length == 0 || tris.Length == 0) && navmeshAdds.Count == 0) {
 				return new CuttingResult {
 						   verts = ArrayPool<Int3>.Claim(0),
 						   tris = ArrayPool<int>.Claim(0)
@@ -493,13 +496,6 @@ namespace Pathfinding.Graphs.Navmesh {
 				}
 			}
 
-			var bounds = new IntRect(verts[0].x, verts[0].z, verts[0].x, verts[0].z);
-
-			// Expand bounds to contain all vertices
-			for (int i = 0; i < verts.Length; i++) {
-				bounds = bounds.ExpandToContain(verts[i].x, verts[i].z);
-			}
-
 			// Find all NavmeshCut components that could be inside these bounds
 			List<NavmeshCut> navmeshCuts;
 			if (mode == CutMode.CutExtra) {
@@ -509,11 +505,9 @@ namespace Pathfinding.Graphs.Navmesh {
 				navmeshCuts = cuts.QueryRect<NavmeshCut>(tiles);
 			}
 
-			// Find all NavmeshAdd components that could be inside the bounds
-			List<NavmeshAdd> navmeshAdds = cuts.QueryRect<NavmeshAdd>(tiles);
 			var intersectingCuts = ListPool<int>.Claim();
 
-			var cutInfos = PrepareNavmeshCutsForCutting(navmeshCuts, transform, bounds, perturbate, navmeshAdds.Count > 0, characterRadius);
+			var cutInfos = PrepareNavmeshCutsForCutting(navmeshCuts, transform, perturbate, characterRadius);
 
 			var outverts = ListPool<Int3>.Claim(verts.Length*2);
 			var outtris = ListPool<int>.Claim(tris.Length);
@@ -640,8 +634,8 @@ namespace Pathfinding.Graphs.Navmesh {
 
 						point2Index.Clear();
 
-						// Loop through all possible modes (just 4 at the moment, so < 4 could be used actually)
-						for (int cmode = 0; cmode < 16; cmode++) {
+						// Loop through all possible modes
+						for (int cmode = 0; cmode < 4; cmode++) {
 							// Ignore modes which are not active
 							if ((((int)mode >> cmode) & 0x1) == 0)
 								continue;
@@ -781,7 +775,7 @@ namespace Pathfinding.Graphs.Navmesh {
 		///
 		/// transform should transform a point from cut space to world space.
 		/// </summary>
-		static List<Cut> PrepareNavmeshCutsForCutting (List<NavmeshCut> navmeshCuts, GraphTransform transform, IntRect cutSpaceBounds, int perturbate, bool anyNavmeshAdds, float characterRadius) {
+		static List<Cut> PrepareNavmeshCutsForCutting (List<NavmeshCut> navmeshCuts, GraphTransform transform, int perturbate, float characterRadius) {
 			System.Random rnd = null;
 			if (perturbate > 0) {
 				rnd = new System.Random();

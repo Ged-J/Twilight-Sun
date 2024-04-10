@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using Pathfinding.Examples;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 namespace Pathfinding.Examples {
 	[CustomEditor(typeof(Interactable))]
@@ -51,6 +52,9 @@ namespace Pathfinding.Examples {
 				} else if (tp == typeof(Interactable.TeleportAgentAction)) {
 					EditorGUI.LabelField(SliceRow(ref rect, lineHeight), "Teleport Agent", EditorStyles.boldLabel);
 					EditorGUI.PropertyField(SliceRow(ref rect, lineHeight), item.FindPropertyRelative("destination"));
+				} else if (tp == typeof(Interactable.TeleportAgentOnLinkAction)) {
+					EditorGUI.LabelField(SliceRow(ref rect, lineHeight), "Teleport Agent on Off-Mesh Link", EditorStyles.boldLabel);
+					EditorGUI.PropertyField(SliceRow(ref rect, lineHeight), item.FindPropertyRelative("destination"));
 				} else if (tp == typeof(Interactable.SetTransformAction)) {
 					EditorGUI.LabelField(SliceRow(ref rect, lineHeight), "Set Transform", EditorStyles.boldLabel);
 					EditorGUI.PropertyField(SliceRow(ref rect, lineHeight), item.FindPropertyRelative("transform"));
@@ -86,6 +90,7 @@ namespace Pathfinding.Examples {
 				else if (tp == typeof(Interactable.DelayAction)) return 2*h;
 				else if (tp == typeof(Interactable.SetObjectActiveAction)) return 3*h;
 				else if (tp == typeof(Interactable.TeleportAgentAction)) return 2*h;
+				else if (tp == typeof(Interactable.TeleportAgentOnLinkAction)) return 2*h;
 				else if (tp == typeof(Interactable.SetTransformAction)) return 6*h;
 				else if (tp == typeof(Interactable.MoveToAction)) return 4*h;
 				else if (tp == typeof(Interactable.InstantiatePrefab)) return 3*h;
@@ -99,17 +104,21 @@ namespace Pathfinding.Examples {
 			};
 			actions.onAddDropdownCallback = (rect, _) => {
 				GenericMenu menu = new GenericMenu();
-				menu.AddItem(new GUIContent("AnimatorSetBool"), false, () => (target as Interactable).actions.Add(new Interactable.AnimatorSetBoolAction()));
-				menu.AddItem(new GUIContent("AnimatorPlay"), false, () => (target as Interactable).actions.Add(new Interactable.AnimatorPlay()));
-				menu.AddItem(new GUIContent("ActivateParticleSystem"), false, () => (target as Interactable).actions.Add(new Interactable.ActivateParticleSystem()));
-				menu.AddItem(new GUIContent("Delay"), false, () => (target as Interactable).actions.Add(new Interactable.DelayAction()));
-				menu.AddItem(new GUIContent("SetObjectActive"), false, () => (target as Interactable).actions.Add(new Interactable.SetObjectActiveAction()));
-				menu.AddItem(new GUIContent("TeleportAgent"), false, () => (target as Interactable).actions.Add(new Interactable.TeleportAgentAction()));
-				menu.AddItem(new GUIContent("SetTransform"), false, () => (target as Interactable).actions.Add(new Interactable.SetTransformAction()));
-				menu.AddItem(new GUIContent("MoveTo"), false, () => (target as Interactable).actions.Add(new Interactable.MoveToAction()));
-				menu.AddItem(new GUIContent("InstantiatePrefab"), false, () => (target as Interactable).actions.Add(new Interactable.InstantiatePrefab()));
-				menu.AddItem(new GUIContent("CallFunction"), false, () => (target as Interactable).actions.Add(new Interactable.CallFunction()));
-				menu.AddItem(new GUIContent("Interact with other interactable"), false, () => (target as Interactable).actions.Add(new Interactable.InteractAction()));
+				var interactable = target as Interactable;
+				menu.AddItem(new GUIContent("AnimatorSetBool"), false, () => interactable.actions.Add(new Interactable.AnimatorSetBoolAction()));
+				menu.AddItem(new GUIContent("AnimatorPlay"), false, () => interactable.actions.Add(new Interactable.AnimatorPlay()));
+				menu.AddItem(new GUIContent("ActivateParticleSystem"), false, () => interactable.actions.Add(new Interactable.ActivateParticleSystem()));
+				menu.AddItem(new GUIContent("Delay"), false, () => interactable.actions.Add(new Interactable.DelayAction()));
+				menu.AddItem(new GUIContent("SetObjectActive"), false, () => interactable.actions.Add(new Interactable.SetObjectActiveAction()));
+				menu.AddItem(new GUIContent("TeleportAgent"), false, () => interactable.actions.Add(new Interactable.TeleportAgentAction()));
+				if (interactable.TryGetComponent<NodeLink2>(out var _)) {
+					menu.AddItem(new GUIContent("Teleport Agent on Off-Mesh Link"), false, () => interactable.actions.Add(new Interactable.TeleportAgentOnLinkAction()));
+				}
+				menu.AddItem(new GUIContent("SetTransform"), false, () => interactable.actions.Add(new Interactable.SetTransformAction()));
+				menu.AddItem(new GUIContent("MoveTo"), false, () => interactable.actions.Add(new Interactable.MoveToAction()));
+				menu.AddItem(new GUIContent("InstantiatePrefab"), false, () => interactable.actions.Add(new Interactable.InstantiatePrefab()));
+				menu.AddItem(new GUIContent("CallFunction"), false, () => interactable.actions.Add(new Interactable.CallFunction()));
+				menu.AddItem(new GUIContent("Interact with other interactable"), false, () => interactable.actions.Add(new Interactable.InteractAction()));
 				menu.DropDown(rect);
 			};
 		}

@@ -22,7 +22,7 @@ namespace Pathfinding.RVO {
 	/// </summary>
 	[ExecuteInEditMode]
 	[AddComponentMenu("Pathfinding/Local Avoidance/RVO Simulator")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rvosimulator.html")]
 	public class RVOSimulator : VersionedMonoBehaviour {
 		/// <summary>First RVOSimulator in the scene (usually there is only one)</summary>
 		public static RVOSimulator active { get; private set; }
@@ -99,9 +99,15 @@ namespace Pathfinding.RVO {
 		///
 		/// This will make agents try to avoid moving into, and getting pushed into the borders of the navmesh.
 		///
+		/// This works best on navmesh/recast graphs, but can also be used on grid graphs.
+		///
 		/// Enabling this has a performance impact.
+		///
+		/// Note: For the <see cref="AIPath"/> movement script, this only has an effect if the <see cref="AIPath.constrainInsideGraph"/> field is enabled.
+		///
+		/// If you are writing your own movement script, you must call <see cref="RVOController.SetObstacleQuery"/> every frame for the navmesh obstacle detection to work.
 		/// </summary>
-		public bool useNavmeshAsObstacle = true;
+		public bool useNavmeshAsObstacle = false;
 		public bool drawQuadtree;
 
 		/// <summary>Reference to the internal simulator</summary>
@@ -119,6 +125,14 @@ namespace Pathfinding.RVO {
 		}
 
 		void OnEnable () {
+			if (active != null) {
+				if (active != this && Application.isPlaying) {
+					if (enabled) Debug.LogWarning("Another RVOSimulator component is already in the scene. More than one RVOSimulator component cannot be active at the same time. Disabling this one.", this);
+					enabled = false;
+				}
+				return;
+			}
+
 			active = this;
 		}
 
@@ -140,7 +154,9 @@ namespace Pathfinding.RVO {
 		}
 
 		void OnDisable () {
-			active = null;
+			if (active == this) {
+				active = null;
+			}
 			if (simulatorBurst != null) {
 				simulatorBurst.OnDestroy();
 				simulatorBurst = null;

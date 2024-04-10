@@ -191,15 +191,16 @@ namespace Pathfinding {
 				// The target node is a normal node.
 				var node = pathHandler.GetNode(pathNode);
 				endPoint = node.RandomPointOnSurface();
+
+				cost = gScore;
+				CompleteState = PathCompleteState.Complete;
+				Trace(pathNode);
 			}
-			cost = gScore;
-			CompleteState = PathCompleteState.Complete;
-			Trace(pathNode);
 		}
 
 		public override void OnVisitNode (uint pathNode, uint hScore, uint gScore) {
 			// This method may be called multiple times without checking if the path is complete yet.
-			if (CompleteState == PathCompleteState.Complete) return;
+			if (CompleteState != PathCompleteState.NotCalculated) return;
 
 			if (gScore >= searchLength) {
 				if (gScore <= searchLength+spread) {

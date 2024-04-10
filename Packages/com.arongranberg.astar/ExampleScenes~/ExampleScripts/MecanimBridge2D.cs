@@ -10,6 +10,7 @@ namespace Pathfinding.Examples {
 	/// - X: Horizontal movement speed, normalized by the agent's natural speed.
 	/// - Y: Vertical movement speed, normalized by the agent's natural speed.
 	/// </summary>
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/mecanimbridge2d.html")]
 	public class MecanimBridge2D : VersionedMonoBehaviour {
 		/// <summary>
 		/// How much to smooth the velocity of the agent.

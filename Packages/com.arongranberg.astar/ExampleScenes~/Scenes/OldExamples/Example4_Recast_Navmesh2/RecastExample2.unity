@@ -781,7 +781,6 @@ GameObject:
   m_Component:
   - component: {fileID: 106}
   - component: {fileID: 215}
-  - component: {fileID: 217}
   m_Layer: 0
   m_Name: A*
   m_TagString: Untagged
@@ -3543,7 +3542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1073741824
   data:
-    dataString: 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
+    dataString: UEsDBBQAAAgIAAAIIexuPmG+JQIAADAEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFtU02PmzAQ/SsR5wZBgITssUm0PTRJFSJ1tVUPA56AFWOnxuRT+99rgyFU25Pxm3nPM2+Gh5MVICFTKHdAaF05LyPPjb6MnExwJWq5hutKSiE1PjEoMpbQOzZpBrgAO0LK8BvSvFA2qwMXjJZpr1jCNWHiZLiB195XJMfvyHNVGGYDUr7DnApuXwk0hoQqIfeUoQX9SaxhZYG3T8h7j9QVGp5pS8kaNUJoibzSD6wFMVrOsgOCpaPjKWTHXIqak72EM8oKUsqoupnUn7YvkyeR4Rm4epVwKpJaHiDDXlJshNrhn5rKNhcqbbAubCEYo0SL6qwDsAqHwTVWxbDSPrBHKYHy/0UkDhmZld918SUqoMxOpYTqqD8fI+cMrDaFjqPRh7EN8nUb+/XbXNvnEihPveNmDFIoUNqnVuNq5qrRmz3v5mzkDkJmSL4aC6sFci33ZIwjd+YFE9+3zMCNotgLAysw9n039qJwHvufpGwlVij03GnsdTKxO/X90IutTKDvs0kQNxpVIS7G2m2tGOX4dMsENnpiC8E5Zqaz4Vg6mh3tk8YRJFYq0UdWbDm7vb0PaMjNgmzgXGruolaK8vzJzWtK/h2BMyeEBPPUAxLO06kXjtMgmCOBWTSHiMwOodN0QTlVFNgPrc9U57n+mQZbwaFsFHeY6fk3e2mWj0i4vNJ7KQaLQvlBJJleHr5tJfqu9doA006TVfPTJdh0YKjO48P5+AtQSwMEFAAACAgAAAgh7Mlnpk8RAQAA4wEAAAsAJABncmFwaDEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAW2Qy24CMQxFf2WUdStBgU7VNZRVWwT9AZN4ZiwyyShOKA/x73V4I3Vl58i+vjd7FbyP6r1wydqnQjFC0M0P1DfUwmZMHMFpFNgTYqmlyPLYF2pzZttz3eVaHKQLsNXAWTuGhAIS48t41myZdF6uwHLGsSG9ml+H/8NzMJTyTj/rok6BaY035RZ4dbKzBpvwasF3Uazu8MOHRQeBcRqga+6OOImLHL+8wUvGT+llQmWmZKROZB61VTkEbXrDUVm9aRyU1fNyVPZfByWMAJZLMxyo43VyFAnsDB3YePkf36G7NwDtUXLmycWTO6EmwO+Udq3nW0ZylV/ogOi+HyUYg1yRlGZiKEpSjJFcnVfV/qAOf1BLAwQUAAAICAAACCHswazcpZIAAAC5AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAU2OwQ6CMBBEf4X0LATdLUv9AW+GeDUctmwLPVgIoIkx/rs0evA2M28ymZd6uHkJY1THDAso6nqXqX7maVi25JDMPUjSV2VEBIwtWdDYqsTcAhgnTNqwFvKotjohd1KiJl93DsjnVtO+AmLNbK0gqHZrrc/JnfnmvsMNr4MPUULsi4vreFlP6UGa+0fNGOKPtO8PUEsBAi0AFAAACAgAAAgh7G4+Yb4lAgAAMAQAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7Mlnpk8RAQAA4wEAAAsAJAAAAAAAAAAAAAAAcgIAAGdyYXBoMS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7MGs3KWSAAAAuQAAAAkAJAAAAAAAAAAAAAAA0AMAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAwADABUBAACtBAAAAAA=
     file_cachedStartup: {fileID: 0}
     cacheStartup: 0
   showNavGraphs: 1
@@ -3639,27 +3638,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 55}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1764de1de43cc4d19af52679d3eaae06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1073741824
-  desiredSimulationFPS: 20
-  workerThreads: 2
-  doubleBuffering: 0
-  hardCollisions: 1
-  symmetryBreakingBias: 0.1
-  movementPlane: 0
-  useNavmeshAsObstacle: 1
-  drawQuadtree: 0
 --- !u!114 &218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4457,7 +4435,6 @@ GameObject:
   - component: {fileID: 617778283}
   - component: {fileID: 617778280}
   - component: {fileID: 617778284}
-  - component: {fileID: 617778285}
   m_Layer: 2
   m_Name: Bot
   m_TagString: Untagged
@@ -4608,33 +4585,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1073741824
   anim: {fileID: 617778282}
---- !u!114 &617778285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617778278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1073741824
-  radiusBackingField: 0.5
-  heightBackingField: 2
-  centerBackingField: 1
-  locked: 0
-  lockWhenNotMoving: 0
-  agentTimeHorizon: 2
-  obstacleTimeHorizon: 2
-  maxNeighbours: 10
-  layer: 1
-  collidesWith: -1
-  wallAvoidForce: 1
-  wallAvoidFalloff: 1
-  priority: 0.5
-  debug: 0
 --- !u!1 &651591058
 GameObject:
   m_ObjectHideFlags: 0

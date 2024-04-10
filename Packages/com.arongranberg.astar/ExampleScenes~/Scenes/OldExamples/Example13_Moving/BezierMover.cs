@@ -7,7 +7,7 @@ namespace Pathfinding.Examples {
 	/// Moves an object along a spline.
 	/// Helper script in the example scene called 'Moving'.
 	/// </summary>
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_examples_1_1_bezier_mover.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/beziermover.html")]
 	public class BezierMover : VersionedMonoBehaviour {
 		public Transform[] points;
 

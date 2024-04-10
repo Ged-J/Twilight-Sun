@@ -2018,11 +2018,7 @@ namespace Pathfinding {
 				}
 
 				// Recalculate off mesh links in the affected area
-				var writeBoundsWorld = transform.Transform(new Bounds(
-					new Vector3(writeMaskBounds.min.x + writeMaskBounds.max.x, graph.collision.fromHeight, writeMaskBounds.min.z + writeMaskBounds.max.z) * 0.5f,
-					new Vector3(writeMaskBounds.size.x, graph.collision.fromHeight, writeMaskBounds.size.z)
-					));
-				ctx.DirtyBounds(writeBoundsWorld);
+				ctx.DirtyBounds(graph.GetBoundsFromRect(new IntRect(writeMaskBounds.min.x, writeMaskBounds.min.z, writeMaskBounds.max.x - 1, writeMaskBounds.max.z - 1)));
 				Dispose();
 			}
 
@@ -2089,13 +2085,21 @@ namespace Pathfinding {
 		///
 		/// Note: Any other graph updates may overwrite this data.
 		///
+		/// <code>
+		/// AstarPath.active.AddWorkItem(() => {
+		///     var grid = AstarPath.active.data.gridGraph;
+		///     // Mark all nodes in a 10x10 square, in the top-left corner of the graph, as unwalkable.
+		///     grid.SetWalkability(new bool[10*10], new IntRect(0, 0, 9, 9));
+		/// });
+		/// </code>
+		///
 		/// See: grid-rules (view in online documentation for working links) for an alternative way of modifying the graph's walkability. It is more flexible and robust, but requires a bit more code.
 		/// </summary>
 		public void SetWalkability (bool[] walkability, IntRect rect) {
 			AssertSafeToUpdateGraph();
 			var gridRect = new IntRect(0, 0, width - 1, depth - 1);
 			if (!gridRect.Contains(rect)) throw new System.ArgumentException("Rect (" + rect + ") must be within the graph bounds (" + gridRect + ")");
-			if (walkability.Length != rect.Width*rect.Height) throw new System.ArgumentException("Array must have the same length as rect.width*rect.height");
+			if (walkability.Length != rect.Width*rect.Height) throw new System.ArgumentException("Array must have the same length as rect.Width*rect.Height");
 			if (LayerCount != 1) throw new System.InvalidOperationException("This method only works in single-layered grid graphs.");
 
 			for (int z = 0; z < rect.Height; z++) {
@@ -2185,6 +2189,9 @@ namespace Pathfinding {
 			data.AssignNodeConnections(nodes, new int3(width, LayerCount, depth), writeBounds);
 			Profiler.EndSample();
 			ObjectPool<JobDependencyTracker>.Release(ref dependencyTracker);
+
+			// Recalculate off mesh links in the affected area
+			active.DirtyBounds(GetBoundsFromRect(writeRect));
 		}
 
 		/// <summary>
@@ -2422,6 +2429,27 @@ namespace Pathfinding {
 
 			ArrayPool<Vector3>.Release(ref vertices);
 			ArrayPool<Color>.Release(ref colors);
+		}
+
+		/// <summary>
+		/// Bounding box in world space which encapsulates all nodes in the given rectangle.
+		///
+		/// The bounding box will cover all nodes' surfaces completely. Not just their centers.
+		///
+		/// Note: The bounding box may not be particularly tight if the graph is not axis-aligned.
+		///
+		/// See: <see cref="GetRectFromBounds"/>
+		/// </summary>
+		/// <param name="rect">Which nodes to consider. Will be clamped to the grid's bounds. If the rectangle is outside the graph, an empty bounds will be returned.</param>
+		public Bounds GetBoundsFromRect (IntRect rect) {
+			rect = IntRect.Intersection(rect, new IntRect(0, 0, width-1, depth-1));
+			if (!rect.IsValid()) return new Bounds();
+			return transform.Transform(new Bounds(
+				new Vector3(rect.xmin + rect.xmax, collision.fromHeight, rect.ymin + rect.ymax) * 0.5f,
+				// Note: We add +1 to the width and height to make the bounding box cover the nodes' surfaces completely, instead
+				// of just their centers.
+				new Vector3(rect.Width + 1, collision.fromHeight, rect.Height + 1)
+				));
 		}
 
 		/// <summary>
@@ -2683,11 +2711,7 @@ namespace Pathfinding {
 				ObjectPool<JobDependencyTracker>.Release(ref dependencyTracker);
 
 				// Recalculate off mesh links in the affected area
-				var writeBoundsWorld = graph.transform.Transform(new Bounds(
-					new Vector3(nodes.bounds.min.x + nodes.bounds.max.x, graph.collision.fromHeight, nodes.bounds.min.z + nodes.bounds.max.z) * 0.5f,
-					new Vector3(nodes.bounds.size.x, graph.collision.fromHeight, nodes.bounds.size.z) * graph.nodeSize
-					));
-				ctx.DirtyBounds(writeBoundsWorld);
+				ctx.DirtyBounds(graph.GetBoundsFromRect(new IntRect(nodes.bounds.min.x, nodes.bounds.min.z, nodes.bounds.max.x - 1, nodes.bounds.max.z - 1)));
 			}
 		}
 

@@ -442,8 +442,8 @@ namespace Pathfinding.Jobs {
 		/// It is automatically called if you are using the ObjectPool<T>.Release method.
 		/// </summary>
 		void Dispose () {
-#if ENABLE_UNITY_COLLECTIONS_CHECKS && UNITY_2022_1_OR_NEWER
-			// Note: This can somehow fail in Unity 2021, even when calling Complete on all jobs
+#if ENABLE_UNITY_COLLECTIONS_CHECKS && UNITY_2022_2_OR_NEWER
+			// Note: This can somehow fail in Unity 2021 and 2022.1, even when calling Complete on all jobs
 			UnityEngine.Assertions.Assert.IsTrue(AllWritesDependency.IsCompleted);
 #endif
 			for (int i = 0; i < slots.Count; i++) ListPool<JobInstance>.Release(slots[i].lastReads);

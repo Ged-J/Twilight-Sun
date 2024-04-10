@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsweaponsimpleranged.html")]
 	public class RTSWeaponSimpleRanged : RTSWeapon {
 		public GameObject sourceEffect;
 		public GameObject targetEffect;

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsunitbuilder.html")]
 	public class RTSUnitBuilder : MonoBehaviour {
 		[System.Serializable]
 		public class BuildingItem {

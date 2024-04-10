@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsaudio.html")]
 	public class RTSAudio : VersionedMonoBehaviour {
 		List<Source> sources = new List<Source>();
 

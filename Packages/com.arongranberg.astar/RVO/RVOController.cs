@@ -39,7 +39,7 @@ namespace Pathfinding.RVO {
 	/// </summary>
 	[AddComponentMenu("Pathfinding/Local Avoidance/RVO Controller")]
 	[UniqueComponent(tag = "rvo")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_r_v_o_1_1_r_v_o_controller.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rvocontroller.html")]
 	public class RVOController : VersionedMonoBehaviour {
 		[SerializeField][FormerlySerializedAs("radius")]
 		internal float radiusBackingField = 0.5f;
@@ -100,7 +100,7 @@ namespace Pathfinding.RVO {
 
 		/// <summary>How far into the future to look for collisions with obstacles (in seconds)</summary>
 		[Tooltip("How far into the future to look for collisions with obstacles (in seconds)")]
-		public float obstacleTimeHorizon = 2;
+		public float obstacleTimeHorizon = 0.5f;
 
 		/// <summary>
 		/// Max number of other agents to take into account.
@@ -171,6 +171,8 @@ namespace Pathfinding.RVO {
 		/// <summary>\copydocref{Pathfinding.RVO.IAgent.FlowFollowingStrength}</summary>
 		[System.NonSerialized]
 		public float flowFollowingStrength = 0.0f;
+
+		GraphNode obstacleQuery;
 
 		/// <summary>
 		/// Center of the agent relative to the pivot point of this game object.
@@ -354,6 +356,11 @@ namespace Pathfinding.RVO {
 			rvoAgent.SetCollisionNormal(normal);
 		}
 
+		/// <summary>\copydocref{Pathfinding.RVO.IAgent.SetObstacleQuery}</summary>
+		public void SetObstacleQuery (GraphNode sourceNode) {
+			obstacleQuery = sourceNode;
+		}
+
 		/// <summary>
 		/// \copydocref{Pathfinding.RVO.IAgent.ForceSetVelocity}.
 		/// Deprecated: Set the <see cref="velocity"/> property instead
@@ -479,6 +486,13 @@ namespace Pathfinding.RVO {
 			}
 			rvoAgent.Priority = prio;
 			rvoAgent.FlowFollowingStrength = flow;
+
+			// Note: We need to set this during UpdateAgentProperties to avoid a race condition.
+			// The HierarchicalNodeIndex, which is what is stored in the rvoAgent, can be invalidated by graph updates.
+			// So we must ensure that there cannot be any graph updates between when we set this, and when the simulation step happens.
+			// So setting it here, which is right before the simulation step, is a good option.
+			rvoAgent.SetObstacleQuery(obstacleQuery);
+			obstacleQuery = null;
 		}
 
 		/// <summary>

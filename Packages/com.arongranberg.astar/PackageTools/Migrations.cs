@@ -43,8 +43,9 @@ namespace Pathfinding.Serialization {
 			if ((flag & MIGRATE_TO_BITFIELD) != 0) throw new System.ArgumentException("Cannot use the MIGRATE_TO_BITFIELD flag when adding a migration");
 			allMigrations |= flag;
 			if (filter) {
+				var res = (finishedMigrations & flag) != flag;
 				MarkMigrationFinished(flag);
-				return (finishedMigrations & flag) != flag;
+				return res;
 			} else return false;
 		}
 

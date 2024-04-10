@@ -20,10 +20,10 @@ namespace Pathfinding {
 	/// </summary>
 	[RequireComponent(typeof(Seeker))]
 	public abstract class AIBase : VersionedMonoBehaviour {
-		/// <summary>\copydoc Pathfinding::IAstarAI::radius</summary>
+		/// <summary>\copydocref{IAstarAI.radius}</summary>
 		public float radius = 0.5f;
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::height</summary>
+		/// <summary>\copydocref{IAstarAI.height}</summary>
 		public float height = 2;
 
 		/// <summary>
@@ -48,7 +48,7 @@ namespace Pathfinding {
 		}
 
 		/// <summary>
-		/// \copydoc Pathfinding::IAstarAI::canSearch
+		/// \copydocref{IAstarAI::canSearch}
 		/// Deprecated: This has been superseded by <see cref="autoRepath.mode"/>.
 		/// </summary>
 		public bool canSearch {
@@ -66,7 +66,7 @@ namespace Pathfinding {
 			}
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::canMove</summary>
+		/// <summary>\copydocref{IAstarAI.canMove}</summary>
 		public bool canMove = true;
 
 		/// <summary>Max speed in world units per second</summary>
@@ -92,13 +92,13 @@ namespace Pathfinding {
 		/// <summary>
 		/// Distance to the end point to consider the end of path to be reached.
 		///
-		/// When the end of the path is within this distance then <see cref="reachedEndOfPath"/> will return true.
-		/// When the <see cref="destination"/> is within this distance then <see cref="reachedDestination"/> will return true.
+		/// When the end of the path is within this distance then <see cref="IAstarAI.reachedEndOfPath"/> will return true.
+		/// When the <see cref="destination"/> is within this distance then <see cref="IAstarAI.reachedDestination"/> will return true.
 		///
 		/// Note that the <see cref="destination"/> may not be reached just because the end of the path was reached. The <see cref="destination"/> may not be reachable at all.
 		///
-		/// See: <see cref="reachedEndOfPath"/>
-		/// See: <see cref="reachedDestination"/>
+		/// See: <see cref="IAstarAI.reachedEndOfPath"/>
+		/// See: <see cref="IAstarAI.reachedDestination"/>
 		/// </summary>
 		public float endReachedDistance = 0.2f;
 
@@ -109,7 +109,7 @@ namespace Pathfinding {
 		/// destination point and come to a full stop there. This is useful if you want the character to reach the exact
 		/// point that you specified.
 		///
-		/// Note: <see cref="reachedEndOfPath"/> will become true when the character is within <see cref="endReachedDistance"/> units from the destination
+		/// Note: <see cref="IAstarAI.reachedEndOfPath"/> will become true when the character is within <see cref="endReachedDistance"/> units from the destination
 		/// regardless of what this field is set to.
 		/// </summary>
 		public CloseToDestinationMode whenCloseToDestination = CloseToDestinationMode.Stop;
@@ -352,7 +352,7 @@ namespace Pathfinding {
 		/// <summary>Backing field for <see cref="destination"/></summary>
 		Vector3 destinationBackingField = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::destination</summary>
+		/// <summary>\copydocref{IAstarAI.destination}</summary>
 		public Vector3 destination {
 			get { return destinationBackingField; }
 			set {
@@ -366,34 +366,34 @@ namespace Pathfinding {
 			}
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::velocity</summary>
+		/// <summary>\copydocref{IAstarAI.velocity}</summary>
 		public Vector3 velocity {
 			get {
 				return lastDeltaTime > 0.000001f ? (prevPosition1 - prevPosition2) / lastDeltaTime : Vector3.zero;
 			}
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::desiredVelocity</summary>
+		/// <summary>\copydocref{IAstarAI.desiredVelocity}</summary>
 		public Vector3 desiredVelocity {
 			get { return lastDeltaTime > 0.00001f ? movementPlane.ToWorld(lastDeltaPosition / lastDeltaTime, verticalVelocity) : Vector3.zero; }
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::desiredVelocityWithoutLocalAvoidance</summary>
+		/// <summary>\copydocref{IAstarAI.desiredVelocityWithoutLocalAvoidance}</summary>
 		public Vector3 desiredVelocityWithoutLocalAvoidance {
 			get { return movementPlane.ToWorld(velocity2D, verticalVelocity); }
 			set { velocity2D = movementPlane.ToPlane(value, out verticalVelocity); }
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::endOfPath</summary>
+		/// <summary>\copydocref{IAstarAI.endOfPath}</summary>
 		public abstract Vector3 endOfPath { get; }
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::reachedDestination</summary>
+		/// <summary>\copydocref{IAstarAI.reachedDestination}</summary>
 		public abstract bool reachedDestination { get; }
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::isStopped</summary>
+		/// <summary>\copydocref{IAstarAI.isStopped}</summary>
 		public bool isStopped { get; set; }
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::onSearchPath</summary>
+		/// <summary>\copydocref{IAstarAI.onSearchPath}</summary>
 		public System.Action onSearchPath { get; set; }
 
 		/// <summary>
@@ -530,7 +530,7 @@ namespace Pathfinding {
 			}
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::Teleport</summary>
+		/// <summary>\copydocref{IAstarAI.Teleport}</summary>
 		public virtual void Teleport (Vector3 newPosition, bool clearPath = true) {
 			if (clearPath) ClearPath();
 			prevPosition1 = prevPosition2 = simulatedPosition = newPosition;
@@ -555,7 +555,7 @@ namespace Pathfinding {
 			lastDeltaTime = 0;
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::MovementUpdate</summary>
+		/// <summary>\copydocref{IAstarAI.MovementUpdate}</summary>
 		public void MovementUpdate (float deltaTime, out Vector3 nextPosition, out Quaternion nextRotation) {
 			lastDeltaTime = deltaTime;
 			MovementUpdateInternal(deltaTime, out nextPosition, out nextRotation);
@@ -575,7 +575,7 @@ namespace Pathfinding {
 			end = destination;
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::SearchPath</summary>
+		/// <summary>\copydocref{IAstarAI.SearchPath}</summary>
 		public virtual void SearchPath () {
 			if (float.IsPositiveInfinity(destination.x)) return;
 			if (onSearchPath != null) onSearchPath();
@@ -614,7 +614,7 @@ namespace Pathfinding {
 		/// </summary>
 		protected abstract void ClearPath();
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::SetPath</summary>
+		/// <summary>\copydocref{IAstarAI.SetPath}</summary>
 		public void SetPath (Path path, bool updateDestinationFromPath = true) {
 			if (updateDestinationFromPath && path is ABPath abPath && abPath.endPointKnownBeforeCalculation) {
 				this.destination = abPath.originalEndPoint;
@@ -734,7 +734,7 @@ namespace Pathfinding {
 			return Quaternion.RotateTowards(simulatedRotation, targetRotation, maxDegreesOffAxis);
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::Move</summary>
+		/// <summary>\copydocref{IAstarAI.Move}</summary>
 		public virtual void Move (Vector3 deltaPosition) {
 			accumulatedMovementDelta += deltaPosition;
 		}

@@ -267,7 +267,7 @@ namespace Pathfinding {
 		/// The returned <see cref="NNInfo"/> will contain both the closest node, and the closest point on the surface of that node.
 		/// The distance is measured to the closest point on the surface of the node.
 		///
-		/// See: You can use <see cref="AstarPath.GetNearest"/> instead, if you want to check all graphs.
+		/// See: You can use <see cref="AstarPath.GetNearest(Vector3)"/> instead, if you want to check all graphs.
 		///
 		/// Version: Before 4.3.63, this method would not use the NNConstraint in all cases.
 		/// </summary>

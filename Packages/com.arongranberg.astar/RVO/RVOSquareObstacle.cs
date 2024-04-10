@@ -7,7 +7,7 @@ namespace Pathfinding.RVO {
 	/// Deprecated: This component is deprecated. Local avoidance colliders never worked particularly well and the performance was poor. Modify the graphs instead so that pathfinding takes obstacles into account.
 	/// </summary>
 	[AddComponentMenu("")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_r_v_o_1_1_r_v_o_square_obstacle.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rvosquareobstacle.html")]
 	public class RVOSquareObstacle : RVOObstacle {
 		/// <summary>Height of the obstacle</summary>
 		public float height = 1;

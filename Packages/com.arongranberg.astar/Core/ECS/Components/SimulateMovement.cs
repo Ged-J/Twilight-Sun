@@ -22,7 +22,7 @@ namespace Pathfinding.ECS {
 	/// <summary>
 	/// Tag component to allow the agent to repair its path and recalculate various statistics.
 	///
-	/// Allows the <see cref="RepairPathJob"/> to run.
+	/// Allows the <see cref="JobRepairPath"/> to run.
 	/// </summary>
 	public struct SimulateMovementRepair : IComponentData {
 	}

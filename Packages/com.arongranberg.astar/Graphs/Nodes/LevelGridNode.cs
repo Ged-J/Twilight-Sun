@@ -66,7 +66,11 @@ namespace Pathfinding {
 		/// </summary>
 		public const int MaxLayerCount = ConnectionMask;
 
-		/// <summary>Removes all grid connections from this node</summary>
+		/// <summary>
+		/// Removes all grid connections from this node.
+		///
+		/// Warning: Using this method can make the graph data inconsistent. It's recommended to use other ways to update the graph, instead.
+		/// </summary>
 		public override void ResetConnectionsInternal () {
 #if ASTAR_LEVELGRIDNODE_FEW_LAYERS
 			gridConnections = unchecked ((uint)-1);
@@ -191,7 +195,11 @@ namespace Pathfinding {
 			return ((gridConnections >> direction*ConnectionStride) & ConnectionMask) != NoConnection;
 		}
 
-		/// <summary>Set which layer a grid connection goes to.</summary>
+		/// <summary>
+		/// Set which layer a grid connection goes to.
+		///
+		/// Warning: Using this method can make the graph data inconsistent. It's recommended to use other ways to update the graph, instead.
+		/// </summary>
 		/// <param name="dir">Direction for the connection.</param>
 		/// <param name="value">The layer of the connected node or #NoConnection if there should be no connection in that direction.</param>
 		public void SetConnectionValue (int dir, int value) {

@@ -200,7 +200,7 @@ namespace Pathfinding.Util {
 	///
 	/// See: NativeMovementPlane
 	/// </summary>
-#if MODULE_COLLECTIONS_2_0_0_OR_NEWER
+#if MODULE_COLLECTIONS_2_0_0_OR_NEWER && UNITY_2022_2_OR_NEWER
 	[Unity.Collections.GenerateTestsForBurstCompatibility]
 #endif
 	public readonly struct SimpleMovementPlane : IMovementPlane {

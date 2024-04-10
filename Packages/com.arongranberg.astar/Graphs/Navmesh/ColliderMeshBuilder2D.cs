@@ -53,7 +53,7 @@ namespace Pathfinding.Graphs.Navmesh {
 		/// If a circle is approximated by fewer segments, it will be slightly smaller than the original circle.
 		/// This factor is used to adjust the radius of the circle so that the resulting circle will have roughly the same area as the original circle.
 		/// </summary>
-#if MODULE_COLLECTIONS_2_0_0_OR_NEWER
+#if MODULE_COLLECTIONS_2_0_0_OR_NEWER && UNITY_2022_2_OR_NEWER
 		[GenerateTestsForBurstCompatibility]
 #endif
 		public static float CircleRadiusAdjustmentFactor (int steps) {

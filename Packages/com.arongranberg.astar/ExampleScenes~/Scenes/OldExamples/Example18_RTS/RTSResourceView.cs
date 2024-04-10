@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsresourceview.html")]
 	public class RTSResourceView : VersionedMonoBehaviour {
 		public float adjustmentSpeed = 10;
 

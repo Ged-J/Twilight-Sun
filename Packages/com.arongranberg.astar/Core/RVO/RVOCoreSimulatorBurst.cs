@@ -55,11 +55,7 @@ namespace Pathfinding.RVO {
 		public float3 ToWorld(float2 p, float elevation = 0) => new float3(p.x, elevation, p.y);
 		public Bounds ToWorld(Bounds bounds) => bounds;
 		public void Set (NativeMovementPlane plane) { }
-		public float4x4 matrix {
-			get {
-				return float4x4.RotateX(math.radians(90));
-			}
-		}
+		public float4x4 matrix => float4x4.RotateX(math.radians(90));
 	}
 
 	public struct ArbitraryMovementPlane : IMovementPlaneWrapper {
@@ -295,6 +291,8 @@ namespace Pathfinding.RVO {
 		/// </summary>
 		float Priority { get; set; }
 
+		int HierarchicalNodeIndex { get; set; }
+
 		/// <summary>
 		/// Callback which will be called right before avoidance calculations are started.
 		/// Used to update the other properties with the most up to date values
@@ -335,13 +333,10 @@ namespace Pathfinding.RVO {
 		/// Add obstacles to avoid for this agent.
 		///
 		/// The obstacles are based on nearby borders of the navmesh.
-		/// You can call this method every frame, the results are cached between frames and between agents.
+		/// You should call this method every frame.
 		/// </summary>
 		/// <param name="sourceNode">The node to start the obstacle search at. This is typically the node the agent is standing on.</param>
-		/// <param name="traversableTags">Tags that the agent can traverse.</param>
-		/// <param name="movementPlane">The plane the agent is moving in.
-		///        Used to simplify the obstacle data slightly by reducing the importance of coordinate changes along the 'up' direction of the agent.</param>
-		public void SetObstacleQuery(GraphNode sourceNode, int traversableTags, SimpleMovementPlane movementPlane);
+		public void SetObstacleQuery(GraphNode sourceNode);
 	}
 
 	/// <summary>
@@ -526,6 +521,7 @@ namespace Pathfinding.RVO {
 			public float FlowFollowingStrength { get => simulator.simulationData.flowFollowingStrength[AgentIndex]; set => simulator.simulationData.flowFollowingStrength[AgentIndex] = value; }
 			public AgentDebugFlags DebugFlags { get => simulator.simulationData.debugFlags[AgentIndex]; set => simulator.simulationData.debugFlags[AgentIndex] = value; }
 			public float Priority { get => simulator.simulationData.priority[AgentIndex]; set => simulator.simulationData.priority[AgentIndex] = value; }
+			public int HierarchicalNodeIndex { get => simulator.simulationData.hierarchicalNodeIndex[AgentIndex]; set => simulator.simulationData.hierarchicalNodeIndex[AgentIndex] = value; }
 			public SimpleMovementPlane MovementPlane { get => new SimpleMovementPlane(simulator.simulationData.movementPlane[AgentIndex].rotation); set => simulator.simulationData.movementPlane[AgentIndex] = new NativeMovementPlane(value); }
 			public Action PreCalculationCallback { set => simulator.agentPreCalculationCallbacks[AgentIndex] = value; }
 			public Action DestroyedCallback { set => simulator.agentDestroyCallbacks[AgentIndex] = value; }
@@ -565,9 +561,8 @@ namespace Pathfinding.RVO {
 				}
 			}
 
-			public void SetObstacleQuery (GraphNode sourceNode, int traversableTags, SimpleMovementPlane movementPlane) {
-				// var obstacleIndex = simulator.obstacleCache.GetObstaclesAround(sourceNode, traversableTags, movementPlane, ref simulator.obstacleData);
-				// simulator.simulationData.agentObstacleMapping[AgentIndex] = obstacleIndex;
+			public void SetObstacleQuery (GraphNode sourceNode) {
+				HierarchicalNodeIndex = sourceNode != null && !sourceNode.Destroyed && sourceNode.Walkable ? sourceNode.HierarchicalNodeIndex : -1;
 			}
 
 			public void SetTarget (Vector3 targetPoint, float desiredSpeed, float maxSpeed, Vector3 endOfPath) {
@@ -1207,12 +1202,13 @@ namespace Pathfinding.RVO {
 				numAgents = numAgents,
 			}.Schedule(rvoJob);
 
-			// Clear the normal
-			// The normal is reset every simulation tick
+			// Clear some fields that are reset every simulation tick
 			var clearJob = simulationData.collisionNormal.MemSet(float3.zero).Schedule(reachedJob);
 			var clearJob2 = simulationData.manuallyControlled.MemSet(false).Schedule(reachedJob);
+			var clearJob3 = simulationData.hierarchicalNodeIndex.MemSet(-1).Schedule(reachedJob);
 
 			dependency = JobHandle.CombineDependencies(reachedJob, clearJob, clearJob2);
+			dependency = JobHandle.CombineDependencies(dependency, clearJob3);
 
 			if (drawQuadtree && drawGizmos) {
 				dependency = JobHandle.CombineDependencies(dependency, new RVOQuadtreeBurst.DebugDrawJob {

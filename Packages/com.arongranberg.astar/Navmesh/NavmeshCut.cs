@@ -105,7 +105,7 @@ namespace Pathfinding {
 	/// </summary>
 	[AddComponentMenu("Pathfinding/Navmesh/Navmesh Cut")]
 	[ExecuteAlways]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_navmesh_cut.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/navmeshcut.html")]
 	public class NavmeshCut : NavmeshClipper {
 		public enum MeshType {
 			/// <summary>A 2D rectangle</summary>
@@ -412,7 +412,7 @@ namespace Pathfinding {
 		/// The cut may contain several contours which is why the buffer is a list of lists.
 		/// </summary>
 		/// <param name="buffer">Will be filled with the result</param>
-		/// <param name="transform">All points will be transformed using this matrix. They are in world space before the transformation. Typically this a transform that maps from world space to graph space.</param>
+		/// <param name="matrix">All points will be transformed using this matrix. They are in world space before the transformation. Typically this a transform that maps from world space to graph space.</param>
 		/// <param name="radiusMargin">The obstacle will be expanded by this amount. Typically this is the character radius for the graph. The MeshType.CustomMesh does not support this.
 		/// If #radiusExpansionMode is RadiusExpansionMode.DontExpand then this parameter is ignored.</param>
 		public void GetContour (List<Contour> buffer, Matrix4x4 matrix, float radiusMargin) {

@@ -5,6 +5,7 @@ namespace Pathfinding.Examples {
 	/// Smooth Camera Following.
 	/// \author http://wiki.unity3d.com/index.php/SmoothFollow2
 	/// </summary>
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/smoothcamerafollow.html")]
 	public class SmoothCameraFollow : VersionedMonoBehaviour {
 		public Transform target;
 		public float distance = 3.0f;

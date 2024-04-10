@@ -12,7 +12,7 @@ public class MenuController2 : MonoBehaviour
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
     [SerializeField] private GameObject confirmationPrompt = null;
-    [SerializeField] private float defaultVolume = 1f;
+    [SerializeField] private float defaultVolume = 0.5f;
 
     [Header("Gameplay Settings")]
     [SerializeField] private TMP_Text ControllerSenTextValue = null;
@@ -133,7 +133,16 @@ public class MenuController2 : MonoBehaviour
     public IEnumerator ConfirmationBox()
     {
         confirmationPrompt.SetActive(true);
-        yield return new WaitForSeconds(2);
+        float timer = 0;
+        float waitTime = 2f; // The amount of time to wait
+
+        // Wait for the duration of waitTime using unscaledDeltaTime
+        while (timer < waitTime)
+        {
+            timer += Time.unscaledDeltaTime;
+            yield return null; // Wait until the next frame
+        }
+
         confirmationPrompt.SetActive(false);
     }
 

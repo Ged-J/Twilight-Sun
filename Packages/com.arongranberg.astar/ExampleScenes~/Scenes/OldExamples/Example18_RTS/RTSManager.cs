@@ -1,6 +1,7 @@
 using UnityEngine;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsmanager.html")]
 	public class RTSManager : VersionedMonoBehaviour {
 		public static RTSManager instance;
 

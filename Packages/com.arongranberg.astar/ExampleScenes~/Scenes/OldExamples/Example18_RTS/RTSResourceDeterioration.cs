@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsresourcedeterioration.html")]
 	public class RTSResourceDeterioration : MonoBehaviour {
 		RTSHarvestableResource resource;
 		public Transform offsetRoot;

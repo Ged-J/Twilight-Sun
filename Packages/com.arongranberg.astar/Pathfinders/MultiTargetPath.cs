@@ -288,7 +288,8 @@ namespace Pathfinding {
 			bool anyNotNull = false;
 
 			for (int i = 0; i < targetPoints.Length; i++) {
-				var endNNInfo = AstarPath.active.GetNearest(targetPoints[i], nnConstraint);
+				var originalTarget = targetPoints[i];
+				var endNNInfo = AstarPath.active.GetNearest(originalTarget, nnConstraint);
 
 				targetNodes[i] = endNNInfo.node;
 
@@ -319,9 +320,7 @@ namespace Pathfinding {
 #if !ASTAR_NO_GRID_GRAPH
 					// Potentially we want to special case grid graphs a bit
 					// to better support some kinds of games
-					// If this returns true it will overwrite the
-					// endNode, endPoint, heuristicObjective fields
-					if (!EndPointGridGraphSpecialCase(endNNInfo.node, i))
+					if (!EndPointGridGraphSpecialCase(endNNInfo.node, originalTarget, i))
 #endif
 					{
 						pathHandler.AddTemporaryNode(new TemporaryNode {

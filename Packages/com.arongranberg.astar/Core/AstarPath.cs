@@ -29,10 +29,10 @@ using Thread = System.Threading.Thread;
 /// This class is a singleton class, meaning there should only exist at most one active instance of it in the scene.
 /// It might be a bit hard to use directly, usually interfacing with the pathfinding system is done through the <see cref="Pathfinding.Seeker"/> class.
 /// </summary>
-[HelpURL("https://arongranberg.com/astar/documentation/stable/class_astar_path.php")]
+[HelpURL("https://arongranberg.com/astar/documentation/stable/astarpath.html")]
 public class AstarPath : VersionedMonoBehaviour {
 	/// <summary>The version number for the A* Pathfinding Project</summary>
-	public static readonly System.Version Version = new System.Version(5, 0, 1);
+	public static readonly System.Version Version = new System.Version(5, 0, 6);
 
 	/// <summary>Information about where the package was downloaded</summary>
 	public enum AstarDistribution { WebsiteDownload, AssetStore, PackageManager };
@@ -700,7 +700,7 @@ public class AstarPath : VersionedMonoBehaviour {
 	/// </summary>
 	public static void FindAstarPath () {
 		if (Application.isPlaying) return;
-		if (active == null) active = FindAnyObjectByType<AstarPath>();
+		if (active == null) active = UnityCompatibility.FindAnyObjectByType<AstarPath>();
 		if (active != null && (active.data.graphs == null || active.data.graphs.Length == 0)) active.data.DeserializeGraphs();
 	}
 
@@ -786,11 +786,6 @@ public class AstarPath : VersionedMonoBehaviour {
 
 	/// <summary>Calls OnDrawGizmos on graph generators</summary>
 	public override void DrawGizmos () {
-		// Make sure the singleton pattern holds
-		// Might not hold if the Awake method
-		// has not been called yet
-		if (active == null) active = this;
-
 		if (active != this || graphs == null) {
 			return;
 		}
@@ -1199,14 +1194,6 @@ public class AstarPath : VersionedMonoBehaviour {
 
 	/// <summary>Does simple error checking</summary>
 	internal void VerifyIntegrity () {
-		if (active != this) {
-			throw new System.Exception("Singleton pattern broken. Make sure you only have one AstarPath object in the scene");
-		}
-
-		if (data == null) {
-			throw new System.NullReferenceException("data is null... A* not set up correctly?");
-		}
-
 		if (data.graphs == null) {
 			data.graphs = new NavGraph[0];
 			data.UpdateShortcuts();
@@ -1221,7 +1208,6 @@ public class AstarPath : VersionedMonoBehaviour {
 	/// Warning: This is mostly for use internally by the system.
 	/// </summary>
 	public void ConfigureReferencesInternal () {
-		active = this;
 		colorSettings = colorSettings ?? new AstarColor();
 		colorSettings.PushToStatic(this);
 	}
@@ -1520,7 +1506,7 @@ public class AstarPath : VersionedMonoBehaviour {
 
 	/// <summary>
 	/// Scans a particular graph.
-	/// Calling this method will recalculate the specified graph.
+	/// Calling this method will recalculate the specified graph from scratch.
 	/// This method is pretty slow (depending on graph type and graph complexity of course), so it is advisable to use
 	/// smaller graph updates whenever possible.
 	///
@@ -1548,7 +1534,7 @@ public class AstarPath : VersionedMonoBehaviour {
 	/// <summary>
 	/// Scans all specified graphs.
 	///
-	/// Calling this method will recalculate all specified graphs or all graphs if the graphsToScan parameter is null.
+	/// Calling this method will recalculate all specified graphs (or all graphs if the graphsToScan parameter is null) from scratch.
 	/// This method is pretty slow (depending on graph type and graph complexity of course), so it is advisable to use
 	/// smaller graph updates whenever possible.
 	///
@@ -1655,6 +1641,7 @@ public class AstarPath : VersionedMonoBehaviour {
 		// This is because otherwise the OnDisable method will not be called and some unmanaged data
 		// in NativeArrays may end up leaking.
 		if (!enabled) throw new System.InvalidOperationException("The AstarPath object must be enabled to scan graphs");
+		if (active != this) throw new System.InvalidOperationException("The AstarPath object is not enabled in a scene");
 
 		isScanning = true;
 
@@ -1977,9 +1964,9 @@ public class AstarPath : VersionedMonoBehaviour {
 	/// <param name="pushToFront">If true, the path will be pushed to the front of the queue, bypassing all waiting paths and making it the next path to be calculated.
 	///    This can be useful if you have a path which you want to prioritize over all others. Be careful to not overuse it though.
 	///    If too many paths are put in the front of the queue often, this can lead to normal paths having to wait a very long time before being calculated.</param>
-	/// <param name="assumeNotInPlayMode">Typically path.BlockUntilCalculated will be called when not in play mode. However, the play mode check will not work if
+	/// <param name="assumeInPlayMode">Typically path.BlockUntilCalculated will be called when not in play mode. However, the play mode check will not work if
 	///    you call this from a separate thread, or a job. In that case you can set this to true to skip the check.</param>
-	public static void StartPath (Path path, bool pushToFront = false, bool assumeNotInPlayMode = false) {
+	public static void StartPath (Path path, bool pushToFront = false, bool assumeInPlayMode = false) {
 		// Copy to local variable to avoid multithreading issues
 		var astar = active;
 
@@ -2018,7 +2005,7 @@ public class AstarPath : VersionedMonoBehaviour {
 		// Outside of play mode, all path requests are synchronous.
 		// However, inside a job we cannot check this, because Unity will throw an exception.
 		// But luckily pretty much all jobs will run in game mode anyway. So we assume that if we are in a job, we are in game mode.
-		if (!assumeNotInPlayMode && !Unity.Jobs.LowLevel.Unsafe.JobsUtility.IsExecutingJob && !Application.isPlaying) {
+		if (!assumeInPlayMode && !Unity.Jobs.LowLevel.Unsafe.JobsUtility.IsExecutingJob && !Application.isPlaying) {
 			BlockUntilCalculated(path);
 		}
 	}
@@ -2198,7 +2185,7 @@ public class AstarPath : VersionedMonoBehaviour {
 	///
 	/// Note: You must dispose the returned snapshot when you are done with it, to avoid leaking memory.
 	/// </summary>
-	internal GraphSnapshot Snapshot (Bounds bounds, GraphMask graphMask) {
+	public GraphSnapshot Snapshot (Bounds bounds, GraphMask graphMask) {
 		Profiler.BeginSample("Capturing Graph Snapshot");
 		var inner = new List<IGraphSnapshot>();
 		for (int i = 0; i < graphs.Length; i++) {

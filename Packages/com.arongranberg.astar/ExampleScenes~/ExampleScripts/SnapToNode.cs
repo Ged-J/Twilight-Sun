@@ -8,7 +8,7 @@ namespace Pathfinding.Examples {
 	/// Used in the "Turn Based" example scene for snapping obstacles to the hexagon grid.
 	/// </summary>
 	[ExecuteInEditMode]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_snap_to_node.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/snaptonode.html")]
 	public class SnapToNode : MonoBehaviour {
 		/// <summary>[Update]</summary>
 		void Update () {

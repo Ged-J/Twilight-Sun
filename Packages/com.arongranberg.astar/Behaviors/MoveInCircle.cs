@@ -21,6 +21,7 @@ namespace Pathfinding {
 	[UniqueComponent(tag = "ai.destination")]
 	[AddComponentMenu("Pathfinding/AI/Behaviors/MoveInCircle")]
 	/// <summary>[MoveInCircle]</summary>
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/moveincircle.html")]
 	public class MoveInCircle : VersionedMonoBehaviour {
 		/// <summary>Target point to rotate around</summary>
 		public Transform target;

@@ -14,7 +14,7 @@ namespace Pathfinding {
 	///
 	/// It is not meant to be pretty, but it does the job.
 	/// </summary>
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_target_mover.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/targetmover.html")]
 	public class TargetMover : VersionedMonoBehaviour {
 		/// <summary>Mask for the raycast placement</summary>
 		public LayerMask mask;
@@ -85,7 +85,7 @@ namespace Pathfinding {
 				if (trigger != Trigger.Continuously) {
 					// Slightly inefficient way of finding all AIs, but this is just an example script, so it doesn't matter much.
 					// FindObjectsByType does not support interfaces unfortunately.
-					var ais = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.InstanceID).OfType<IAstarAI>().ToList();
+					var ais = UnityCompatibility.FindObjectsByTypeSorted<MonoBehaviour>().OfType<IAstarAI>().ToList();
 					StopAllCoroutines();
 
 					if (hitObject != null && hitObject.TryGetComponent<Pathfinding.Examples.Interactable>(out var interactable)) {

@@ -3,6 +3,7 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
 namespace Pathfinding.Util {
 	/// <summary>
@@ -144,6 +145,12 @@ namespace Pathfinding.Util {
 				// If length is zero, the pointers may be null, which is technically undefined behavior (but in practice usually fine)
 				if (length > 0) UnsafeUtility.MemCpy(other.ptr, ptr, (long)sizeof(T) * (long)length);
 			}
+		}
+
+		/// <summary>Appends all elements in this span to the given list</summary>
+		public void CopyTo (List<T> buffer) {
+			if (buffer.Capacity < buffer.Count + Length) buffer.Capacity = buffer.Count + Length;
+			for (int i = 0; i < Length; i++) buffer.Add(this[i]);
 		}
 
 		/// <summary>

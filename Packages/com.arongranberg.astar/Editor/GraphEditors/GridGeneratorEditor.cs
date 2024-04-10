@@ -124,7 +124,7 @@ namespace Pathfinding {
 
 		void DrawTilemapAlignment (GridGraph graph) {
 			if (cachedSceneGridLayouts == null || Time.realtimeSinceStartup - cachedSceneGridLayoutsTimestamp > 5f) {
-				var tilemaps = UnityEngine.Object.FindObjectsByType<GridLayout>(FindObjectsSortMode.InstanceID);
+				var tilemaps = UnityCompatibility.FindObjectsByTypeSorted<UnityEngine.GridLayout>();
 				List<GridLayout> layouts = new List<GridLayout>(tilemaps);
 				for (int i = 0; i < tilemaps.Length; i++) {
 					if (tilemaps[i] is UnityEngine.Tilemaps.Tilemap tilemap) layouts.Remove(tilemap.layoutGrid);

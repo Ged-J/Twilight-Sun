@@ -41,7 +41,7 @@ namespace Pathfinding {
 	/// Note: Usually you do not want to use this type of link, you want to use NodeLink2 or NodeLink (sorry for the not so descriptive names).
 	/// </summary>
 	[AddComponentMenu("Pathfinding/Link3")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_node_link3.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/nodelink3.html")]
 	public class NodeLink3 : GraphModifier {
 		protected static Dictionary<GraphNode, NodeLink3> reference = new Dictionary<GraphNode, NodeLink3>();
 		public static NodeLink3 GetNodeLink (GraphNode node) {

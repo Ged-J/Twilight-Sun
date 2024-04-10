@@ -1381,15 +1381,17 @@ namespace Pathfinding {
 			var v2 = py.www - py.xyz;
 			var v3 = px.www - px.xyz;
 			var v4 = py.yzx - py.xyz;
-			var s = new bool3(
-				(long)v1.x * (long)v2.x - (long)v3.x * (long)v4.x >= 0,
-				(long)v1.y * (long)v2.y - (long)v3.y * (long)v4.y >= 0,
-				(long)v1.z * (long)v2.z - (long)v3.z * (long)v4.z >= 0
-				);
+			long check1 = (long)v1.x * (long)v2.x - (long)v3.x * (long)v4.x;
+			long check2 = (long)v1.y * (long)v2.y - (long)v3.y * (long)v4.y;
+			long check3 = (long)v1.z * (long)v2.z - (long)v3.z * (long)v4.z;
 			// Allow for both clockwise and counter-clockwise triangle layouts.
 			// This can be important sometimes on spherical worlds where the "upside-down" triangles
 			// will be seen as having the reverse winding order when projected onto a plane.
-			return math.all(s) || math.all(!s);
+			// We take care to include points right on the edge of the triangle.
+			return (check1 >= 0 & check2 >= 0 & check3 >= 0) | (check1 <= 0 & check2 <= 0 & check3 <= 0);
+
+			// Note: It might be tempting to try to use SIMD-like code for this. But the following requires a lot more instructions, as it turns out.
+			// return math.all(new bool3(check1 >= 0, check2 >= 0, check3 >= 0)) || math.all(new bool3(check1 <= 0, check2 <= 0, check3 <= 0));
 		}
 
 		/// <summary>

@@ -9,6 +9,11 @@ namespace Pathfinding.RVO {
 	using Unity.Burst;
 	using Unity.Profiling;
 	using Pathfinding.Jobs;
+#if MODULE_COLLECTIONS_2_1_0_OR_NEWER
+	using NativeHashMapIntInt = Unity.Collections.NativeHashMap<int, int>;
+#else
+	using NativeHashMapIntInt = Unity.Collections.NativeParallelHashMap<int, int>;
+#endif
 
 	[BurstCompile]
 	public static class RVOObstacleCache {
@@ -216,7 +221,7 @@ namespace Pathfinding.RVO {
 			}
 
 			MarkerAllocate.Begin();
-			var traceLookup = new Unity.Collections.NativeParallelHashMap<int, int>(obstacles.Length, Unity.Collections.Allocator.Temp);
+			var traceLookup = new NativeHashMapIntInt(obstacles.Length, Unity.Collections.Allocator.Temp);
 			// For each edge: Will be 0 if the segment should be ignored or if it has been visited, 1 if it has not been visited and has an ingoing edge, and 2 if it has not been visited and has no ingoing edge.
 			var priority = new NativeArray<byte>(obstacles.Length, Unity.Collections.Allocator.Temp, Unity.Collections.NativeArrayOptions.UninitializedMemory);
 			MarkerAllocate.End();

@@ -10,6 +10,7 @@ namespace Pathfinding {
 	/// Movement script for curved worlds.
 	/// This script inherits from AIPath, but adjusts its movement plane every frame using the ground normal.
 	/// </summary>
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/aipathalignedtosurface.html")]
 	public class AIPathAlignedToSurface : AIPath {
 		/// <summary>Scratch dictionary used to avoid allocations every frame</summary>
 		static readonly Dictionary<Mesh, int> scratchDictionary = new Dictionary<Mesh, int>();

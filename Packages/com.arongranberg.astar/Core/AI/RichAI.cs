@@ -365,9 +365,14 @@ namespace Pathfinding {
 			}
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::GetRemainingPath</summary>
+		/// <summary>\copydocref{IAstarAI.GetRemainingPath(List<Vector3>,bool)}</summary>
 		public void GetRemainingPath (List<Vector3> buffer, out bool stale) {
-			richPath.GetRemainingPath(buffer, simulatedPosition, out stale);
+			richPath.GetRemainingPath(buffer, null, simulatedPosition, out stale);
+		}
+
+		/// <summary>\copydocref{IAstarAI.GetRemainingPath(List<Vector3>,List<PathPartWithLinkInfo>,bool)}</summary>
+		public void GetRemainingPath (List<Vector3> buffer, List<PathPartWithLinkInfo> partsBuffer, out bool stale) {
+			richPath.GetRemainingPath(buffer, partsBuffer, simulatedPosition, out stale);
 		}
 
 		/// <summary>
@@ -424,7 +429,9 @@ namespace Pathfinding {
 					// Slow down as quickly as possible
 					velocity2D -= Vector2.ClampMagnitude(velocity2D, acceleration * deltaTime);
 					FinalMovement(simulatedPosition, deltaTime, float.PositiveInfinity, 1f, out nextPosition, out nextRotation);
-					steeringTarget = simulatedPosition;
+					if (funnel == null || isStopped) {
+						steeringTarget = simulatedPosition;
+					}
 				}
 			}
 		}
@@ -535,7 +542,7 @@ namespace Pathfinding {
 
 					// Inform the RVO system about the edges of the navmesh which will allow
 					// it to better keep inside the navmesh in the first place.
-					if (rvoController != null && rvoController.enabled) rvoController.rvoAgent.SetObstacleQuery(funnel.CurrentNode, seeker.traversableTags, movementPlane.ToSimpleMovementPlane());
+					if (rvoController != null && rvoController.enabled) rvoController.SetObstacleQuery(funnel.CurrentNode);
 
 					// We cannot simply check for equality because some precision may be lost
 					// if any coordinate transformations are used.

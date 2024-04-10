@@ -2,11 +2,12 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
+using Pathfinding.Util;
 using UnityEngine.EventSystems;
 
 namespace Pathfinding.Examples {
 	/// <summary>Helper script in the example scene 'Turn Based'</summary>
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_examples_1_1_turn_based_manager.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/turnbasedmanager.html")]
 	public class TurnBasedManager : VersionedMonoBehaviour {
 		TurnBasedAI selected;
 
@@ -27,7 +28,7 @@ namespace Pathfinding.Examples {
 
 		protected override void Awake () {
 			base.Awake();
-			eventSystem = FindAnyObjectByType<EventSystem>();
+			eventSystem = UnityCompatibility.FindAnyObjectByType<EventSystem>();
 		}
 
 		void Update () {

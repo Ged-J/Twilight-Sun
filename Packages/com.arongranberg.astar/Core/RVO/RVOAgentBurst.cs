@@ -757,7 +757,7 @@ namespace Pathfinding.RVO {
 				draw.PushMatrix(movementPlane.matrix);
 				draw.PushMatrix(new float4x4(
 					new float4(1, 0, 0, 0),
-					new float4(0, 0, 1, 0),
+					new float4(0, 0, -1, 0),
 					new float4(0, 1, 0, 0),
 					new float4(0, 0, 0, 1)
 					));

@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Pathfinding.Graphs.Navmesh {
 	using Pathfinding.Drawing;
+	using Pathfinding.Util;
 
 	/// <summary>
 	/// Pruning of recast navmesh regions.
@@ -11,7 +12,7 @@ namespace Pathfinding.Graphs.Navmesh {
 	/// See: Pathfinding.RecastGraph.relevantGraphSurfaceMode
 	/// </summary>
 	[AddComponentMenu("Pathfinding/Navmesh/RelevantGraphSurface")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_relevant_graph_surface.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/relevantgraphsurface.html")]
 	public class RelevantGraphSurface : VersionedMonoBehaviour {
 		private static RelevantGraphSurface root;
 
@@ -75,7 +76,7 @@ namespace Pathfinding.Graphs.Navmesh {
 		}
 
 		public static void FindAllGraphSurfaces () {
-			var srf = FindObjectsByType<RelevantGraphSurface>(FindObjectsSortMode.None);
+			var srf = UnityCompatibility.FindObjectsByTypeUnsorted<RelevantGraphSurface>();
 
 			for (int i = 0; i < srf.Length; i++) {
 				srf[i].OnDisable();

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsweapon.html")]
 	public class RTSWeapon : MonoBehaviour {
 		public bool ranged;
 		public float range;

@@ -9,6 +9,7 @@ namespace Pathfinding.Examples.RTS {
 	using Pathfinding.RVO;
 	using Pathfinding.Util;
 
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsunit.html")]
 	public class RTSUnit : VersionedMonoBehaviour {
 		public GameObject selectionIndicator;
 		public GameObject deathEffect;

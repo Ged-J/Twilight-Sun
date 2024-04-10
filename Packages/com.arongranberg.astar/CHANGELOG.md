@@ -1,3 +1,53 @@
+## 5.0.6 (2024-03-29)
+- Added \reflink{IAstarAI.GetRemainingPath(List<Vector3>,List<PathPartWithLinkInfo>,bool)} to get information about all the parts (including off-mesh links) of the path that the agent is currently following.
+		\shadowimage{generated/scenes/RecastOffMeshLinks/remainingpath.png}
+- Fixed \reflink{FollowerEntity.GetRemainingPath(List<Vector3>,bool)} would only output the path up to the next off-mesh link.
+- Fixed \reflink{FollowerEntity} could return incorrect values for a few properties (e.g. \reflink{FollowerEntity.hasPath}) after it had been disabled.
+- Fixed \reflink{RandomPath} could in very rare situations cause an exception that crashed the pathfinding threads, due to a race condition.
+- Fixed \reflink{MultiTargetPath} could calculate incorrect paths on grid graphs in some situations.
+- Fixed various edge cases when the AstarPath component is put in a prefab.
+- Fixed \reflink{RecastMeshObj} components could log an error message about being moved, even if they had not moved.
+- Fixed enabling \reflink{ABPath.calculatePartial} could cause an exception or an incorrect path to be calculated, in some situations.
+- Fixed several broken documentation links.
+- If an \reflink{RVOSimulator} is enabled in a scene that already has an active RVOSimulator, the new one will be disabled and a warning will be logged.
+		This now works like the \reflink{AstarPath} component, which also uses a singleton pattern.
+
+## 5.0.5 (2024-03-21)
+- Added \reflink{FollowerEntity.movementOverrides} to allow more easily overriding custom movement logic for the \reflink{FollowerEntity} component.
+		\video{generated/scenes/RecastTerrain/movementoverride.webm}
+- Made \reflink{GraphUpdateScene.GetGraphUpdate} virtual.
+- Fixed agents with the \reflink{FollowerEntity} component trying to traverse an off-mesh link could get stuck waiting for a long time at the beginning of the link, if either local avoidance or rotation smoothing was enabled.
+- Fixed help links for components used an incorrect extension, and would therefore often not work.
+
+## 5.0.4 (2024-03-15)
+- Added \reflink{RVOController.SetObstacleQuery}.
+- Added \reflink{GridGraph.GetBoundsFromRect}.
+- Exposed \reflink{AstarPath.Snapshot}.
+- Improve the \ref upgrading.
+- Clarified the \ref installation.
+- Fixed \reflink{NavmeshAdd} components not affecting completely empty recast graph tiles.
+- Fixed \reflink{RichAI.steeringTarget} being incorrect when very close to the destination.
+- Fixed \reflink{NavmeshBase.PointOnNavmesh} could return null right on the edge beteween two triangles, in some cases.
+- Fixed an exception that could happen when a degenerate triangle was generated when scanning a recast graph or a navmesh prefab.
+- Fixed exception that could happen sometimes when the \reflink{FollowerEntity} was simplifying its path on a grid graph.
+- Fixed \reflink{GridGraph.SetWalkability} not refreshing off-mesh links.
+
+## 5.0.3 (2024-03-09)
+- Added \reflink{NavmeshPrefab.removeTilesWhenDisabled}.
+- The \reflink{NavmeshPrefab} will now add its stored tiles to the graph every time the component is enabled, instead of only the first time.
+- Clarified the \ref installation.
+- Fixed teleport link in the off-mesh link example scene only worked in the start->end direction, but not in the end->start direction.
+- Fixed \reflink{FollowerEntity} not taking penalties into account when simplifying its path on grid graphs.
+- Fixed some data migrations for components would not run.
+- Fixed compilation errors in Unity 2022.1.
+- Fixed compilation warnings when using older versions of the collections package (before 2.1.0).
+- Fixed \reflink{RVOSimulator.useNavmeshAsObstacle} not working with the \reflink{AIPath} and \reflink{RichAI} movement scripts.
+- Renamed AgentOffMeshLinkTraversal.firstPosition to \reflink{AgentOffMeshLinkTraversal.relativeStart}.
+- Renamed AgentOffMeshLinkTraversal.secondPosition to \reflink{AgentOffMeshLinkTraversal.relativeEnd}.
+
+## 5.0.2 (2024-03-06)
+- Fixed some example scenes contained objects only intended for development, with missing scripts.
+
 ## 5.0.1 (2024-03-05)
 - The Asset Store version of the package is now distributed as an NPM package, instead of a UnityPackage.
 		This should make it easier to install and update the package.
@@ -249,7 +299,7 @@
 			This is controlled by the \link Pathfinding.RVO.RVOSimulator.hardCollisions RVOSimulator.hardCollisions\endlink field.
 			Enabling this will cause the system to try very hard to avoid any kind of agent overlap, similar to how a physics engine would do it.
 			This does not influence agent avoidance when the agents are not overlapping.
-		- RichAI now has a \reflink{RichAI.whenReachedDestination} field which behaves like the one that the AIPath script has had for some time.
+		- RichAI now has a \reflink{RichAI.whenCloseToDestination} field which behaves like the one that the AIPath script has had for some time.
 		- AIPath/RichAI now have options for more intelligently stopping earlier if there are already a lot of agents around the destination (see #Pathfinding.AIBase.rvoDensityBehavior).
 			This prevents the agents from walking around endlessly trying to reach the destination when many agents have the same destination.
 			This can only be used together with the local avoidance system, i.e. when there's also an RVOController attached to the character.
@@ -382,7 +432,7 @@
 		- Changed some private fields in \reflink{AIPath} to be protected instead, to make it easier to subclass it.
 		- Changed the signature of GraphNode.GetPortal to use out-parameters instead of output lists. The old signature will continue to work, but it is marked as deprecated.
 		- Moved ProceduralGraphMover and DynamicGridObstacle out from the ExampleScenes folder to the Utilities folder.
-		- Change: \reflink{LayerGridNode.HasAnyGridConnections} is now a property instead of a method.
+		- Change: \reflink{LevelGridNode.HasAnyGridConnections} is now a property instead of a method.
 		- Renamed GridGraph.maxClimb to the more descriptive name \reflink{Pathfinding.GridGraph.maxStepHeight}.
 - <b>Fixes</b>
 		- Fixed the AIPath.velocity and RichAI.velocity properties being very jittery (and often completely incorrect) when a rigidbody was attached to the character.
@@ -476,7 +526,7 @@
 - Fixed the grid graph's collision preview showing the side view when using 2D physics even though that's irrelevant for 2D.
 - Fixed an exception could in rare circumstances be thrown when using \reflink{ABPath.calculatePartial}.
 - Fixed editor-only data would sometimes not be loaded from graphs, leading to some settings in the graph inspectors to be lost (e.g. if the grid graph's collision preview was open or closed).
-- Fixed \reflink{TriangleMeshNode.ContainsConnection} could throw an exception if the node had no connections at all.
+- Fixed \reflink{GraphNode.ContainsOutgoingConnection} could throw an exception if the node had no connections at all.
 - Fixed calling \reflink{GraphUtilities.GetContours} with a grid graph that had one-way connections could cause an infinite loop.
 		Now an exception will be thrown if any one-way connections are found. This is reasonable because the contours of a grid graph are not really well-defined if any one-way connections exist.
 - Removed previously deprecated methods on the Path class: GetState, Log, LogError and ReleaseSilent. They have all been deprecated for over 5 years.
@@ -565,7 +615,7 @@
 - Changes
 		- The AIPath/RichAI.canSearch field has been replaced by the \reflink{AIBase.autoRepath.mode} field.
 			For backwards compatibility setting canSearch to false will set the mode to Never and setting it to true will set the mode to EveryNSeconds.
-		- The AIPath/RichAI.repathRate field has been replaced by the \reflink{AIBase.autoRepath.interval} field.
+		- The AIPath/RichAI.repathRate field has been replaced by the \reflink{AIBase.autoRepath.period} field.
 			For backwards compatibility you can both read and write to the old name and it will work as before.
 			Note that this field is not used for the new Dynamic path recalculation mode.
 		- The AIPath script will now clear the path it is following if a path calculation fails.

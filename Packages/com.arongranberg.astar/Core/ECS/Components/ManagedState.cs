@@ -61,39 +61,26 @@ namespace Pathfinding.ECS {
 		/// </summary>
 		public bool enableGravity = true;
 
-		/// <summary>
-		/// Path that is being calculated, if any.
-		///
-		/// We need to store this as an object, as otherwise otherwise the ECS will unnecessarily complain about nested native components.
-		/// </summary>
-		[System.NonSerialized]
-		object pendingPathBacking;
-
-		/// <summary>
-		/// Path that is being followed, if any.
-		///
-		/// We need to store this as an object, as otherwise otherwise the ECS will unnecessarily complain about nested native components.
-		/// </summary>
-		[System.NonSerialized]
-		object activePathBacking;
-
 		/// <summary>Path that is being calculated, if any</summary>
-		public Path pendingPath {
-			get => pendingPathBacking as Path;
-			private set => pendingPathBacking = value;
-		}
+		// Do not create a property visitor for this field, as otherwise the ECS infrastructure will try to patch entities inside it, and get very confused.
+		// I haven't been able to replicate this issue recently, but it has caused problems in the past.
+		// [Unity.Properties.DontCreateProperty]
+		public Path pendingPath { get; private set; }
 
 		/// <summary>
 		/// Path that is being followed, if any.
 		///
 		/// The agent may have moved away from this path since it was calculated. So it may not be up to date.
 		/// </summary>
-		public Path activePath {
-			get => activePathBacking as Path;
-			private set => activePathBacking = value;
-		}
+		// Do not create a property visitor for this field, as otherwise the ECS infrastructure will try to patch entities inside it, and get very confused.
+		// [Unity.Properties.DontCreateProperty]
+		public Path activePath { get; private set; }
 
-		/// <summary>\copydocref{IAstarAI.SetPath}</summary>
+		/// <summary>
+		/// \copydocref{IAstarAI.SetPath}.
+		///
+		/// Warning: In almost all cases you should use <see cref="FollowerEntity.SetPath"/> instead of this method.
+		/// </summary>
 		public static void SetPath (Path path, ManagedState state, in AgentMovementPlane movementPlane, ref DestinationPoint destination) {
 			if (path == null) {
 				state.CancelCurrentPathRequest();
@@ -146,7 +133,7 @@ namespace Pathfinding.ECS {
 
 					// Right now, the pathTracer is almost fully up to date.
 					// To make it fully up to date, we'd also have to call pathTracer.UpdateStart and pathTracer.UpdateEnd after this function.
-					// During normal path recalculations, the RepairPathJob will be scheduled right after this function, and it will
+					// During normal path recalculations, the JobRepairPath will be scheduled right after this function, and it will
 					// call those functions. The incomplete state will not be observable outside the system.
 					// When called from FollowerEntity, the SetPath method on that component will ensure that these methods are called.
 				} else {

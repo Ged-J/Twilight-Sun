@@ -26,6 +26,8 @@ namespace Pathfinding.ECS {
 	public partial struct FollowerControlSystem : ISystem {
 		EntityQuery entityQueryPrepare;
 		EntityQuery entityQueryControl;
+		EntityQuery entityQueryControlManaged;
+		EntityQuery entityQueryControlManaged2;
 		EntityQuery entityQueryOffMeshLink;
 		EntityQuery entityQueryOffMeshLinkCleanup;
 		ComponentTypeHandle<LocalTransform> LocalTransformTypeHandleRO;
@@ -39,6 +41,9 @@ namespace Pathfinding.ECS {
 		ComponentTypeHandle<ResolvedMovement> ResolvedMovementHandleRO;
 		RedrawScope redrawScope;
 		GCHandle entityManagerHandle;
+
+		static readonly ProfilerMarker MarkerMovementOverrideBeforeControl = new ProfilerMarker("MovementOverrideBeforeControl");
+		static readonly ProfilerMarker MarkerMovementOverrideAfterControl = new ProfilerMarker("MovementOverrideAfterControl");
 
 		public void OnCreate (ref SystemState state) {
 			entityManagerHandle = GCHandle.Alloc(state.EntityManager);
@@ -67,6 +72,45 @@ namespace Pathfinding.ECS {
 				ComponentType.ReadOnly<MovementSettings>(),
 				ComponentType.ReadOnly<ResolvedMovement>(),
 				ComponentType.ReadWrite<MovementControl>(),
+
+				ComponentType.Exclude<AgentOffMeshLinkTraversal>(),
+				ComponentType.ReadOnly<SimulateMovement>(),
+				ComponentType.ReadOnly<SimulateMovementControl>()
+				);
+
+			entityQueryControlManaged = state.GetEntityQuery(
+				ComponentType.ReadWrite<ManagedMovementOverrideBeforeControl>(),
+
+				ComponentType.ReadWrite<LocalTransform>(),
+				ComponentType.ReadWrite<AgentCylinderShape>(),
+				ComponentType.ReadWrite<AgentMovementPlane>(),
+				ComponentType.ReadWrite<DestinationPoint>(),
+				ComponentType.ReadWrite<MovementState>(),
+				ComponentType.ReadWrite<MovementStatistics>(),
+				ComponentType.ReadWrite<ManagedState>(),
+				ComponentType.ReadWrite<MovementSettings>(),
+				ComponentType.ReadWrite<ResolvedMovement>(),
+				ComponentType.ReadWrite<MovementControl>(),
+
+				ComponentType.Exclude<AgentOffMeshLinkTraversal>(),
+				ComponentType.ReadOnly<SimulateMovement>(),
+				ComponentType.ReadOnly<SimulateMovementControl>()
+				);
+
+			entityQueryControlManaged2 = state.GetEntityQuery(
+				ComponentType.ReadWrite<ManagedMovementOverrideAfterControl>(),
+
+				ComponentType.ReadWrite<LocalTransform>(),
+				ComponentType.ReadWrite<AgentCylinderShape>(),
+				ComponentType.ReadWrite<AgentMovementPlane>(),
+				ComponentType.ReadWrite<DestinationPoint>(),
+				ComponentType.ReadWrite<MovementState>(),
+				ComponentType.ReadWrite<MovementStatistics>(),
+				ComponentType.ReadWrite<ManagedState>(),
+				ComponentType.ReadWrite<MovementSettings>(),
+				ComponentType.ReadWrite<ResolvedMovement>(),
+				ComponentType.ReadWrite<MovementControl>(),
+
 				ComponentType.Exclude<AgentOffMeshLinkTraversal>(),
 				ComponentType.ReadOnly<SimulateMovement>(),
 				ComponentType.ReadOnly<SimulateMovementControl>()
@@ -165,8 +209,8 @@ namespace Pathfinding.ECS {
 
 					var linkInfo = state.pathTracer.GetLinkInfo(1);
 					commandBuffer.AddComponent(entity, new AgentOffMeshLinkTraversal {
-						firstPosition = linkInfo.firstPosition,
-						secondPosition = linkInfo.secondPosition,
+						relativeStart = linkInfo.relativeStart,
+						relativeEnd = linkInfo.relativeEnd,
 						isReverse = linkInfo.isReverse,
 					});
 					var ctx = new AgentOffMeshLinkTraversalContext {
@@ -177,7 +221,7 @@ namespace Pathfinding.ECS {
 					commandBuffer.AddComponent(entity, new ManagedAgentOffMeshLinkTraversal {
 						context = ctx,
 						stateMachine = stateMachine,
-						coroutine = stateMachine != null ? stateMachine.OnTraverseOffMeshLink(ctx).GetEnumerator() : StartOffMeshLinkTransitionJob.DefaultOnTraverseOffMeshLink(ctx).GetEnumerator(),
+						coroutine = stateMachine != null ? stateMachine.OnTraverseOffMeshLink(ctx).GetEnumerator() : JobStartOffMeshLinkTransition.DefaultOnTraverseOffMeshLink(ctx).GetEnumerator(),
 					});
 				}
 			}
@@ -190,12 +234,12 @@ namespace Pathfinding.ECS {
 			{
 				commandBuffer = new EntityCommandBuffer(systemState.WorldUpdateAllocator);
 				systemState.CompleteDependency();
-				new ManagedOffMeshLinkTransitionJob {
+				new JobManagedOffMeshLinkTransition {
 					commandBuffer = commandBuffer,
 					deltaTime = AIMovementSystemGroup.TimeScaledRateManager.CheapStepDeltaTime,
 				}.Run(entityQueryOffMeshLink);
 
-				new ManagedOffMeshLinkTransitionCleanupJob().Run(entityQueryOffMeshLinkCleanup);
+				new JobManagedOffMeshLinkTransitionCleanup().Run(entityQueryOffMeshLinkCleanup);
 #if MODULE_ENTITIES_1_0_8_OR_NEWER
 				commandBuffer.RemoveComponent<ManagedAgentOffMeshLinkTraversal>(entityQueryOffMeshLinkCleanup, EntityQueryCaptureMode.AtPlayback);
 #else
@@ -220,7 +264,7 @@ namespace Pathfinding.ECS {
 			// It should be safe to run it in parallel with other systems, but I'm not 100% sure.
 			// This job also accesses graph data, but this is safe because the AIMovementSystemGroup
 			// holds a read lock on the graph data while its subsystems are running.
-			systemState.Dependency = new RepairPathJob {
+			systemState.Dependency = new JobRepairPath {
 				LocalTransformTypeHandleRO = LocalTransformTypeHandleRO,
 				MovementStateTypeHandleRW = MovementStateTypeHandleRW,
 				AgentCylinderShapeTypeHandleRO = AgentCylinderShapeTypeHandleRO,
@@ -235,6 +279,17 @@ namespace Pathfinding.ECS {
 
 			// The full movement calculations do not necessarily need to be done every frame if the fps is high
 			if (!AIMovementSystemGroup.TimeScaledRateManager.CheapSimulationOnly) {
+				// This is a hook for other systems to modify the movement of agents.
+				// Normally it is not used.
+				if (!entityQueryControlManaged.IsEmpty) {
+					MarkerMovementOverrideBeforeControl.Begin();
+					systemState.Dependency.Complete();
+					new JobManagedMovementOverrideBeforeControl {
+						dt = SystemAPI.Time.DeltaTime,
+					}.Run(entityQueryControlManaged);
+					MarkerMovementOverrideBeforeControl.End();
+				}
+
 				redrawScope.Rewind();
 				var draw = DrawingManager.GetBuilder(redrawScope);
 				var navmeshEdgeData = AstarPath.active.hierarchicalGraph.navmeshEdges.GetNavmeshEdgeData(out var readLock);
@@ -245,6 +300,15 @@ namespace Pathfinding.ECS {
 				}.ScheduleParallel(entityQueryControl, JobHandle.CombineDependencies(systemState.Dependency, readLock.dependency));
 				readLock.UnlockAfter(systemState.Dependency);
 				draw.DisposeAfter(systemState.Dependency);
+
+				if (!entityQueryControlManaged2.IsEmpty) {
+					MarkerMovementOverrideAfterControl.Begin();
+					systemState.Dependency.Complete();
+					new JobManagedMovementOverrideAfterControl {
+						dt = SystemAPI.Time.DeltaTime,
+					}.Run(entityQueryControlManaged2);
+					MarkerMovementOverrideAfterControl.End();
+				}
 			}
 		}
 
@@ -319,7 +383,7 @@ namespace Pathfinding.ECS {
 							hierarchicalNodeIndex = state.hierarchicalNodeIndex,
 							targetRotation = resolvedMovement.targetRotation,
 							rotationSpeed = settings.follower.maxRotationSpeed,
-							targetRotationOffset = 0, // May be set by other systems
+							targetRotationOffset = state.rotationOffset, // May be modified by other systems
 						};
 					} else if (settings.isStopped) {
 						// The user has requested that the agent slow down as quickly as possible.
@@ -334,7 +398,7 @@ namespace Pathfinding.ECS {
 							hierarchicalNodeIndex = state.hierarchicalNodeIndex,
 							targetRotation = resolvedMovement.targetRotation,
 							rotationSpeed = settings.follower.maxRotationSpeed,
-							targetRotationOffset = 0, // May be set by other systems
+							targetRotationOffset = state.rotationOffset, // May be modified by other systems
 						};
 					} else {
 						var controlParams = new PIDMovement.ControlParams {
@@ -372,7 +436,7 @@ namespace Pathfinding.ECS {
 							targetRotation = rotation + control.rotationDelta,
 							targetRotationHint = rotation + AstarMath.DeltaAngle(rotation, control.targetRotation),
 							rotationSpeed = math.abs(control.rotationDelta / dt),
-							targetRotationOffset = 0, // May be set by other systems
+							targetRotationOffset = state.rotationOffset, // May be modified by other systems
 						};
 					}
 				} else {

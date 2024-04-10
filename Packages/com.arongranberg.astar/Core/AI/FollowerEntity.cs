@@ -16,6 +16,7 @@ namespace Pathfinding {
 	using Pathfinding.PID;
 	using Pathfinding.ECS.RVO;
 	using Pathfinding.ECS;
+	using UnityEngine.Assertions;
 
 	/// <summary>
 	/// Movement script that uses ECS.
@@ -419,7 +420,7 @@ namespace Pathfinding {
 							ref var movementSettings = ref movementSettingsAccessRO[storage];
 							ref var destinationPoint = ref destinationPointAccessRO[storage];
 							if (!nextCornersScratch.IsCreated) nextCornersScratch = new NativeList<float3>(4, Allocator.Persistent);
-							RepairPathJob.Execute(
+							JobRepairPath.Execute(
 								ref localTransform,
 								ref movementState,
 								ref shape,
@@ -460,7 +461,7 @@ namespace Pathfinding {
 		/// <summary>
 		/// The off-mesh link that the agent is currently traversing.
 		///
-		/// This will be a default <see cref="PathTracer.LinkInfo"/> if the agent is not traversing an off-mesh link (the <see cref="PathTracer.LinkInfo.link"/> field will be null).
+		/// This will be a default <see cref="OffMeshLinks.OffMeshLinkTracer"/> if the agent is not traversing an off-mesh link (the <see cref="OffMeshLinks.OffMeshLinkTracer.link"/> field will be null).
 		///
 		/// Note: If the off-mesh link is destroyed while the agent is traversing it, this property will still return the link.
 		/// But be careful about accessing properties like <see cref="OffMeshLinkSource.gameObject"/>, as that may refer to a destroyed gameObject.
@@ -469,18 +470,13 @@ namespace Pathfinding {
 		/// See: <see cref="onTraverseOffMeshLink"/>
 		/// See: <see cref="isTraversingOffMeshLink"/>
 		/// </summary>
-		public PathTracer.LinkInfo offMeshLink {
+		public OffMeshLinks.OffMeshLinkTracer offMeshLink {
 			get {
 				if (entityStorageCache.Update(World.DefaultGameObjectInjectionWorld, entity, out var entityManager, out var storage) && entityManager.HasComponent<ManagedAgentOffMeshLinkTraversal>(entity)) {
 					agentOffMeshLinkTraversalRO.Update(entityManager);
 					var linkTraversal = agentOffMeshLinkTraversalRO[storage];
 					var linkTraversalManaged = entityManager.GetComponentData<ManagedAgentOffMeshLinkTraversal>(entity);
-					return new PathTracer.LinkInfo {
-							   firstPosition = linkTraversal.firstPosition,
-							   secondPosition = linkTraversal.secondPosition,
-							   isReverse = linkTraversal.isReverse,
-							   link = linkTraversalManaged.context.link,
-					};
+					return new OffMeshLinks.OffMeshLinkTracer(linkTraversalManaged.context.link, linkTraversal.relativeStart, linkTraversal.relativeEnd, linkTraversal.isReverse);
 				} else {
 					return default;
 				}
@@ -518,8 +514,8 @@ namespace Pathfinding {
 		///         }
 		///
 		///         IEnumerable IOffMeshLinkStateMachine.OnTraverseOffMeshLink (AgentOffMeshLinkTraversalContext ctx) {
-		///             var start = (Vector3)ctx.linkInfo.firstPosition;
-		///             var end = (Vector3)ctx.linkInfo.secondPosition;
+		///             var start = (Vector3)ctx.linkInfo.relativeStart;
+		///             var end = (Vector3)ctx.linkInfo.relativeEnd;
 		///             var dir = end - start;
 		///
 		///             // Disable local avoidance while traversing the off-mesh link.
@@ -949,7 +945,7 @@ namespace Pathfinding {
 					ref var localTransform = ref localTransformAccessRO[storage];
 					ref var destinationPoint = ref destinationPointAccessRW[storage];
 					if (!nextCornersScratch.IsCreated) nextCornersScratch = new NativeList<float3>(4, Allocator.Persistent);
-					RepairPathJob.Execute(
+					JobRepairPath.Execute(
 						ref localTransform,
 						ref movementState,
 						ref shape,
@@ -1191,31 +1187,193 @@ namespace Pathfinding {
 			set => throw new NotImplementedException("The FollowerEntity does not support this property.");
 		}
 
+		/// <summary>
+		/// Provides callbacks during various parts of the movement calculations.
+		///
+		/// With this property you can register callbacks that will be called during various parts of the movement calculations.
+		/// These can be used to modify movement of the agent.
+		///
+		/// The following example demonstrates how one can hook into one of the available phases and modify the agent's movement.
+		/// In this case, the movement is modified to become wavy.
+		///
+		/// [Open online documentation to see videos]
+		///
+		/// <code>
+		/// using Pathfinding;
+		/// using Pathfinding.ECS;
+		/// using Unity.Entities;
+		/// using Unity.Mathematics;
+		/// using Unity.Transforms;
+		/// using UnityEngine;
+		///
+		/// public class MovementModifierNoise : MonoBehaviour {
+		///     /** How much noise to apply */
+		///     public float strength = 1;
+		///     /** How fast the noise should change */
+		///     public float frequency = 1;
+		///     float phase;
+		///
+		///     public void Start () {
+		///         // Register a callback to modify the movement.
+		///         // This will be called during every simulation step for the agent.
+		///         // This may be called multiple times per frame if the time scale is high or fps is low,
+		///         // or less than once per frame, if the fps is very high.
+		///         GetComponent<FollowerEntity>().movementOverrides.AddBeforeControlCallback(MovementOverride);
+		///
+		///         // Randomize a phase, to make different agents behave differently
+		///         phase = UnityEngine.Random.value * 1000;
+		///     }
+		///
+		///     public void OnDisable () {
+		///         // Remove the callback when the component is disabled
+		///         GetComponent<FollowerEntity>().movementOverrides.RemoveBeforeControlCallback(MovementOverride);
+		///     }
+		///
+		///     public void MovementOverride (Entity entity, float dt, ref LocalTransform localTransform, ref AgentCylinderShape shape, ref AgentMovementPlane movementPlane, ref DestinationPoint destination, ref MovementState movementState, ref MovementSettings movementSettings) {
+		///         // Rotate the next corner the agent is moving towards around the agent by a random angle.
+		///         // This will make the agent appear to move in a drunken fashion.
+		///
+		///         // Don't modify the movement as much if we are very close to the end of the path
+		///         var strengthMultiplier = Mathf.Min(1, movementState.remainingDistanceToEndOfPart / Mathf.Max(shape.radius, movementSettings.follower.slowdownTime * movementSettings.follower.speed));
+		///         strengthMultiplier *= strengthMultiplier;
+		///
+		///         // Generate a smoothly varying rotation angle
+		///         var rotationAngleRad = strength * strengthMultiplier * (Mathf.PerlinNoise1D(Time.time * frequency + phase) - 0.5f);
+		///         // Clamp it to at most plus or minus 90 degrees
+		///         rotationAngleRad = Mathf.Clamp(rotationAngleRad, -math.PI*0.5f, math.PI*0.5f);
+		///
+		///         // Convert the rotation angle to a world-space quaternion.
+		///         // We use the movement plane to rotate around the agent's up axis,
+		///         // making this code work in both 2D and 3D games.
+		///         var rotation = movementPlane.value.ToWorldRotation(rotationAngleRad);
+		///
+		///         // Rotate the direction to the next corner around the agent
+		///         movementState.nextCorner = localTransform.Position + math.mul(rotation, movementState.nextCorner - localTransform.Position);
+		///     }
+		/// }
+		/// </code>
+		///
+		/// There are a few different phases that you can register callbacks for:
+		///
+		/// - BeforeControl: Called before the agent's movement is calculated. At this point, the agent has a valid path, and the next corner that is moving towards has been calculated.
+		/// - AfterControl: Called after the agent's desired movement is calculated. The agent has stored its desired movement in the <see cref="MovementControl"/> component. Local avoidance has not yet run.
+		/// - BeforeMovement: Called right before the agent's movement is applied. At this point the agent's final movement (including local avoidance) is stored in the <see cref="ResolvedMovement"/> component, which you may modify.
+		///
+		/// Warning: If any agent has a callback registered here, a sync point will be created for all agents when the callback runs.
+		/// This can make the simulation not able to utilize multiple threads as effectively. If you have a lot of agents, consider using a custom entity component system instead.
+		/// But as always, profile first to see if this is actually a problem for your game.
+		///
+		/// The callbacks may be called multiple times per frame, if the fps is low, or if the time scale is high.
+		/// It may also be called less than once per frame if the fps is very high.
+		/// Each callback is provided with a dt parameter, which is the time in seconds since the last simulation step. You should prefer using this instead of Time.deltaTime.
+		///
+		/// See: <see cref="canMove"/>
+		/// See: <see cref="updatePosition"/>
+		/// See: <see cref="updateRotation"/>
+		///
+		/// Note: This API is unstable. It may change in future versions.
+		/// </summary>
+		public ManagedMovementOverrides movementOverrides => new ManagedMovementOverrides(entity, World.DefaultGameObjectInjectionWorld);
+
 		/// <summary>\copydoc Pathfinding::IAstarAI::FinalizeMovement</summary>
 		void IAstarAI.FinalizeMovement (Vector3 nextPosition, Quaternion nextRotation) {
-			throw new InvalidOperationException("The FollowerEntity component does not support FinalizeMovement. Use an ECS system to override movement instead");
+			throw new InvalidOperationException("The FollowerEntity component does not support FinalizeMovement. Use an ECS system to override movement instead, or use the movementOverrides property");
 		}
 
-		/// <summary>\copydocref{IAstarAI.GetRemainingPath}</summary>
+		/// <summary>
+		/// Fills buffer with the remaining path.
+		///
+		/// If the agent traverses off-mesh links, the buffer will still contain the whole path. Off-mesh links will be represented by a single line segment.
+		/// You can use the <see cref="GetRemainingPath(List<Vector3>,List<PathPartWithLinkInfo>,bool)"/> overload to get more detailed information about the different parts of the path.
+		///
+		/// <code>
+		/// var buffer = new List<Vector3>();
+		///
+		/// ai.GetRemainingPath(buffer, out bool stale);
+		/// for (int i = 0; i < buffer.Count - 1; i++) {
+		///     Debug.DrawLine(buffer[i], buffer[i+1], Color.red);
+		/// }
+		/// </code>
+		/// [Open online documentation to see images]
+		/// </summary>
+		/// <param name="buffer">The buffer will be cleared and replaced with the path. The first point is the current position of the agent.</param>
+		/// <param name="stale">May be true if the path is invalid in some way. For example if the agent has no path or if the agent has detected that some nodes in the path have been destroyed.</param>
 		public void GetRemainingPath (List<Vector3> buffer, out bool stale) {
+			GetRemainingPath(buffer, null, out stale);
+		}
+
+		/// <summary>
+		/// Fills buffer with the remaining path.
+		///
+		/// <code>
+		/// var buffer = new List<Vector3>();
+		/// var parts = new List<PathPartWithLinkInfo>();
+		///
+		/// ai.GetRemainingPath(buffer, parts, out bool stale);
+		/// foreach (var part in parts) {
+		///     for (int i = part.startIndex; i < part.endIndex; i++) {
+		///         Debug.DrawLine(buffer[i], buffer[i+1], part.type == Funnel.PartType.NodeSequence ? Color.red : Color.green);
+		///     }
+		/// }
+		/// </code>
+		/// [Open online documentation to see images]
+		///
+		/// Note: The <see cref="FollowerEntity"/> simplifies its path continuously as it moves along it. This means that the agent may not follow this exact path, if it manages to simplify the path later.
+		/// Furthermore, the agent will apply a steering behavior on top of this path, to make its movement smoother.
+		/// </summary>
+		/// <param name="buffer">The buffer will be cleared and replaced with the path. The first point is the current position of the agent.</param>
+		/// <param name="partsBuffer">If not null, this list will be filled with information about the different parts of the path. A part is a sequence of nodes or an off-mesh link.</param>
+		/// <param name="stale">May be true if the path is invalid in some way. For example if the agent has no path or if the agent has detected that some nodes in the path have been destroyed.</param>
+		public void GetRemainingPath (List<Vector3> buffer, List<PathPartWithLinkInfo> partsBuffer, out bool stale) {
+			buffer.Clear();
+			partsBuffer.Clear();
 			if (!entityExists) {
 				buffer.Add(position);
+				if (partsBuffer != null) partsBuffer.Add(new PathPartWithLinkInfo { startIndex = 0, endIndex = 0 });
 				stale = true;
 				return;
 			}
 
 			var ms = World.DefaultGameObjectInjectionWorld.EntityManager.GetComponentData<ManagedState>(entity);
+			stale = false;
 			if (ms.pathTracer.hasPath) {
 				var nativeBuffer = new NativeList<float3>(Allocator.Temp);
 				var scratch = new NativeArray<int>(8, Allocator.Temp);
 				ms.pathTracer.GetNextCorners(nativeBuffer, int.MaxValue, ref scratch, Allocator.Temp, ms.pathfindingSettings.traversalProvider, ms.activePath);
-				for (int i = 0; i < nativeBuffer.Length; i++) {
-					buffer.Add(nativeBuffer[i]);
+				if (partsBuffer != null) partsBuffer.Add(new PathPartWithLinkInfo(0, nativeBuffer.Length - 1));
+
+				if (ms.pathTracer.partCount > 1) {
+					// There are more parts in the path. We need to create a new PathTracer to get the other parts.
+					// This can be comparatively expensive, since it needs to generate all the other types from scratch.
+					var pathTracer = ms.pathTracer.Clone();
+					while (pathTracer.partCount > 1) {
+						pathTracer.PopParts(1, ms.pathfindingSettings.traversalProvider, ms.activePath);
+						var startIndex = nativeBuffer.Length;
+						if (pathTracer.GetPartType() == Funnel.PartType.NodeSequence) {
+							pathTracer.GetNextCorners(nativeBuffer, int.MaxValue, ref scratch, Allocator.Temp, ms.pathfindingSettings.traversalProvider, ms.activePath);
+							if (partsBuffer != null) partsBuffer.Add(new PathPartWithLinkInfo(startIndex, nativeBuffer.Length - 1));
+						} else {
+							// If the link contains destroyed nodes, we cannot get a valid link object.
+							// In that case, we stop here and mark the path as stale.
+							if (pathTracer.PartContainsDestroyedNodes()) {
+								stale = true;
+								break;
+							}
+							// Note: startIndex will refer to the last point in the previous part, and endIndex will refer to the first point in the next part
+							Assert.IsTrue(startIndex > 0);
+							if (partsBuffer != null) partsBuffer.Add(new PathPartWithLinkInfo(startIndex - 1, startIndex, pathTracer.GetLinkInfo()));
+						}
+						// We need to check if the path is stale after each part because the path tracer may have realized that some nodes are destroyed
+						stale |= pathTracer.isStale;
+					}
 				}
+
+				nativeBuffer.AsUnsafeSpan().Reinterpret<Vector3>().CopyTo(buffer);
 			} else {
 				buffer.Add(position);
+				partsBuffer.Add(new PathPartWithLinkInfo { startIndex = 0, endIndex = 0 });
 			}
-			stale = ms.pathTracer.isStale;
+			stale |= ms.pathTracer.isStale;
 		}
 
 		/// <summary>\copydoc Pathfinding::IAstarAI::Move</summary>
@@ -1224,7 +1382,7 @@ namespace Pathfinding {
 		}
 
 		void IAstarAI.MovementUpdate (float deltaTime, out Vector3 nextPosition, out Quaternion nextRotation) {
-			throw new InvalidOperationException("The FollowerEntity component does not support MovementUpdate. Use an ECS system to override movement instead");
+			throw new InvalidOperationException("The FollowerEntity component does not support MovementUpdate. Use an ECS system to override movement instead, or use the movementOverrides property");
 		}
 
 		/// <summary>\copydoc Pathfinding::IAstarAI::SearchPath</summary>
@@ -1402,7 +1560,7 @@ namespace Pathfinding {
 					if (!nextCornersScratch.IsCreated) nextCornersScratch = new NativeList<float3>(4, Allocator.Persistent);
 					ref var shape = ref agentCylinderShapeAccessRO[storage];
 					ref var movementSettings = ref movementSettingsAccessRO[storage];
-					RepairPathJob.Execute(
+					JobRepairPath.Execute(
 						ref localTransform,
 						ref movementState,
 						ref shape,

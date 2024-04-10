@@ -19,7 +19,7 @@ namespace Pathfinding {
 	///
 	/// See: http://digestingduck.blogspot.se/2010/03/simple-stupid-funnel-algorithm.html
 	/// </summary>
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_funnel_modifier.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/funnelmodifier.html")]
 	public class FunnelModifier : MonoModifier {
 		/// <summary>
 		/// Determines if funnel simplification is used.

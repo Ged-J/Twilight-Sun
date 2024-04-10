@@ -24,7 +24,7 @@ namespace Pathfinding {
 	/// </summary>
 	[UniqueComponent(tag = "ai.destination")]
 	[AddComponentMenu("Pathfinding/AI/Behaviors/AIDestinationSetter")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_a_i_destination_setter.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/aidestinationsetter.html")]
 	public class AIDestinationSetter : VersionedMonoBehaviour
 #if MODULE_ENTITIES
 		, IComponentData, IRuntimeBaker

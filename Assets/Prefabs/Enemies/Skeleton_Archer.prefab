@@ -978,11 +978,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 500
-  nextWaypointDistance: 3
-  slashGO: {fileID: 0}
-  projectileGO: {fileID: 8030311311283235054, guid: 2976891a97f607f49ae6e2584bf75d95, type: 3}
+  nextWaypointDistance: 2
+  slashGO: {fileID: 3169508740969938502, guid: b9ff9a4170649ec4db641dd9df2c67f0, type: 3}
+  projectileGO: {fileID: 184555355633261329, guid: d5dbb643a2bfe664597d34e95ff5714f, type: 3}
   slashDamage: 10
-  projectileDamage: 20
+  projectileDamage: 5
   isRanged: 1
   animator: {fileID: 0}
   detectionRange: 10
@@ -1062,7 +1062,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77871279b8b8a0b4c8808238215f57db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 159468907697258072, guid: b93792fc4d2da41479a663d68fa2e556, type: 3}
 --- !u!114 &-799878729224816816
 MonoBehaviour:
   m_ObjectHideFlags: 0

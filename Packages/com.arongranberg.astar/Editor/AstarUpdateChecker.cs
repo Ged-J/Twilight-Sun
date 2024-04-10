@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using Pathfinding.Util;
 #if UNITY_2018_1_OR_NEWER
 using UnityEngine.Networking;
 #endif
@@ -190,9 +191,9 @@ namespace Pathfinding {
 
 		static void DownloadVersionInfo () {
 			if (!Application.isPlaying) AstarPath.FindAstarPath();
-			var script = AstarPath.active != null ? AstarPath.active : Object.FindAnyObjectByType<AstarPath>();
+			var script = AstarPath.active != null ? AstarPath.active : UnityCompatibility.FindAnyObjectByType<AstarPath>();
 
-			bool mecanim = Object.FindAnyObjectByType<Animator>() != null;
+			bool mecanim = UnityCompatibility.FindAnyObjectByType<Animator>() != null;
 			string query = updateURL+
 						   "?v="+AstarPath.Version+
 						   "&pro=1"+

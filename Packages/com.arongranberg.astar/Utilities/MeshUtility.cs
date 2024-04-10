@@ -6,6 +6,12 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.Mathematics;
 
 namespace Pathfinding.Util {
+#if MODULE_COLLECTIONS_2_1_0_OR_NEWER
+	using NativeHashMapInt3Int = Unity.Collections.NativeHashMap<Int3, int>;
+#else
+	using NativeHashMapInt3Int = Unity.Collections.NativeParallelHashMap<Int3, int>;
+#endif
+
 	/// <summary>Helper class for working with meshes efficiently</summary>
 	[BurstCompile]
 	static class MeshUtility {
@@ -53,8 +59,12 @@ namespace Pathfinding.Util {
 			public NativeArray<Int3> vertices;
 			[ReadOnly]
 			public NativeArray<int> triangles;
+			[ReadOnly]
+			public NativeArray<int> tags;
+
 			public unsafe UnsafeAppendBuffer* outputVertices; // Element Type Int3
 			public unsafe UnsafeAppendBuffer* outputTriangles; // Element Type int
+			public unsafe UnsafeAppendBuffer* outputTags; // Element Type uint
 
 			public static int3 cross(int3 x, int3 y) => (x * y.yzx - x.yzx * y).yzx;
 
@@ -63,8 +73,9 @@ namespace Pathfinding.Util {
 				unsafe {
 					outputVertices->Reset();
 					outputTriangles->Reset();
+					outputTags->Reset();
 
-					var firstVerts = new NativeParallelHashMap<Int3, int>(vertices.Length, Allocator.Temp);
+					var firstVerts = new NativeHashMapInt3Int(vertices.Length, Allocator.Temp);
 
 					// Remove duplicate vertices
 					var compressedPointers = new NativeArray<int>(vertices.Length, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
@@ -82,7 +93,7 @@ namespace Pathfinding.Util {
 						}
 					}
 
-					for (int i = 0; i < triangles.Length; i += 3) {
+					for (int i = 0, j = 0; i < triangles.Length; i += 3, j++) {
 						var a = triangles[i+0];
 						var b = triangles[i+1];
 						var c = triangles[i+2];
@@ -97,6 +108,7 @@ namespace Pathfinding.Util {
 							continue;
 						}
 						outputTriangles->Add(new int3(compressedPointers[a], compressedPointers[b], compressedPointers[c]));
+						outputTags->Add(tags[j]);
 					}
 				}
 				if (numDegenerate > 0) {

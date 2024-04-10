@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsworldspaceui.html")]
 	public class RTSWorldSpaceUI : VersionedMonoBehaviour {
 		public Camera worldCamera;
 		List<Item> items = new List<Item>();

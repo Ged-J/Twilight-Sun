@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsbuildingqueueui.html")]
 	public class RTSBuildingQueueUI : VersionedMonoBehaviour {
 		RTSBuildingBarracks building;
 		public GameObject prefab;

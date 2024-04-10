@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Pathfinding.Util;
 
 namespace Pathfinding {
 	/// <summary>
@@ -44,7 +45,7 @@ namespace Pathfinding {
 		}
 
 		public static void FindAllModifiers () {
-			var allModifiers = FindObjectsByType<GraphModifier>(FindObjectsSortMode.InstanceID) as GraphModifier[];
+			var allModifiers = UnityCompatibility.FindObjectsByTypeSorted<GraphModifier>();
 
 			for (int i = 0; i < allModifiers.Length; i++) {
 				if (allModifiers[i].enabled) allModifiers[i].OnEnable();

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsbuildingbarracks.html")]
 	public class RTSBuildingBarracks : MonoBehaviour {
 		[System.Serializable]
 		public class UnitItem {

@@ -7,6 +7,11 @@ namespace Pathfinding.Graphs.Navmesh.Voxelization.Burst {
 	using System;
 	using Pathfinding.Jobs;
 	using Pathfinding.Util;
+#if MODULE_COLLECTIONS_2_1_0_OR_NEWER
+	using NativeHashMapInt3Int = Unity.Collections.NativeHashMap<Int3, int>;
+#else
+	using NativeHashMapInt3Int = Unity.Collections.NativeParallelHashMap<Int3, int>;
+#endif
 
 	/// <summary>VoxelMesh used for recast graphs.</summary>
 	public struct VoxelMesh : IArenaDisposable {
@@ -169,7 +174,7 @@ namespace Pathfinding.Graphs.Navmesh.Voxelization.Burst {
 		/// <summary>(i+1) % n assuming 0 <= i < n</summary>
 		static int Next (int i, int n) { return i+1 < n ? i+1 : 0; }
 
-		static int AddVertex (NativeList<Int3> vertices, NativeParallelHashMap<Int3, int> vertexMap, Int3 vertex) {
+		static int AddVertex (NativeList<Int3> vertices, NativeHashMapInt3Int vertexMap, Int3 vertex) {
 			if (vertexMap.TryGetValue(vertex, out var index)) {
 				return index;
 			}
@@ -206,7 +211,7 @@ namespace Pathfinding.Graphs.Navmesh.Voxelization.Burst {
 			var indices = new NativeArray<int>(maxVertsPerCont, Allocator.Temp);
 			var tris = new NativeArray<int>(maxVertsPerCont*3, Allocator.Temp);
 			var verticesToRemove = new NativeArray<bool>(maxVertices, Allocator.Temp);
-			var vertexPointers = new NativeParallelHashMap<Int3, int>(maxVertices, Allocator.Temp);
+			var vertexPointers = new NativeHashMapInt3Int(maxVertices, Allocator.Temp);
 
 			int polyIndex = 0;
 			int areaIndex = 0;

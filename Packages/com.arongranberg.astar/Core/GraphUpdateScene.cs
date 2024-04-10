@@ -33,7 +33,7 @@ namespace Pathfinding {
 	/// Note: The Y (up) axis of the transform that this component is attached to should be in the same direction as the up direction of the graph.
 	/// So if you for example have a grid in the XY plane then the transform should have the rotation (-90,0,0).
 	/// </summary>
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_graph_update_scene.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/graphupdatescene.html")]
 	public class GraphUpdateScene : GraphModifier {
 		/// <summary>Points which define the region to update</summary>
 		public Vector3[] points;
@@ -215,7 +215,7 @@ namespace Pathfinding {
 		///
 		/// See: <see cref="Apply"/>
 		/// </summary>
-		public GraphUpdateObject GetGraphUpdate () {
+		public virtual GraphUpdateObject GetGraphUpdate () {
 			GraphUpdateObject guo;
 
 			if (points == null || points.Length == 0) {

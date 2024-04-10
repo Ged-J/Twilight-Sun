@@ -59,7 +59,7 @@ namespace Pathfinding {
 		/// </summary>
 		/// <param name="context">Context for the traversal. Provides information about the link and the agent, as well as some helper methods for movement.
 		/// This context is only valid when this coroutine steps forward. Do not store it and use it elsewhere.</param>
-		System.Collections.IEnumerable OnTraverseOffMeshLink(ECS.AgentOffMeshLinkTraversalContext context) => ECS.StartOffMeshLinkTransitionJob.DefaultOnTraverseOffMeshLink(context);
+		System.Collections.IEnumerable OnTraverseOffMeshLink(ECS.AgentOffMeshLinkTraversalContext context) => ECS.JobStartOffMeshLinkTransition.DefaultOnTraverseOffMeshLink(context);
 
 		/// <summary>
 		/// Called when an agent finishes traversing an off-mesh link.
@@ -113,7 +113,7 @@ namespace Pathfinding {
 	/// Note: If you make any modifications to the node link's settings after it has been created, you need to call the <see cref="Apply"/> method in order to apply the changes to the graph.
 	/// </summary>
 	[AddComponentMenu("Pathfinding/Link2")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_node_link2.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/nodelink2.html")]
 	public class NodeLink2 : GraphModifier {
 		/// <summary>End position of the link</summary>
 		public Transform end;
@@ -209,8 +209,8 @@ namespace Pathfinding {
 		///         }
 		///
 		///         IEnumerable IOffMeshLinkStateMachine.OnTraverseOffMeshLink (AgentOffMeshLinkTraversalContext ctx) {
-		///             var start = (Vector3)ctx.linkInfo.firstPosition;
-		///             var end = (Vector3)ctx.linkInfo.secondPosition;
+		///             var start = (Vector3)ctx.linkInfo.relativeStart;
+		///             var end = (Vector3)ctx.linkInfo.relativeEnd;
 		///             var dir = end - start;
 		///
 		///             // Disable local avoidance while traversing the off-mesh link.

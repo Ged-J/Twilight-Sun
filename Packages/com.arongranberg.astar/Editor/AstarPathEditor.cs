@@ -3,6 +3,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Reflection;
 using Pathfinding.Graphs.Util;
+using Pathfinding.Util;
 
 namespace Pathfinding {
 	[CustomEditor(typeof(AstarPath))]
@@ -53,6 +54,7 @@ namespace Pathfinding {
 
 		/// <summary>AstarPath instance that is being inspected</summary>
 		public AstarPath script { get; private set; }
+		public bool isPrefab { get; private set; }
 
 		#region Styles
 
@@ -75,11 +77,12 @@ namespace Pathfinding {
 		/// <summary>Enables editor stuff. Loads graphs, reads settings and sets everything up</summary>
 		public void OnEnable () {
 			script = target as AstarPath;
+			isPrefab = PrefabUtility.IsPartOfPrefabAsset(script);
 
 			// Make sure all references are set up to avoid NullReferenceExceptions
 			script.ConfigureReferencesInternal();
 
-			HideToolsWhileActive();
+			if (!isPrefab) HideToolsWhileActive();
 
 			Undo.undoRedoPerformed += OnUndoRedoPerformed;
 
@@ -226,8 +229,14 @@ namespace Pathfinding {
 
 			GUILayout.Space(5);
 
-			if (GUILayout.Button(new GUIContent("Scan", "Recalculate all graphs. Shortcut cmd+alt+s ( ctrl+alt+s on windows )"))) {
-				MenuScan();
+			if (isPrefab) {
+				EditorGUI.BeginDisabledGroup(true);
+				GUILayout.Button(new GUIContent("Scan", "Cannot recalculate graphs on prefabs"));
+				EditorGUI.EndDisabledGroup();
+			} else {
+				if (GUILayout.Button(new GUIContent("Scan", "Recalculate all graphs. Shortcut cmd+alt+s ( ctrl+alt+s on windows )"))) {
+					RunTask(MenuScan);
+				}
 			}
 
 
@@ -377,11 +386,13 @@ namespace Pathfinding {
 				GUILayout.FlexibleSpace();
 
 				if (GUILayout.Button("Apply", GUILayout.Width(150))) {
-					if (EditorUtility.DisplayDialog("Apply Optimizations", "Applying optimizations requires (in case anything changed) a recompilation of the scripts. The inspector also has to be reloaded. Do you want to continue?", "Ok", "Cancel")) {
-						OptimizationHandler.ApplyDefines(defines);
-						AssetDatabase.Refresh();
-						defines = null;
-					}
+					RunTask(() => {
+						if (EditorUtility.DisplayDialog("Apply Optimizations", "Applying optimizations requires (in case anything changed) a recompilation of the scripts. The inspector also has to be reloaded. Do you want to continue?", "Ok", "Cancel")) {
+							OptimizationHandler.ApplyDefines(defines);
+							AssetDatabase.Refresh();
+							defines = null;
+						}
+					});
 				}
 				GUILayout.FlexibleSpace();
 				GUILayout.EndHorizontal();
@@ -643,7 +654,7 @@ namespace Pathfinding {
 			EditorGUILayout.EndHorizontal();
 
 			if (GUILayout.Button("Scan", darkSkin.button)) {
-				MenuScan();
+				RunTask(MenuScan);
 			}
 
 			// Invisible button to capture clicks. This prevents a click inside the box from causing some other GameObject to be selected.
@@ -717,26 +728,37 @@ namespace Pathfinding {
 				GUILayout.BeginHorizontal();
 
 				if (GUILayout.Button("Generate cache")) {
-					var serializationSettings = new Pathfinding.Serialization.SerializeSettings();
-					serializationSettings.nodes = true;
+					RunTask(() => {
+						var serializationSettings = new Pathfinding.Serialization.SerializeSettings();
 
-					if (EditorUtility.DisplayDialog("Scan before generating cache?", "Do you want to scan the graphs before saving the cache.\n" +
-						"If the graphs have not been scanned then the cache may not contain node data and then the graphs will have to be scanned at startup anyway.", "Scan", "Don't scan")) {
-						MenuScan();
-					}
+						if (isPrefab) {
+							if (!EditorUtility.DisplayDialog("Can only save settings", "Only graph settings can be saved when the AstarPath object is a prefab. Instantiate the prefab in a scene to be able to save node data as well.", "Save settings", "Cancel")) {
+								return;
+							}
+						} else {
+							serializationSettings.nodes = true;
 
-					// Save graphs
-					var bytes = script.data.SerializeGraphs(serializationSettings);
+							if (EditorUtility.DisplayDialog("Scan before generating cache?", "Do you want to scan the graphs before saving the cache.\n" +
+								"If the graphs have not been scanned then the cache may not contain node data and then the graphs will have to be scanned at startup anyway.", "Scan", "Don't scan")) {
+								MenuScan();
+							}
+						}
 
-					// Store it in a file
-					script.data.file_cachedStartup = SaveGraphData(bytes, script.data.file_cachedStartup);
-					script.data.cacheStartup = true;
+						// Save graphs
+						var bytes = script.data.SerializeGraphs(serializationSettings);
+
+						// Store it in a file
+						script.data.file_cachedStartup = SaveGraphData(bytes, script.data.file_cachedStartup);
+						script.data.cacheStartup = true;
+					});
 				}
 
 				if (GUILayout.Button("Load from cache")) {
-					if (EditorUtility.DisplayDialog("Are you sure you want to load from cache?", "Are you sure you want to load graphs from the cache, this will replace your current graphs?", "Yes", "Cancel")) {
-						script.data.LoadFromCache();
-					}
+					RunTask(() => {
+						if (EditorUtility.DisplayDialog("Are you sure you want to load from cache?", "Are you sure you want to load graphs from the cache, this will replace your current graphs?", "Yes", "Cancel")) {
+							script.data.LoadFromCache();
+						}
+					});
 				}
 
 				GUILayout.EndHorizontal();
@@ -745,45 +767,68 @@ namespace Pathfinding {
 
 				GUILayout.BeginHorizontal();
 				if (GUILayout.Button("Save to file")) {
-					string path = EditorUtility.SaveFilePanel("Save Graphs", "", "graph.bytes", "bytes");
+					RunTask(() => {
+						string path = EditorUtility.SaveFilePanel("Save Graphs", "", "graph.bytes", "bytes");
 
-					if (path != "") {
-						var serializationSettings = Pathfinding.Serialization.SerializeSettings.Settings;
-						if (EditorUtility.DisplayDialog("Include node data?", "Do you want to include node data in the save file. " +
-							"If node data is included the graph can be restored completely without having to scan it first.", "Include node data", "Only settings")) {
-							serializationSettings.nodes = true;
+						if (path != "") {
+							var serializationSettings = Pathfinding.Serialization.SerializeSettings.Settings;
+							if (isPrefab) {
+								if (!EditorUtility.DisplayDialog("Can only save settings", "Only graph settings can be saved when the AstarPath object is a prefab. Instantiate the prefab in a scene to be able to save node data as well.", "Save settings", "Cancel")) {
+									return;
+								}
+							} else {
+								if (EditorUtility.DisplayDialog("Include node data?", "Do you want to include node data in the save file. " +
+									"If node data is included the graph can be restored completely without having to scan it first.", "Include node data", "Only settings")) {
+									serializationSettings.nodes = true;
+								}
+							}
+
+							if (serializationSettings.nodes && EditorUtility.DisplayDialog("Scan before saving?", "Do you want to scan the graphs before saving? " +
+								"\nNot scanning can cause node data to be omitted from the file if the graph is not yet scanned.", "Scan", "Don't scan")) {
+								MenuScan();
+							}
+
+							uint checksum;
+							var bytes = SerializeGraphs(serializationSettings, out checksum);
+							Pathfinding.Serialization.AstarSerializer.SaveToFile(path, bytes);
+
+							EditorUtility.DisplayDialog("Done Saving", "Done saving graph data.", "Ok");
 						}
-
-						if (serializationSettings.nodes && EditorUtility.DisplayDialog("Scan before saving?", "Do you want to scan the graphs before saving? " +
-							"\nNot scanning can cause node data to be omitted from the file if the graph is not yet scanned.", "Scan", "Don't scan")) {
-							MenuScan();
-						}
-
-						uint checksum;
-						var bytes = SerializeGraphs(serializationSettings, out checksum);
-						Pathfinding.Serialization.AstarSerializer.SaveToFile(path, bytes);
-
-						EditorUtility.DisplayDialog("Done Saving", "Done saving graph data.", "Ok");
-					}
+					});
 				}
 
 				if (GUILayout.Button("Load from file")) {
-					string path = EditorUtility.OpenFilePanel("Load Graphs", "", "");
+					RunTask(() => {
+						string path = EditorUtility.OpenFilePanel("Load Graphs", "", "");
 
-					if (path != "") {
-						try {
-							byte[] bytes = Pathfinding.Serialization.AstarSerializer.LoadFromFile(path);
-							DeserializeGraphs(bytes);
-						} catch (System.Exception e) {
-							Debug.LogError("Could not load from file at '"+path+"'\n"+e);
+						if (path != "") {
+							try {
+								byte[] bytes = Pathfinding.Serialization.AstarSerializer.LoadFromFile(path);
+								DeserializeGraphs(bytes);
+							} catch (System.Exception e) {
+								Debug.LogError("Could not load from file at '"+path+"'\n"+e);
+							}
 						}
-					}
+					});
 				}
 
 				GUILayout.EndHorizontal();
 			}
 
 			serializationSettingsArea.End();
+		}
+
+		public void RunTask (System.Action action) {
+			EditorApplication.CallbackFunction wrapper = null;
+			wrapper = () => {
+				try {
+					// Run the callback only if the editor has not been disabled since the task was scheduled
+					if (script != null) action();
+				} finally {
+					EditorApplication.update -= wrapper;
+				}
+			};
+			EditorApplication.update += wrapper;
 		}
 
 		void DrawSettings () {
@@ -909,7 +954,7 @@ namespace Pathfinding {
 
 		/// <summary>Opens the A* Inspector and shows the section for editing tags</summary>
 		public static void EditTags () {
-			AstarPath astar = FindAnyObjectByType<AstarPath>();
+			AstarPath astar = UnityCompatibility.FindAnyObjectByType<AstarPath>();
 
 			if (astar != null) {
 				editTags = true;
@@ -1245,7 +1290,7 @@ namespace Pathfinding {
 			// Also don't do this if the graph is being updated as serializing the graph
 			// might interfere with that (in particular it might unblock the path queue).
 			// Also don't do this if the AstarPath object is not the active one, since serialization uses the singleton in some ways.
-			if (Application.isPlaying || script.isScanning || script.IsAnyWorkItemInProgress || AstarPath.active != script) {
+			if (Application.isPlaying || script.isScanning || script.IsAnyWorkItemInProgress) {
 				return;
 			}
 
@@ -1274,9 +1319,6 @@ namespace Pathfinding {
 		}
 
 		public byte[] SerializeGraphs (Pathfinding.Serialization.SerializeSettings settings, out uint checksum) {
-			byte[] bytes = null;
-			uint tmpChecksum = 0;
-
 			CheckGraphEditors();
 			// Serialize all graph editors
 			var output = new System.Text.StringBuilder();
@@ -1287,12 +1329,7 @@ namespace Pathfinding {
 				(graphEditors[i].target as IGraphInternals).SerializedEditorSettings = output.ToString();
 			}
 			// Serialize all graphs (including serialized editor data)
-			bytes = script.data.SerializeGraphs(settings, out tmpChecksum);
-
-			// Make sure the above work item is executed immediately
-			AstarPath.active.FlushWorkItems();
-			checksum = tmpChecksum;
-			return bytes;
+			return script.data.SerializeGraphs(settings, out checksum);
 		}
 
 		void DeserializeGraphs () {
@@ -1318,15 +1355,10 @@ namespace Pathfinding {
 		[MenuItem("Edit/Pathfinding/Scan All Graphs %&s")]
 		public static void MenuScan () {
 			if (AstarPath.active == null) {
-				AstarPath.active = FindAnyObjectByType<AstarPath>();
+				AstarPath.FindAstarPath();
 				if (AstarPath.active == null) {
 					return;
 				}
-			}
-
-			if (!Application.isPlaying && (AstarPath.active.data.graphs == null || AstarPath.active.data.graphTypes == null)) {
-				EditorUtility.DisplayProgressBar("Scanning", "Deserializing", 0);
-				AstarPath.active.data.DeserializeGraphs();
 			}
 
 			try {

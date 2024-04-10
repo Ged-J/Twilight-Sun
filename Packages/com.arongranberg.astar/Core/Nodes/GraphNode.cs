@@ -847,7 +847,7 @@ namespace Pathfinding {
 		/// </summary>
 		/// <param name="node">Node to add a connection to</param>
 		/// <param name="cost">Cost of traversing the connection. A cost of 1000 corresponds approximately to the cost of moving 1 world unit.</param>
-		/// <param name="shapeEdgeInfo">Info about how the edge is which edge on the shape of this node to use or \reflink{Connection.NoSharedEdge} if no edge is used. See \reflink{Connection.PackShapeEdgeInfo}.</param>
+		/// <param name="shapeEdgeInfo">Info about how the edge is which edge on the shape of this node to use or \reflink{Connection.NoSharedEdge} if no edge is used. See \reflink{Connection.PackShapeEdgeInfo(byte,byte,bool,bool,bool)}.</param>
 		public void AddPartialConnection (GraphNode node, uint cost, byte shapeEdgeInfo) {
 			if (node == null) throw new System.ArgumentNullException();
 

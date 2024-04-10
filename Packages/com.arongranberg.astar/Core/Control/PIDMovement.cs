@@ -63,7 +63,11 @@ namespace Pathfinding.PID {
 		/// </summary>
 		public float maxOnSpotRotationSpeed;
 
-		/// <summary>Time for the agent to slow down to a complete stop when it approaches the destination point</summary>
+		/// <summary>
+		/// Time for the agent to slow down to a complete stop when it approaches the destination point, in seconds.
+		///
+		/// One can calculate the deceleration like: <see cref="speed"/>/<see cref="slowdownTime"/> (with units m/s^2).
+		/// </summary>
 		public float slowdownTime;
 
 		/// <summary>

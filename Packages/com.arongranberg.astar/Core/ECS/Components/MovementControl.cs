@@ -4,6 +4,7 @@ using Unity.Mathematics;
 
 namespace Pathfinding.ECS {
 	using Pathfinding;
+	using Pathfinding.Util;
 
 	/// <summary>
 	/// Desired movement for an agent.

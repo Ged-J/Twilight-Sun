@@ -89,7 +89,10 @@ namespace Pathfinding {
 		/// <summary>Serialized data for all graphs and settings</summary>
 		private byte[] data {
 			get {
-				return dataString != null? System.Convert.FromBase64String(dataString) : null;
+				var d = dataString != null? System.Convert.FromBase64String(dataString) : null;
+				// Unity can initialize the dataString to an empty string, but that's not a valid zip file
+				if (d != null && d.Length == 0) return null;
+				return d;
 			}
 			set {
 				dataString = value != null? System.Convert.ToBase64String(value) : null;
@@ -284,8 +287,9 @@ namespace Pathfinding {
 
 		/// <summary>Deserializes graphs from <see cref="data"/></summary>
 		public void DeserializeGraphs () {
-			if (data != null) {
-				DeserializeGraphs(data);
+			var dataBytes = data;
+			if (dataBytes != null) {
+				DeserializeGraphs(dataBytes);
 			}
 		}
 

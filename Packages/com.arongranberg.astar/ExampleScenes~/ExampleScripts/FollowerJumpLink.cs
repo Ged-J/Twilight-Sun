@@ -6,6 +6,7 @@ using System.Collections;
 using Pathfinding.ECS;
 
 namespace Pathfinding.Examples {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/followerjumplink.html")]
 	public class FollowerJumpLink : MonoBehaviour, IOffMeshLinkHandler, IOffMeshLinkStateMachine {
 		// Register this class as the handler for off-mesh links when the component is enabled
 		void OnEnable() => GetComponent<NodeLink2>().onTraverseOffMeshLink = this;
@@ -22,8 +23,8 @@ namespace Pathfinding.Examples {
 		}
 
 		IEnumerable IOffMeshLinkStateMachine.OnTraverseOffMeshLink (AgentOffMeshLinkTraversalContext ctx) {
-			var start = (Vector3)ctx.linkInfo.firstPosition;
-			var end = (Vector3)ctx.linkInfo.secondPosition;
+			var start = (Vector3)ctx.linkInfo.relativeStart;
+			var end = (Vector3)ctx.linkInfo.relativeEnd;
 			var dir = end - start;
 
 			// Disable local avoidance while traversing the off-mesh link.
@@ -56,7 +57,9 @@ namespace Pathfinding.Examples {
 }
 /// <summary>[followerEntity.onTraverseOffMeshLink]</summary>
 #else
+using UnityEngine;
 namespace Pathfinding.Examples {
-	public class FollowerJumpLink : UnityEngine.MonoBehaviour {}
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/followerjumplink.html")]
+	public class FollowerJumpLink : MonoBehaviour {}
 }
 #endif

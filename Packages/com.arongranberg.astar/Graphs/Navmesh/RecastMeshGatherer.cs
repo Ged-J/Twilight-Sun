@@ -366,7 +366,7 @@ namespace Pathfinding.Graphs.Navmesh {
 				// This is unfortunately the fastest way to find all mesh filters.. and it is not particularly fast.
 				// Note: We have to sort these because the recast graph is not completely deterministic in terms of ordering of meshes.
 				// Different ordering can in rare cases lead to different spans being merged which can lead to different navmeshes.
-				var meshFilters = UnityEngine.Object.FindObjectsByType<MeshFilter>(FindObjectsSortMode.InstanceID);
+				var meshFilters = UnityCompatibility.FindObjectsByTypeSorted<MeshFilter>();
 				bool containedStatic = false;
 				List<Material> dummyMaterials = ListPool<Material>.Claim();
 
@@ -737,7 +737,7 @@ namespace Pathfinding.Graphs.Navmesh {
 			Collider[] colliderBuffer = null;
 			bool finiteBounds = math.all(math.isfinite(bounds.extents));
 			if (!finiteBounds) {
-				colliderBuffer = UnityEngine.Object.FindObjectsByType<Collider>(FindObjectsSortMode.InstanceID);
+				colliderBuffer = UnityCompatibility.FindObjectsByTypeSorted<Collider>();
 				numColliders = colliderBuffer.Length;
 			} else {
 				do {
@@ -993,7 +993,7 @@ namespace Pathfinding.Graphs.Navmesh {
 			bool finiteBounds = math.isfinite(bounds.extents.x) && math.isfinite(bounds.extents.y);
 
 			if (!finiteBounds) {
-				colliderBuffer = UnityEngine.Object.FindObjectsByType<Collider2D>(FindObjectsSortMode.InstanceID);
+				colliderBuffer = UnityCompatibility.FindObjectsByTypeSorted<Collider2D>();
 				numColliders = colliderBuffer.Length;
 			} else {
 				// Repeatedly do a OverlapArea check and make the buffer larger if it's too small.

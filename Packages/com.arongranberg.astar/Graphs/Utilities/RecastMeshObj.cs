@@ -40,7 +40,7 @@ namespace Pathfinding {
 	/// </summary>
 	[AddComponentMenu("Pathfinding/Navmesh/RecastMeshObj")]
 	[DisallowMultipleComponent]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_recast_mesh_obj.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/recastmeshobj.html")]
 	public class RecastMeshObj : VersionedMonoBehaviour {
 		/// <summary>Components are stored in a tree for fast lookups</summary>
 		protected static AABBTree<RecastMeshObj> tree = new AABBTree<RecastMeshObj>();
@@ -198,14 +198,14 @@ namespace Pathfinding {
 			if (!this.dynamic) {
 				var newBounds = CalculateBounds();
 				// When using static baching, the bounds of the object may shrink.
-				// In particular, if the object has been rotated, the renderers bounds will originally use an approximation of the AABB (presumably just the original AABB, but rotated and then axis aligned again),
+				// In particular, if the object has been rotated, the renderer's bounds will originally use an approximation of the AABB (presumably just the original AABB, but rotated and then axis aligned again),
 				// but after static batching, it actually looks at the new mesh (with the rotation baked in), and can generate a more precise AABB (which may be smaller).
 				// Therefore we say that it's ok as long as the original bounds contain the new bounds.
 				// This is fine, because the tree only needs a bounding box which contains the object. If it's too big, it will just be a bit more conservative.
 				// Also expand the original bounding box by a tiny amount to work around floating point errors.
 				originalBounds.Expand(0.001f);
 				newBounds.Encapsulate(originalBounds);
-				if (newBounds != originalBounds) {
+				if ((newBounds.center - originalBounds.center).sqrMagnitude > 0.01f*0.01f || (newBounds.extents - originalBounds.extents).sqrMagnitude > 0.01f*0.01f) {
 					Debug.LogError("The RecastMeshObj has been moved or resized since it was enabled. You should set dynamic to true for moving objects, or disable the component while moving it. The bounds changed from " + originalBounds + " to " + newBounds, this);
 				}
 			}
@@ -228,7 +228,7 @@ namespace Pathfinding {
 			BatchedEvents.ProcessEvent<RecastMeshObj>(BatchedEvents.Event.Custom);
 
 			if (!Application.isPlaying) {
-				var objs = FindObjectsByType<RecastMeshObj>(FindObjectsSortMode.InstanceID);
+				var objs = UnityCompatibility.FindObjectsByTypeSorted<RecastMeshObj>();
 				for (int i = 0; i < objs.Length; i++) {
 					if (objs[i].enabled) {
 						if (bounds.Intersects(objs[i].CalculateBounds())) {
@@ -240,7 +240,7 @@ namespace Pathfinding {
 			} else if (Time.timeSinceLevelLoad == 0) {
 				// Is is not guaranteed that all RecastMeshObj OnEnable functions have been called, so if it is the first frame since loading a new level
 				// try to initialize all RecastMeshObj objects.
-				var objs = FindObjectsByType<RecastMeshObj>(FindObjectsSortMode.None);
+				var objs = UnityCompatibility.FindObjectsByTypeUnsorted<RecastMeshObj>();
 				for (int i = 0; i < objs.Length; i++) objs[i].OnEnable();
 			}
 

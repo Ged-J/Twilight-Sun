@@ -5,6 +5,7 @@ using UnityEngine.Profiling;
 
 namespace Pathfinding.Util {
 	/// <summary>Helper for batching updates to many objects efficiently</summary>
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/batchedevents.html")]
 	public class BatchedEvents : VersionedMonoBehaviour {
 		const int ArchetypeOffset = 22;
 		const int ArchetypeMask = 0xFF << ArchetypeOffset;

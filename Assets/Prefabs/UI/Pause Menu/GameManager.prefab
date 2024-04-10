@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8102328865466210416}
   - component: {fileID: 6038079604055239186}
+  - component: {fileID: 6170003639307385252}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,3 +46,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+--- !u!114 &6170003639307385252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712050284096940641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf9980ca3658c647a9f99fde2a72d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTextValue: {fileID: 0}
+  volumeSlider: {fileID: 0}
+  confirmationPrompt: {fileID: 0}
+  defaultVolume: 0.5
+  ControllerSenTextValue: {fileID: 0}
+  controllerSenSlider: {fileID: 0}
+  defaultSen: 50
+  mainControllerSen: 50
+  invertYToggle: {fileID: 0}
+  _newGameLevel: 
+  noSavedGameDialog: {fileID: 0}

@@ -23,6 +23,7 @@ namespace Pathfinding.Examples {
 	/// Some components behave differently when used during an off-mesh link component.
 	/// For example the <see cref="MoveToAction"/> will move the agent without taking the navmesh into account (becoming a thin wrapper for <see cref="AgentOffMeshLinkTraversalContext.MoveTowards"/>).
 	/// </summary>
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/interactable.html")]
 	public class Interactable : VersionedMonoBehaviour, IOffMeshLinkHandler, IOffMeshLinkStateMachine {
 		public enum CoroutineAction {
 			Tick,
@@ -138,6 +139,27 @@ namespace Pathfinding.Examples {
 #if MODULE_ENTITIES
 			public override IEnumerator<CoroutineAction> Execute (AgentOffMeshLinkTraversalContext context) {
 				context.Teleport(destination.position);
+				yield break;
+			}
+#endif
+		}
+
+		[System.Serializable]
+		public class TeleportAgentOnLinkAction : InteractableAction {
+			public enum Destination {
+				/// <summary>The side of the link that the agent starts traversing it from</summary>
+				RelativeStartOfLink,
+				/// <summary>The side of the link that is opposite the one the agent starts traversing it from</summary>
+				RelativeEndOfLink,
+			}
+
+			public Destination destination = Destination.RelativeEndOfLink;
+
+			public override IEnumerator<CoroutineAction> Execute() => throw new System.NotImplementedException("This action only works for agents traversing off-mesh links.");
+
+#if MODULE_ENTITIES
+			public override IEnumerator<CoroutineAction> Execute (AgentOffMeshLinkTraversalContext context) {
+				context.Teleport(destination == Destination.RelativeStartOfLink ? context.linkInfo.relativeStart : context.linkInfo.relativeEnd);
 				yield break;
 			}
 #endif

@@ -17,13 +17,21 @@ namespace Pathfinding.ECS {
 	/// See: <see cref="ManagedAgentOffMeshLinkTraversal"/>
 	/// </summary>
 	public struct AgentOffMeshLinkTraversal : IComponentData {
-		/// <summary>\copydocref{PathTracer.LinkInfo.firstPosition}</summary>
-		public float3 firstPosition;
+		/// <summary>\copydocref{OffMeshLinks.OffMeshLinkTracer.relativeStart}</summary>
+		public float3 relativeStart;
 
-		/// <summary>\copydocref{PathTracer.LinkInfo.secondPosition}</summary>
-		public float3 secondPosition;
+		/// <summary>\copydocref{OffMeshLinks.OffMeshLinkTracer.relativeEnd}</summary>
+		public float3 relativeEnd;
 
-		/// <summary>\copydocref{PathTracer.LinkInfo.isReverse}</summary>
+		/// <summary>\copydocref{OffMeshLinks.OffMeshLinkTracer.relativeStart}. Deprecated: Use relativeStart instead</summary>
+		[System.Obsolete("Use relativeStart instead")]
+		public float3 firstPosition => relativeStart;
+
+		/// <summary>\copydocref{OffMeshLinks.OffMeshLinkTracer.relativeEnd}. Deprecated: Use relativeEnd instead</summary>
+		[System.Obsolete("Use relativeEnd instead")]
+		public float3 secondPosition => relativeEnd;
+
+		/// <summary>\copydocref{OffMeshLinks.OffMeshLinkTracer.isReverse}</summary>
 		public bool isReverse;
 	}
 
@@ -63,9 +71,12 @@ namespace Pathfinding.ECS {
 		internal unsafe LocalTransform* transformPtr;
 		internal unsafe AgentMovementPlane* movementPlanePtr;
 		public Entity entity;
+		[Unity.Properties.DontCreateProperty]
 		public ManagedState managedState;
-		public OffMeshLinks.OffMeshLinkSource link;
+		[Unity.Properties.DontCreateProperty]
+		public OffMeshLinks.OffMeshLinkConcrete link;
 		bool disabledRVO;
+		float backupRotationSmoothing = float.NaN;
 
 		/// <summary>
 		/// Delta time since the last link simulation.
@@ -143,10 +154,21 @@ namespace Pathfinding.ECS {
 			}
 		}
 
+		public void DisableRotationSmoothing () {
+			if (float.IsNaN(backupRotationSmoothing) && movementSettings.rotationSmoothing > 0) {
+				backupRotationSmoothing = movementSettings.rotationSmoothing;
+				movementSettings.rotationSmoothing = 0;
+			}
+		}
+
 		public void Restore () {
 			if (disabledRVO) {
 				managedState.enableLocalAvoidance = true;
 				disabledRVO = false;
+			}
+			if (!float.IsNaN(backupRotationSmoothing)) {
+				movementSettings.rotationSmoothing = backupRotationSmoothing;
+				backupRotationSmoothing = float.NaN;
 			}
 		}
 
@@ -160,7 +182,7 @@ namespace Pathfinding.ECS {
 		///
 		/// Returns: A <see cref="MovementTarget"/> struct which can be used to check if the target has been reached.
 		///
-		/// Note: This method completely ignores the navmesh.
+		/// Note: This method completely ignores the navmesh. It also overrides local avoidance, if enabled (other agents will still avoid it, but this agent will not avoid other agents).
 		///
 		/// TODO: The gravity property is not yet implemented. Gravity is always applied.
 		/// </summary>
@@ -169,6 +191,12 @@ namespace Pathfinding.ECS {
 		/// <param name="gravity">If true, gravity will be applied to the agent.</param>
 		/// <param name="slowdown">If true, the agent will slow down as it approaches the target.</param>
 		public MovementTarget MoveTowards (float3 position, quaternion rotation, bool gravity, bool slowdown) {
+			// If rotation smoothing was enabled, it could cause a very slow convergence to the target rotation.
+			// Therefore, we disable it here.
+			// The agent will try to remove its remaining rotation smoothing offset as quickly as possible.
+			// After the off-mesh link is traversed, the rotation smoothing will be automatically restored.
+			DisableRotationSmoothing();
+
 			var dirInPlane = movementPlane.ToPlane(position - transform.Position);
 			var remainingDistance = math.length(dirInPlane);
 			var maxSpeed = movementSettings.follower.Speed(slowdown ? remainingDistance : float.PositiveInfinity);
@@ -188,7 +216,7 @@ namespace Pathfinding.ECS {
 				targetRotation = targetRot,
 				targetRotationHint = targetRot,
 				targetRotationOffset = 0,
-				rotationSpeed = movementSettings.follower.rotationSpeed,
+				rotationSpeed = math.radians(movementSettings.follower.rotationSpeed),
 			};
 
 			return new MovementTarget {

@@ -138,7 +138,7 @@ namespace Pathfinding.ECS {
 		}
 
 		protected override void OnUpdate () {
-			// Various jobs (e.g. the RepairPathJob) in this system group may use graph data,
+			// Various jobs (e.g. the JobRepairPath) in this system group may use graph data,
 			// and they also need the graph data to be consistent during the whole update.
 			// For example the MovementState.hierarchicalNodeIndex field needs to be valid
 			// during the whole group update, as it may be used by the RVOSystem and FollowerControlSystem.

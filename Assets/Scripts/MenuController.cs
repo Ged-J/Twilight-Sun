@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     private PlayerController playerController;
-    private Animator playerAnimator;
+    /*private Animator playerAnimator;*/
     //public UICollection menu;
     public UICollection settings;
     //public TMP_Dropdown qualitydropdown;
@@ -22,7 +22,7 @@ public class MenuController : MonoBehaviour
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
-        playerAnimator = playerController.GetComponent<Animator>();
+        /*playerAnimator = playerController.GetComponent<Animator>();*/
         // qualitydropdown.value = 2;
        // SetQuality(2);
         Cursor.lockState = CursorLockMode.None;
@@ -87,7 +87,7 @@ public class MenuController : MonoBehaviour
         //    }
         //}
 
-        if (Input.GetButtonDown("Settings"))
+        /*if (Input.GetButtonDown("Settings"))
         {
             //if (!menu.Visible)
             //{
@@ -111,6 +111,6 @@ public class MenuController : MonoBehaviour
                     MusicManager.SetVolume(0.2f);
                 }
             //}
-        }
+        }*/
     }
 }

@@ -36,7 +36,7 @@ namespace Pathfinding {
 	[RequireComponent(typeof(Seeker))]
 	[AddComponentMenu("Pathfinding/AI/AILerp (2D,3D)")]
 	[UniqueComponent(tag = "ai")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_a_i_lerp.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/ailerp.html")]
 	public class AILerp : VersionedMonoBehaviour, IAstarAI {
 		/// <summary>
 		/// Determines how often it will search for new paths.
@@ -440,7 +440,7 @@ namespace Pathfinding {
 			ClearPath();
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::GetRemainingPath</summary>
+		/// <summary>\copydocref{IAstarAI.GetRemainingPath(List<Vector3>,bool)}</summary>
 		public void GetRemainingPath (List<Vector3> buffer, out bool stale) {
 			buffer.Clear();
 			if (!interpolator.valid) {
@@ -455,6 +455,16 @@ namespace Pathfinding {
 			// but sometimes - in particular when interpolating between two paths - the agent might at a slightly different position.
 			// So we replace the first point with the actual position of the agent.
 			buffer[0] = position;
+		}
+
+		/// <summary>\copydocref{IAstarAI.GetRemainingPath(List<Vector3>,List<PathPartWithLinkInfo>,bool)}</summary>
+		public void GetRemainingPath (List<Vector3> buffer, List<PathPartWithLinkInfo> partsBuffer, out bool stale) {
+			GetRemainingPath(buffer, out stale);
+			// This movement script doesn't keep track of path parts, so we just add the whole path as a single part
+			if (partsBuffer != null) {
+				partsBuffer.Clear();
+				partsBuffer.Add(new PathPartWithLinkInfo { startIndex = 0, endIndex = buffer.Count - 1 });
+			}
 		}
 
 		public void Teleport (Vector3 position, bool clearPath = true) {
@@ -623,7 +633,6 @@ namespace Pathfinding {
 
 				// We might be calculating another path at the same time, and we don't want that path to override this one. So cancel it.
 				if (seeker.GetCurrentPath() != path) seeker.CancelCurrentPathRequest();
-				else throw new System.ArgumentException("If you calculate the path using seeker.StartPath then this script will pick up the calculated path anyway as it listens for all paths the Seeker finishes calculating. You should not call SetPath in that case.");
 
 				OnPathComplete(path);
 			} else {

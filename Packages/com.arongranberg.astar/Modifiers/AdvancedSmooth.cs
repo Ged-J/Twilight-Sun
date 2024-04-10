@@ -10,7 +10,7 @@ namespace Pathfinding {
 	/// </summary>
 	[System.Serializable]
 	[System.Obsolete("This modifier is deprecated")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_advanced_smooth.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/advancedsmooth.html")]
 	public class AdvancedSmooth : MonoModifier {
 		public override int Order { get { return 40; } }
 

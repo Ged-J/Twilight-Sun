@@ -5,7 +5,7 @@ namespace Pathfinding {
 	using Pathfinding.Util;
 	using Pathfinding.Drawing;
 
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_animation_link.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/animationlink.html")]
 	public class AnimationLink : NodeLink2 {
 		public string clip;
 		public float animSpeed = 1;

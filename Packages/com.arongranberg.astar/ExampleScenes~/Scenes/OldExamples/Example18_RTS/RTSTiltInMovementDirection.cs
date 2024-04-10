@@ -4,6 +4,7 @@ using UnityEngine;
 using Pathfinding;
 
 namespace Pathfinding.Examples {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtstiltinmovementdirection.html")]
 	public class RTSTiltInMovementDirection : MonoBehaviour {
 		public Transform target;
 		public float amount;

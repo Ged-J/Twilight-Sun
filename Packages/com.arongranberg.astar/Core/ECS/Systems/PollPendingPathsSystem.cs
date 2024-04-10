@@ -94,19 +94,19 @@ namespace Pathfinding.ECS {
 			MovementStateTypeHandleRO.Update(ref systemState);
 			ResolvedMovementHandleRO.Update(ref systemState);
 
-			// The RepairPathJob may access graph data, so we need to lock it for reading.
+			// The JobRepairPath may access graph data, so we need to lock it for reading.
 			// Otherwise a graph update could start while the job was running, which could cause all kinds of problems.
 			var readLock = AstarPath.active.LockGraphDataForReading();
 
 			// Iterate over all agents and check if they have any pending paths, and if they have been calculated.
 			// If they have, we update the agent's current path to the newly calculated one.
 			//
-			// We do this by running the RepairPathJob for all agents that have just had their path calculated.
+			// We do this by running the JobRepairPath for all agents that have just had their path calculated.
 			// This ensures that all properties like remainingDistance are up to date immediately after
 			// a path recalculation.
-			// This may seem wasteful, but during the next update, the regular RepairPathJob job
+			// This may seem wasteful, but during the next update, the regular JobRepairPath job
 			// will most likely be able to early out, because we did most of the work here.
-			systemState.Dependency = new RepairPathJob {
+			systemState.Dependency = new JobRepairPath {
 				LocalTransformTypeHandleRO = LocalTransformTypeHandleRO,
 				MovementStateTypeHandleRW = MovementStateTypeHandleRW,
 				AgentCylinderShapeTypeHandleRO = AgentCylinderShapeTypeHandleRO,

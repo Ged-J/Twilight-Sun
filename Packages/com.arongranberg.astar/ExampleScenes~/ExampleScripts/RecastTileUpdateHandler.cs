@@ -44,7 +44,7 @@ namespace Pathfinding {
 	/// Deprecated: Since version 5.0, this component is not necessary, since normal graph updates on recast graphs are now batched together if they update the same tiles.
 	/// Use e.g. the <see cref="DynamicGridObstacle"/> component instead.
 	/// </summary>
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_recast_tile_update_handler.php")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/recasttileupdatehandler.html")]
 	public class RecastTileUpdateHandler : MonoBehaviour {
 		/// <summary>Graph that handles the updates</summary>
 		RecastGraph graph;

@@ -35,7 +35,7 @@ namespace Pathfinding.ECS {
 				// Decay the rotation offset
 				// var da = AstarMath.DeltaAngle(movementState.rotationOffset, 0);
 				// resolvedMovement.targetRotationOffset += da * dt * 2.0f;
-				resolvedMovement.targetRotationOffset = AstarMath.DeltaAngle(0, movementState.rotationOffset) * (1 - dt * 2.0f);
+				resolvedMovement.targetRotationOffset = AstarMath.DeltaAngle(0, resolvedMovement.targetRotationOffset) * (1 - dt * 2.0f);
 			}
 		}
 	}

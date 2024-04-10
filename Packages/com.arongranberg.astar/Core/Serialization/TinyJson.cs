@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Pathfinding.Util;
 using Pathfinding.WindowsStore;
 using System;
 using System.Linq;
@@ -405,7 +406,7 @@ namespace Pathfinding.Serialization {
 					}
 				}
 
-				foreach (var helper in UnityEngine.Object.FindObjectsByType<UnityReferenceHelper>(FindObjectsInactive.Include, FindObjectsSortMode.None)) {
+				foreach (var helper in UnityCompatibility.FindObjectsByTypeUnsortedWithInactive<UnityReferenceHelper>()) {
 					if (helper.GetGUID() == guid) {
 						if (Type.Equals(type, typeof(GameObject))) {
 							return helper.gameObject;

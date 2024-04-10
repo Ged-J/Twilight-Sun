@@ -5,6 +5,7 @@ using Pathfinding;
 using Pathfinding.Examples.RTS;
 
 namespace Pathfinding.Examples.RTS {
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/rtsharvester.html")]
 	public class RTSHarvester : MonoBehaviour {
 		RTSUnit unit;
 		Animator animator;

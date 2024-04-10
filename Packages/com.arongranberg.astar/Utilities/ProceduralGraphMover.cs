@@ -57,6 +57,7 @@ namespace Pathfinding {
 	/// See: large-worlds (view in online documentation for working links)
 	/// </summary>
 	[AddComponentMenu("Pathfinding/Procedural Graph Mover")]
+	[HelpURL("https://arongranberg.com/astar/documentation/stable/proceduralgraphmover.html")]
 	public class ProceduralGraphMover : VersionedMonoBehaviour {
 		/// <summary>
 		/// Grid graphs will be updated if the target is more than this number of nodes from the graph center.

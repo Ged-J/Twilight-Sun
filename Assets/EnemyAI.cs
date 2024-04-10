@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject slashGO;
     public GameObject projectileGO;
     public int slashDamage = 10;
-    public int projectileDamage = 20;
+    public int projectileDamage = 10;
     public bool isRanged = false;
 
     Path path;
@@ -59,7 +59,7 @@ public class EnemyAI : MonoBehaviour
         int difficultyScore = DifficultyManager.instance.GetCurrentDifficultyScore();
         // Adjust slashDamage and projectileDamage based on the difficulty score. Adjust formula as needed.
         slashDamage = 10 + (difficultyScore * 2); // Example: Starting at 10 damage, plus 2 for each difficulty level
-        projectileDamage = 20 + (difficultyScore * 4); // Adjust as needed
+        projectileDamage = 5 + (difficultyScore * 2); // Adjust as needed
     }
 
     void UpdatePath() {
@@ -114,19 +114,6 @@ public class EnemyAI : MonoBehaviour
 
         // Check if the enemy is moving significantly and update the animator
         animator.SetBool("isMoving", force.magnitude > 0.00001f); // Adjust threshold as needed
-
-        /*// Check the direction to the player
-        Vector2 playerDirection = target.position - transform.position;
-        if (playerDirection.x > 0)
-        {
-            // Player is to the right, face right
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        }
-        else if (playerDirection.x < 0)
-        {
-            // Player is to the left, face left
-            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        }*/
         
         // Access the SpriteRenderer component
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
