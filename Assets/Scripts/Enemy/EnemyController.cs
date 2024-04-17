@@ -99,8 +99,6 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             
-            /*LoadNextLevel();*/
-            
             if (this.GetComponent<DropItems>() != null)
             {
                 this.GetComponent<DropItems>().OnBossExecute();
@@ -125,23 +123,15 @@ public class EnemyController : MonoBehaviour
             {
                 spawner.EnemyDefeated(gameObject);
             }
-            enemyManager.EnemyDefeated();
+            if (enemyManager != null)
+            {
+                enemyManager.EnemyDefeated(); // Call only if enemyManager exists
+            }
             Destroy(this.gameObject);
             //newBloodSpatter = Instantiate(bloodSplatter, transform.position, transform.rotation);
             //Destroy(newBloodSpatter, 3);
         }
     }
-    
-    /*void LoadNextLevel()
-    {
-        // Load a specific scene
-        SceneManager.LoadScene("End Credits");
-
-        // Load the next scene in the build settings
-        // int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        // SceneManager.LoadScene(currentSceneIndex + 1);
-    }*/
-    
     
     
 }

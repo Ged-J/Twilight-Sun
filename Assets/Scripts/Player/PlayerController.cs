@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     //Basic attack
     private float myTimeBasicAttack = 0.0F;
     private float nextFire = 0.5F;
-    private float fireDelta = 0.5F;
+    private float fireDelta = 1.0F;
     private GameObject newBasicAttackProjectile;
     private Vector3 mousePos;
 

@@ -93130,11 +93130,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 6252387065265948926, guid: 34fc2cf4f21b17c40bbd0d0af2cbec2d, type: 3}
+  - {fileID: 6830702209680626403, guid: 13d610d781598fa4ba6f1e9ce6fc1ac1, type: 3}
   spawnArea: {fileID: 327795939}
-  numberOfEnemiesToSpawn: 1
+  numberOfEnemiesToSpawn: 4
   wasTriggered: 0
-  bossHealth: {fileID: 2103893746}
+  bossHealth: {fileID: 0}
 --- !u!4 &547303794
 Transform:
   m_ObjectHideFlags: 0
@@ -93166,9 +93166,13 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 1427589531638912821, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
+      propertyPath: m_GridSnapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1427589531638912822, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: orthographic size
-      value: 4
+      value: 5.625
       objectReference: {fileID: 0}
     - target: {fileID: 1427589531638912822, guid: 51eff10cfc616414b9ee8555bfc35287, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
@@ -93553,6 +93557,31 @@ PrefabInstance:
     - target: {fileID: 418177592944708286, guid: a895d385af243724f8b1f9d3fcfa4f17, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587823349749076564, guid: a895d385af243724f8b1f9d3fcfa4f17, type: 3}
+      propertyPath: m_text
+      value: 'Welcome To Twilight Sun!
+
+
+        Here are the Controls -
+
+
+        Move
+        - WASD
+
+
+        Basic Spell - Left Click
+
+
+        Interact - F
+
+
+        Dash
+        - Space'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587823349749076564, guid: a895d385af243724f8b1f9d3fcfa4f17, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 2612459840809318832, guid: a895d385af243724f8b1f9d3fcfa4f17, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -100485,11 +100514,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2103893746 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 820716598532886681, guid: e19e70157b3d87848bb8c75a2dc3a5cb, type: 3}
-  m_PrefabInstance: {fileID: 1398450105}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &250972676010483871
 PrefabInstance:
   m_ObjectHideFlags: 0

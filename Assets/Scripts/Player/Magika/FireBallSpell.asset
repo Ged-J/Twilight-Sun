@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireBallSpell
   m_EditorClassIdentifier: 
   id: 
-  icon: {fileID: 21300000, guid: db005d11213e5da47b9769c2e6c56eee, type: 3}
+  icon: {fileID: 21300000, guid: 2d49b702acf0ad14e946547270b5c94e, type: 3}
   isHealing: 0
   baseDamage: 20
   baseHealing: 0
