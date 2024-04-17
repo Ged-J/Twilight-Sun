@@ -31,13 +31,13 @@ public TMP_Text name;
         enemyController = FindObjectOfType<EnemyController>();
         if (enemyController != null)
         {
-            // First, split the name to remove the "(Clone)" part, if any
+            // splits the name to remove the "(Clone)" part if theres any
             string enemyName = enemyController.gameObject.name.Split(new string[] {"(Clone)"}, System.StringSplitOptions.None)[0].Trim();
         
-            // Next, replace underscores with an empty string to remove them
+            //replace underscores with an empty string to remove them
             enemyName = enemyName.Replace("_", " ");
         
-            // Assign the processed name to the text component
+            // Assigns the processed name to the text component
             name.text = enemyName;
         }
     }

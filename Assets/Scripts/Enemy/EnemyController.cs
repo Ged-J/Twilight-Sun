@@ -34,7 +34,6 @@ public class EnemyController : MonoBehaviour
         text = textGO.GetComponentInChildren<TextMeshProUGUI>();
         /*print(text);*/
         
-        // If for some reason it's not desirable or possible to call AdjustDifficulty here, make sure to directly invoke any necessary updates:
         AdjustDifficulty();
     }
 
@@ -53,22 +52,22 @@ public class EnemyController : MonoBehaviour
     {
         int previousMaxHealth = maxHealth;
         maxHealth = CalculateMaxHealthBasedOnDifficulty();
-        health = Mathf.Clamp(health, 0, maxHealth); // Adjust current health proportionally, if desired
+        health = Mathf.Clamp(health, 0, maxHealth); // Adjust current health proportionally
     
-        // Notify UI to update (this part will be implemented in a moment)
+        // Notify UI to update
         OnHealthChanged?.Invoke(health, maxHealth);
     }
     
     private int CalculateMaxHealthBasedOnDifficulty()
     {
         int difficultyScore = DifficultyManager.instance.GetCurrentDifficultyScore();
-        return 1 + (difficultyScore * 10); // Example formula, adjust as needed
+        return 1 + (difficultyScore * 10); 
     }
 
     private int CalculateHealthBasedOnDifficulty()
     {
         int difficultyScore = DifficultyManager.instance.GetCurrentDifficultyScore();
-        // Decrease or increase health based on difficulty score. Adjust formula as needed.
+        // Decrease or increase health based on difficulty score.
         return 100 + (difficultyScore * 20); // Example: Starting at 100 health, plus 20 for each difficulty level
     }
 

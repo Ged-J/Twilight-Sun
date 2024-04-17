@@ -3,7 +3,7 @@ guid: 1ccca43945f795c428293d752a0cc988
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,7 +134,2275 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Necromancer-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 1006
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55585dbec6e570c46b3d05ac320e8aea
+      internalID: -529857728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1006
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11300498550117e4faa6ea6f53794c3b
+      internalID: -1664316242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 1006
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 582433f111f071945a7ac3fbcffeae12
+      internalID: -290666675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 1006
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41e0c2c63c8a15d4f82dc399c22fcd65
+      internalID: -1441791960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 1006
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04eeca424c872f940a5a05507286edbd
+      internalID: 1696170787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 1006
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c53d93eb225aa48a82c3e67e0fe329
+      internalID: -1701994578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 1006
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f0ded6cd763ed74086e34e79bc640d5
+      internalID: 1406180897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 1006
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc27046ee49540546b0c5e93daa7909f
+      internalID: 1376195666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 916
+        width: 22
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a6dc6134ba81264ab215c9a533c3321
+      internalID: -1487682883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 916
+        width: 18
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 499e2981107fe2249983c927cb652459
+      internalID: 1914259268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 916
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44fc8e6a311ea5f449bd33db7f745b73
+      internalID: -1725663212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 916
+        width: 15
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a81ea8b635c10c409d719f6f8e8de8f
+      internalID: 345010759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 916
+        width: 14
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c15a0fc9be50d143b0ce0d539989ed3
+      internalID: 796427632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 916
+        width: 18
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df812ad5dd6fa3d41a850860432d515a
+      internalID: -127526747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 916
+        width: 22
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec29f31c41651f64fbce5f96e485d465
+      internalID: -31309489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 916
+        width: 23
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 156be5d6212ac8c4798ec3f7e25b2e35
+      internalID: 1407512938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 826
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4353763ca2cd6434bbb8c78fcf742e26
+      internalID: -1610373291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 826
+        width: 31
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d860fa5760152a642aa4be728828a16c
+      internalID: 232100805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 826
+        width: 30
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e81b59fbc1b17b44d89a9c1c40ee005a
+      internalID: -959285401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 826
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12ba86bc0a0b8b8458a4e920d47d4c91
+      internalID: -339448463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 826
+        width: 28
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7fe1d19140fa9f44a3c04166e1bcc8d
+      internalID: -2011629892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 826
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d53015804c00b44adb7095871ed482
+      internalID: 1268560086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 826
+        width: 30
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea366961cb667248af6f2955ff5111f
+      internalID: 1614116812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 826
+        width: 31
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 739fb156d79331b4cbd1d6b50a894b4c
+      internalID: -1170479430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 736
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8685323643b4bb4c8a29d91c82f2180
+      internalID: 1829185408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 736
+        width: 33
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a6ab4eedaa343649984c94eb73ceaee
+      internalID: 982341347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 736
+        width: 38
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77b9ea733db29484da5aeac0cad368df
+      internalID: 1918925565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 736
+        width: 35
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7fc21b332ed94044a487a3593fc24bd
+      internalID: 720449890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 646
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c77137f3b9cb474d8d61db3cbd49294
+      internalID: 267177865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 646
+        width: 33
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e1317e55f69664ca99f83b5258285c
+      internalID: 1981577816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 646
+        width: 38
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f718d39df214f6b499e610ec879cd4cf
+      internalID: 1244344009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 646
+        width: 35
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beea5e671f68ad644abc44ace9070d20
+      internalID: -2059156060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 556
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9abb0ceed0dc31439275f96f8403a51
+      internalID: -377044020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 556
+        width: 33
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73281aa8107219746bc04610723f41b1
+      internalID: -949050685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 556
+        width: 38
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b98333bde1879ec47a6688c2f2699e9a
+      internalID: -1475626931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 556
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 496e992c26fd5d3469a5ca83113319e1
+      internalID: -1314415671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 556
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 187783d0fa7f20949bf111f14a672dfd
+      internalID: -345657981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 556
+        width: 51
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220af3bcec2515843916ec19fe77c175
+      internalID: -1052512412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 556
+        width: 52
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f131348adf47ed9499b0edd16d22e8d5
+      internalID: 1933542933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 556
+        width: 57
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fceab5a0242558f49869614411b0be7b
+      internalID: -1518449819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 556
+        width: 67
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33007ff6ac26c4d4e8e4f82717cc1666
+      internalID: -1855504838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 556
+        width: 67
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e63d4af792d9d934eb49822d3ae5a825
+      internalID: 1549624330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 466
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ac672305da03a64daec65d6f16d6fe3
+      internalID: 612879108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 466
+        width: 33
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3159d29d64d09c34f9de519c2c1aca88
+      internalID: 714550072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 466
+        width: 38
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b5178b4e59e07342987befd2b1a871f
+      internalID: -1850690117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 466
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 919c61f5b3d7e1148822cbd07587df8f
+      internalID: -1590787135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 466
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 864e105f7cd0bb04191c1fc2893c22db
+      internalID: 1798611122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 466
+        width: 51
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 132fa46133436374793528b2ea13ae60
+      internalID: -2051621309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 466
+        width: 52
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81668f7309035d046a96041c28e154e8
+      internalID: -116465708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 466
+        width: 57
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ce9223374c5099479785e9edb00bac4
+      internalID: -670488935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 466
+        width: 67
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd51a909d2f9d2d4784c5197b77bb94d
+      internalID: -1825699050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 466
+        width: 67
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13ff40eb5d24f6042b34707d17fa87a9
+      internalID: -247793149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 376
+        width: 31
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396b0681fca31574eba30f379a28e740
+      internalID: -1956813945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 376
+        width: 31
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a4d27e52893664480710dfe9e82162
+      internalID: -650844391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 376
+        width: 23
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c546ca621f473b4ab303cb0ffae60c8
+      internalID: -2129145001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 376
+        width: 21
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25733812dc1286646a8a9d7eee05c197
+      internalID: 1263967383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 376
+        width: 23
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c602c47caec7c49ade27fb22e87cef
+      internalID: 1640701501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 376
+        width: 23
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ae2db2d3058f94fbe107cce884eae2
+      internalID: 2000553615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 376
+        width: 31
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff62051572c004243ab5ae15f19fe56b
+      internalID: 475666212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 376
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a71f7c0af440e4d4e9270bb439fca67d
+      internalID: 202764424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 376
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c37b463401b7242b6642b0b9cb031e
+      internalID: -1852035085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 376
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ce16f2a4854ccc4e99d1f9a999fb793
+      internalID: 757039818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_62
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 376
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5f5533923fb8e746b4fad64a83e551a
+      internalID: 424449301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_63
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 376
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e3f8764bac2d4e4b832839cc07b6dd2
+      internalID: 98239693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_64
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 376
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a211483be4e1c344c90e33bd42a22a8c
+      internalID: -179446716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_65
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 286
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a77e8fef3ca894f993e308071897e6
+      internalID: -595570005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_66
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 286
+        width: 33
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6f9c985c451dfe44977fcd676c09967
+      internalID: -1593497923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_67
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 286
+        width: 19
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e89075143e1aa345835d563c1268716
+      internalID: 698536745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_68
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 286
+        width: 21
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c8be2141b0d5f04cb1eb3a62243243f
+      internalID: 593526753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_69
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 286
+        width: 21
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 658654f82ac914140a5a9650a8ae7e0b
+      internalID: -241917962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_70
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 286
+        width: 18
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1cde0e331bb332458f2c941b22ae195
+      internalID: -6554667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_71
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 286
+        width: 25
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fc4aed672b78f449baaa46d18ae79ac
+      internalID: -1740404409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_72
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 332
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d825d4fdda93b314daad2a646234016c
+      internalID: -1189237405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_73
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 329
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd068a36a0a4e004cb65e24ba5621e09
+      internalID: -647219181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_74
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 286
+        width: 62
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 604e0f0443cf052459ca07d75e0b112c
+      internalID: -146448354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_75
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 337
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f065e0faa768bd240a5fc6c328f26dd0
+      internalID: 1490185219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_76
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 286
+        width: 67
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a81633a58e44d0c4b811ff7a4ff427b9
+      internalID: 634169633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_77
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 286
+        width: 31
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8948ebc1ae8e12c45a10ebf1f8864924
+      internalID: -1143045044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_78
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 286
+        width: 51
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bf30d8ea806e5b4980bb0e4d8023818
+      internalID: 1588627166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_79
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 312
+        width: 4
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98f751b320fb51445890d2085376d3ef
+      internalID: -665715325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_80
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 317
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af4221021a3eac040b9dcae53a47fa0d
+      internalID: -1576822728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_81
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 286
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3da45522aa78b347964bc06ce54c475
+      internalID: -143123270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_82
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 317
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8ebfa4b80e47664db7e466a21dcef38
+      internalID: 1707459149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_83
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 286
+        width: 25
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22509a9e514c6ff4092fb9e0be1a46f3
+      internalID: -1161035972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_84
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 286
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a212e252d918c045a8db1274b22a0e6
+      internalID: -2026164802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_85
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 309
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a1d05f5764c52418d636e97c239efc
+      internalID: 569814622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_86
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 307
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5637df3b114c8643b3d97846f5553fa
+      internalID: 228164600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_87
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 311
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 806aa21f03863654cac9a52460abefbf
+      internalID: -834739006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_88
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 286
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c7df49cfcb8714486becc113550d94
+      internalID: -853037638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_89
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 301
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c79f0bfda757dd40b912bc1c460116c
+      internalID: -1611836508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_90
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 299
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d477b8b4a1f6384784a768906224cfb
+      internalID: -2142898750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_91
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 303
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f32616a901c4ccf4984378893703255a
+      internalID: 251158405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_92
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 302
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91c077811003a9b44881f0b9eea0737c
+      internalID: 410259550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_93
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 303
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 931b3f0302afdc2409088b9b22c51c38
+      internalID: -991950081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_94
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 293
+        width: 10
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae88668609777ab46b48bd2fcf8ad63f
+      internalID: -741705296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_95
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 294
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c1d2ad8caca48459b1674b941e1a41
+      internalID: 1512327423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_96
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 294
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d8253728fa0f034a81e4a2e008efa57
+      internalID: 1049850741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_97
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 294
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73fff59a7e2a17245a4315ec53a52ce2
+      internalID: 693093616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_98
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 286
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96a1a5c1e5cdd3546a7ce627241acef4
+      internalID: -606284073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_99
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 196
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12320be1e02f7e443a075c3b46ba1f51
+      internalID: -432186128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_100
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 196
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78a6b0d2bbc0f714eb44ee26d33c9a51
+      internalID: -133572229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_101
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 196
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6569d5cbc26ae1040946a6fa0a350040
+      internalID: 1926745906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_102
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 107
+        width: 29
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91e735241ced3d44dbc0f71a0dbde4e3
+      internalID: 2055355301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_103
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 108
+        width: 29
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 260444300a332ba4f936b3b4b735111c
+      internalID: -678874286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_104
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 107
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61c32d4dcc8329b4881afce750ff001b
+      internalID: 2037182911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_105
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 15
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3ef5d5c2343eb64494b815b4ace8f2e
+      internalID: 1899951348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_106
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 15
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7d86e17dcdb93643831c01767e2ba78
+      internalID: 1529214790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Necromancer-Sheet_107
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 15
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d575314bd372f9488d0f11a7eeb2272
+      internalID: 1081714705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +2413,115 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Necromancer-Sheet_0: -529857728
+      Necromancer-Sheet_1: -1664316242
+      Necromancer-Sheet_10: -1725663212
+      Necromancer-Sheet_100: -133572229
+      Necromancer-Sheet_101: 1926745906
+      Necromancer-Sheet_102: 2055355301
+      Necromancer-Sheet_103: -678874286
+      Necromancer-Sheet_104: 2037182911
+      Necromancer-Sheet_105: 1899951348
+      Necromancer-Sheet_106: 1529214790
+      Necromancer-Sheet_107: 1081714705
+      Necromancer-Sheet_11: 345010759
+      Necromancer-Sheet_12: 796427632
+      Necromancer-Sheet_13: -127526747
+      Necromancer-Sheet_14: -31309489
+      Necromancer-Sheet_15: 1407512938
+      Necromancer-Sheet_16: -1610373291
+      Necromancer-Sheet_17: 232100805
+      Necromancer-Sheet_18: -959285401
+      Necromancer-Sheet_19: -339448463
+      Necromancer-Sheet_2: -290666675
+      Necromancer-Sheet_20: -2011629892
+      Necromancer-Sheet_21: 1268560086
+      Necromancer-Sheet_22: 1614116812
+      Necromancer-Sheet_23: -1170479430
+      Necromancer-Sheet_24: 1829185408
+      Necromancer-Sheet_25: 982341347
+      Necromancer-Sheet_26: 1918925565
+      Necromancer-Sheet_27: 720449890
+      Necromancer-Sheet_28: 267177865
+      Necromancer-Sheet_29: 1981577816
+      Necromancer-Sheet_3: -1441791960
+      Necromancer-Sheet_30: 1244344009
+      Necromancer-Sheet_31: -2059156060
+      Necromancer-Sheet_32: -377044020
+      Necromancer-Sheet_33: -949050685
+      Necromancer-Sheet_34: -1475626931
+      Necromancer-Sheet_35: -1314415671
+      Necromancer-Sheet_36: -345657981
+      Necromancer-Sheet_37: -1052512412
+      Necromancer-Sheet_38: 1933542933
+      Necromancer-Sheet_39: -1518449819
+      Necromancer-Sheet_4: 1696170787
+      Necromancer-Sheet_40: -1855504838
+      Necromancer-Sheet_41: 1549624330
+      Necromancer-Sheet_42: 612879108
+      Necromancer-Sheet_43: 714550072
+      Necromancer-Sheet_44: -1850690117
+      Necromancer-Sheet_45: -1590787135
+      Necromancer-Sheet_46: 1798611122
+      Necromancer-Sheet_47: -2051621309
+      Necromancer-Sheet_48: -116465708
+      Necromancer-Sheet_49: -670488935
+      Necromancer-Sheet_5: -1701994578
+      Necromancer-Sheet_50: -1825699050
+      Necromancer-Sheet_51: -247793149
+      Necromancer-Sheet_52: -1956813945
+      Necromancer-Sheet_53: -650844391
+      Necromancer-Sheet_54: -2129145001
+      Necromancer-Sheet_55: 1263967383
+      Necromancer-Sheet_56: 1640701501
+      Necromancer-Sheet_57: 2000553615
+      Necromancer-Sheet_58: 475666212
+      Necromancer-Sheet_59: 202764424
+      Necromancer-Sheet_6: 1406180897
+      Necromancer-Sheet_60: -1852035085
+      Necromancer-Sheet_61: 757039818
+      Necromancer-Sheet_62: 424449301
+      Necromancer-Sheet_63: 98239693
+      Necromancer-Sheet_64: -179446716
+      Necromancer-Sheet_65: -595570005
+      Necromancer-Sheet_66: -1593497923
+      Necromancer-Sheet_67: 698536745
+      Necromancer-Sheet_68: 593526753
+      Necromancer-Sheet_69: -241917962
+      Necromancer-Sheet_7: 1376195666
+      Necromancer-Sheet_70: -6554667
+      Necromancer-Sheet_71: -1740404409
+      Necromancer-Sheet_72: -1189237405
+      Necromancer-Sheet_73: -647219181
+      Necromancer-Sheet_74: -146448354
+      Necromancer-Sheet_75: 1490185219
+      Necromancer-Sheet_76: 634169633
+      Necromancer-Sheet_77: -1143045044
+      Necromancer-Sheet_78: 1588627166
+      Necromancer-Sheet_79: -665715325
+      Necromancer-Sheet_8: -1487682883
+      Necromancer-Sheet_80: -1576822728
+      Necromancer-Sheet_81: -143123270
+      Necromancer-Sheet_82: 1707459149
+      Necromancer-Sheet_83: -1161035972
+      Necromancer-Sheet_84: -2026164802
+      Necromancer-Sheet_85: 569814622
+      Necromancer-Sheet_86: 228164600
+      Necromancer-Sheet_87: -834739006
+      Necromancer-Sheet_88: -853037638
+      Necromancer-Sheet_89: -1611836508
+      Necromancer-Sheet_9: 1914259268
+      Necromancer-Sheet_90: -2142898750
+      Necromancer-Sheet_91: 251158405
+      Necromancer-Sheet_92: 410259550
+      Necromancer-Sheet_93: -991950081
+      Necromancer-Sheet_94: -741705296
+      Necromancer-Sheet_95: 1512327423
+      Necromancer-Sheet_96: 1049850741
+      Necromancer-Sheet_97: 693093616
+      Necromancer-Sheet_98: -606284073
+      Necromancer-Sheet_99: -432186128
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

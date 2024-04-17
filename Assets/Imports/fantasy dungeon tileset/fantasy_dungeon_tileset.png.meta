@@ -1,0 +1,2385 @@
+fileFormatVersion: 2
+guid: c28fa7769184d47498a080b49b454de0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6517047517423391288
+    second: fantasy_dungeon_tileset_0
+  - first:
+      213: -8509547735681382038
+    second: fantasy_dungeon_tileset_1
+  - first:
+      213: -2259224997932690258
+    second: fantasy_dungeon_tileset_2
+  - first:
+      213: -1033058030920430955
+    second: fantasy_dungeon_tileset_3
+  - first:
+      213: 3554453936754099423
+    second: fantasy_dungeon_tileset_4
+  - first:
+      213: -1626805871774167923
+    second: fantasy_dungeon_tileset_5
+  - first:
+      213: -9150715517910989455
+    second: fantasy_dungeon_tileset_6
+  - first:
+      213: 7747105598460654129
+    second: fantasy_dungeon_tileset_7
+  - first:
+      213: -5244172478525271333
+    second: fantasy_dungeon_tileset_8
+  - first:
+      213: 7630141509535108173
+    second: fantasy_dungeon_tileset_9
+  - first:
+      213: -8699354824629779104
+    second: fantasy_dungeon_tileset_10
+  - first:
+      213: 5851119467087968032
+    second: fantasy_dungeon_tileset_11
+  - first:
+      213: 1033925233881088866
+    second: fantasy_dungeon_tileset_12
+  - first:
+      213: 8396954736753223259
+    second: fantasy_dungeon_tileset_13
+  - first:
+      213: 5641438145662627423
+    second: fantasy_dungeon_tileset_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 256
+        width: 59
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 832dc543034317a50800000000000000
+      internalID: 6517047517423391288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_1
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 319
+        width: 290
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a694b7f7b6308e980800000000000000
+      internalID: -8509547735681382038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_2
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 255
+        width: 162
+        height: 289
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea41a8295de95a0e0800000000000000
+      internalID: -2259224997932690258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_3
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 191
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59a8f9ab137d9a1f0800000000000000
+      internalID: -1033058030920430955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_4
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 214
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd487bee505f35130800000000000000
+      internalID: 3554453936754099423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_5
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 215
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8c8166cdac6c69e0800000000000000
+      internalID: -1626805871774167923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_6
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 215
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 175c24218b0220180800000000000000
+      internalID: -9150715517910989455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_7
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 206
+        width: 28
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 132ffa1fe7f338b60800000000000000
+      internalID: 7747105598460654129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_8
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 206
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd21f946ae4f837b0800000000000000
+      internalID: -5244172478525271333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_9
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 160
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4c8dc5d645b3e960800000000000000
+      internalID: 7630141509535108173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_10
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 167
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0658cdec0eea54780800000000000000
+      internalID: -8699354824629779104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 027b62e972a533150800000000000000
+      internalID: 5851119467087968032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_12
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 96
+        width: 33
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2638bc1b58d395e00800000000000000
+      internalID: 1033925233881088866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_13
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 91
+        width: 18
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b56a53718d9f78470800000000000000
+      internalID: 8396954736753223259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_14
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 32
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5e2f869a1a6a4e40800000000000000
+      internalID: 5641438145662627423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_18
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 191
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a8972c1c0318c14790898bc5ec9ebf7
+      internalID: -1046640016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_15
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 191
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c9e2d59d1010744a88f1a25dc64d2d9
+      internalID: -1016222690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_16
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 191
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65c47935e0ed3f1418843eecbe1cf79c
+      internalID: -1600398794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c1650ba74d0c3c4fbd65800e9e492c3
+      internalID: 596337001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_19
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 159
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa3271f761bb504ca55baa617c2467c
+      internalID: -1353873306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_20
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 159
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4009b655bec40ba49bc875d879174486
+      internalID: 74542837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_21
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 159
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2595f31fb1d621841b96c53bc76290ab
+      internalID: 1375800480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_22
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 159
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18a4f1a485cca434e939dab68c17eefd
+      internalID: -1708104373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_23
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 112eb4aafafa3124d9a68d924a35cef3
+      internalID: 1340697295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_24
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 128
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8051854b5dafb948bce349cc982b50c
+      internalID: 1777944272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_25
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 128
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d2e0482d2f082a468b4c12d07a5e08a
+      internalID: -1969683767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_26
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 128
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f09c98de28b10c4393ba16391641112
+      internalID: -981100531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_27
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 128
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 201b797c5dfc618489cf5d3fa61fd354
+      internalID: 150419765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_28
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 523239bfdb323b24b8336b327fa96421
+      internalID: 1175813900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_29
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 96
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 472e781224f4d71458ba0ec1e74630fa
+      internalID: 1303844881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_30
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 96
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45c7043986e3f3040b6a53b53f426df4
+      internalID: -1377392657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_31
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 96
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd328f797cc19624abe47cbe1bca8547
+      internalID: 1995175837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_32
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 96
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08e8f21a23777174bb7ed42758be541d
+      internalID: -1485410824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_33
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1122c57e5a081241a4adb1776fcea41
+      internalID: 255740917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_34
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 64
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 567dff77891a5cf47855987fd17efd39
+      internalID: -1615941017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_35
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 64
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cda6dfa6f492fb4eb7f442fd1ee25da
+      internalID: 1777285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_36
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 64
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0f2084305a904d42a7e45b9c585eee6
+      internalID: -505428979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_37
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 64
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97bc6767ff448cf449af67ff11094878
+      internalID: 1787877471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_38
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f7bcadc47ef97347aa4def65a0c6c5b
+      internalID: -1929107643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_39
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 33
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce5630a518677f4e9bf54e9d52f7d01
+      internalID: 129714039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_40
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 96
+        width: 31
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a95014eedd76ec4882ac83a42781f63
+      internalID: 953796415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_41
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 96
+        width: 32
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7749318cee19f114e98f369eafbafaed
+      internalID: -398331575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_42
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 96
+        width: 32
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 284761fdde07a7445ac93e18a3fedc6e
+      internalID: -474595476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_43
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 96
+        width: 32
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c664811c83d97a49a1554e925d37b3c
+      internalID: -1978231975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_44
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 96
+        width: 32
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d784e4c980e8ba419401b3bc4f395bf
+      internalID: -459377699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_45
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 96
+        width: 32
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc0273431fdab7a4caca226f86c6c65f
+      internalID: 1512957676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_46
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce919cc856bd87409b314e714569536
+      internalID: -1396385462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_47
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7acf0d0aafa660340951fb5853a95034
+      internalID: -1678575924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_48
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaa806dcd1b6d37488b7ee191fcfabe4
+      internalID: 424073742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_49
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7787a129e0b69c7448bcb8207bee8e44
+      internalID: -419786442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_50
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c231f595f7ab8524080dbae8492f5d5d
+      internalID: -1800961745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_51
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 166707d6338effa4d90bc5c59cb4d05d
+      internalID: 678485462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_52
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 96
+        width: 38
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42fceb1276ab91f41baf11f095ee7a55
+      internalID: 127906743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_53
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 127
+        width: 38
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d38a8eac686db2e4ebeea4b3c4c9c312
+      internalID: -1354654203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_54
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 359cf43a7690f3844850cf6e1468b098
+      internalID: 260171845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_55
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a4ac848f56daa14391904fdefbed57b
+      internalID: 1611889507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_56
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 160
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 845e36aa46e489f49b2ad7de9cab51cc
+      internalID: -370361880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_57
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 160
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a9ccad195681684aa8318eb690ce3c4
+      internalID: 2004789343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_58
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 128
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fa04af56497b33449c36cc09d8e4373
+      internalID: 768874732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_59
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 154
+        width: 6
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 680b319d5ca8e7f46b9ac83d1a06e2ed
+      internalID: -331879100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_60
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 155
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb90a73f99284143b5e4d557d7b90ce
+      internalID: -181917217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_61
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 171
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d90f2998bbf0a264bacec1b3fdf9d8b3
+      internalID: -1654457118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_62
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 187
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd6ed001feb89a44094831d2e5b7f46b
+      internalID: 2028116990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_63
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 218
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60db5a269f041c479112340e012fc9a
+      internalID: 1417568729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_64
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 203
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2685577a2b8ee4b8b2825afb43ab57
+      internalID: 1101003691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_65
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 218
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 476fc0ce7646c7f4b868fdbe8e44f4a1
+      internalID: -511895468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_66
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 218
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 754cd7471946a8d4086c71d58ab0f64d
+      internalID: 1106468514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_67
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 218
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c99d005d1959c0d429a263e52ca2de2f
+      internalID: 808240269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_68
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 218
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23a1df06543afa64ab95979eeacc712f
+      internalID: -803279285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_69
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 218
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e44f7da02624df4c998b69648c70c28
+      internalID: 768659299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_70
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 218
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 166d4277c01db074a8307c6d4d1e0e08
+      internalID: -1390564369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_71
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 218
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917b0aec0fe38414e82c7970de689451
+      internalID: -613952034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_72
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 203
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e901766293cb587479a30b05bea7c838
+      internalID: 977156415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_73
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 188
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba71332665665ba4f94f54ebf423dcb4
+      internalID: 9110717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_74
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 171
+        width: 6
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d943233f3a53d264182e6d573c593fc9
+      internalID: -1466635212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_75
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 151
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f16772609c7503f4aab4d01949058933
+      internalID: -1319372340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_76
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 134
+        width: 6
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3790e9b230d0d344ba63ca377e99699e
+      internalID: 1787610436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_77
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 112
+        width: 6
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75d0cc2fe39e9b545b00d4ae24a8f8af
+      internalID: -453192746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_78
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 96
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc7461e2ec091cc4583be000abe5f619
+      internalID: -1820092474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_79
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 107
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6674b7858f7618e41a3a8566bf84d206
+      internalID: -2103835128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_80
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 93
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0addea1c15750164e8179cc28b0a6fa2
+      internalID: -463015633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_81
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 80
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bb21036c29978f4e951db8c5e366973
+      internalID: -422702609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_82
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 64
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b151f3edba10c645963fc6ed92088ea
+      internalID: 2090807565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_83
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 64
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd6c5c5cfe2aa84891c037192698bc4
+      internalID: 943378952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_84
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 64
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 130f1a6fc755f794b981a4cfc4663b2d
+      internalID: -1647488814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_85
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 64
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53047db83f673e149ad48cbb90d97e32
+      internalID: 1007011422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_86
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 64
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19f243b0c93bb574ab6a8e43da9e9e71
+      internalID: 580987686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_87
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 64
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b38196d441359994dbdf7d7f37182874
+      internalID: 26785369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_88
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 64
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0864e95dc49e3b4f92938a9dbb7526f
+      internalID: 59739058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_89
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 81
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 939c745e3d09c5241a1cb5a1007dd928
+      internalID: 492959635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_90
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 97
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1230aa373d9e7b44383eca83569168cb
+      internalID: -109864252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_91
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 96
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffe49693bf98bc040b3b678e67fcd6b6
+      internalID: 1676816910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_92
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 112
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a734dbe6035d454ca25a2bd831e6731
+      internalID: -1584999211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_93
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 128
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 269878b39ecf22f4eb81f960a9096127
+      internalID: 2126813231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_94
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 144
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f12ea145b7f1447419616994a4e0b88c
+      internalID: -128791857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_95
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4b79b7af1dfbcf488bd272c3fb93589
+      internalID: 1304534346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_96
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 261
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eea56e7c8fe46d418f5d670323cdd3c
+      internalID: 487635910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_97
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 259
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f417f24556affa842ab22c04c7f2af5b
+      internalID: -580784160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_98
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 264
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68c613b2a3fbee444ae357e17ca999a3
+      internalID: 1561727751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy_dungeon_tileset_99
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220b826d26375a344beead23b9c2151e
+      internalID: -644690873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 0043611e633103944a885ba227d53629
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      fantasy_dungeon_tileset_0: 6517047517423391288
+      fantasy_dungeon_tileset_1: -8509547735681382038
+      fantasy_dungeon_tileset_10: -8699354824629779104
+      fantasy_dungeon_tileset_11: 5851119467087968032
+      fantasy_dungeon_tileset_12: 1033925233881088866
+      fantasy_dungeon_tileset_13: 8396954736753223259
+      fantasy_dungeon_tileset_14: 5641438145662627423
+      fantasy_dungeon_tileset_15: -1016222690
+      fantasy_dungeon_tileset_16: -1600398794
+      fantasy_dungeon_tileset_17: 596337001
+      fantasy_dungeon_tileset_18: -1046640016
+      fantasy_dungeon_tileset_19: -1353873306
+      fantasy_dungeon_tileset_2: -2259224997932690258
+      fantasy_dungeon_tileset_20: 74542837
+      fantasy_dungeon_tileset_21: 1375800480
+      fantasy_dungeon_tileset_22: -1708104373
+      fantasy_dungeon_tileset_23: 1340697295
+      fantasy_dungeon_tileset_24: 1777944272
+      fantasy_dungeon_tileset_25: -1969683767
+      fantasy_dungeon_tileset_26: -981100531
+      fantasy_dungeon_tileset_27: 150419765
+      fantasy_dungeon_tileset_28: 1175813900
+      fantasy_dungeon_tileset_29: 1303844881
+      fantasy_dungeon_tileset_3: -1033058030920430955
+      fantasy_dungeon_tileset_30: -1377392657
+      fantasy_dungeon_tileset_31: 1995175837
+      fantasy_dungeon_tileset_32: -1485410824
+      fantasy_dungeon_tileset_33: 255740917
+      fantasy_dungeon_tileset_34: -1615941017
+      fantasy_dungeon_tileset_35: 1777285
+      fantasy_dungeon_tileset_36: -505428979
+      fantasy_dungeon_tileset_37: 1787877471
+      fantasy_dungeon_tileset_38: -1929107643
+      fantasy_dungeon_tileset_39: 129714039
+      fantasy_dungeon_tileset_4: 3554453936754099423
+      fantasy_dungeon_tileset_40: 953796415
+      fantasy_dungeon_tileset_41: -398331575
+      fantasy_dungeon_tileset_42: -474595476
+      fantasy_dungeon_tileset_43: -1978231975
+      fantasy_dungeon_tileset_44: -459377699
+      fantasy_dungeon_tileset_45: 1512957676
+      fantasy_dungeon_tileset_46: -1396385462
+      fantasy_dungeon_tileset_47: -1678575924
+      fantasy_dungeon_tileset_48: 424073742
+      fantasy_dungeon_tileset_49: -419786442
+      fantasy_dungeon_tileset_5: -1626805871774167923
+      fantasy_dungeon_tileset_50: -1800961745
+      fantasy_dungeon_tileset_51: 678485462
+      fantasy_dungeon_tileset_52: 127906743
+      fantasy_dungeon_tileset_53: -1354654203
+      fantasy_dungeon_tileset_54: 260171845
+      fantasy_dungeon_tileset_55: 1611889507
+      fantasy_dungeon_tileset_56: -370361880
+      fantasy_dungeon_tileset_57: 2004789343
+      fantasy_dungeon_tileset_58: 768874732
+      fantasy_dungeon_tileset_59: -331879100
+      fantasy_dungeon_tileset_6: -9150715517910989455
+      fantasy_dungeon_tileset_60: -181917217
+      fantasy_dungeon_tileset_61: -1654457118
+      fantasy_dungeon_tileset_62: 2028116990
+      fantasy_dungeon_tileset_63: 1417568729
+      fantasy_dungeon_tileset_64: 1101003691
+      fantasy_dungeon_tileset_65: -511895468
+      fantasy_dungeon_tileset_66: 1106468514
+      fantasy_dungeon_tileset_67: 808240269
+      fantasy_dungeon_tileset_68: -803279285
+      fantasy_dungeon_tileset_69: 768659299
+      fantasy_dungeon_tileset_7: 7747105598460654129
+      fantasy_dungeon_tileset_70: -1390564369
+      fantasy_dungeon_tileset_71: -613952034
+      fantasy_dungeon_tileset_72: 977156415
+      fantasy_dungeon_tileset_73: 9110717
+      fantasy_dungeon_tileset_74: -1466635212
+      fantasy_dungeon_tileset_75: -1319372340
+      fantasy_dungeon_tileset_76: 1787610436
+      fantasy_dungeon_tileset_77: -453192746
+      fantasy_dungeon_tileset_78: -1820092474
+      fantasy_dungeon_tileset_79: -2103835128
+      fantasy_dungeon_tileset_8: -5244172478525271333
+      fantasy_dungeon_tileset_80: -463015633
+      fantasy_dungeon_tileset_81: -422702609
+      fantasy_dungeon_tileset_82: 2090807565
+      fantasy_dungeon_tileset_83: 943378952
+      fantasy_dungeon_tileset_84: -1647488814
+      fantasy_dungeon_tileset_85: 1007011422
+      fantasy_dungeon_tileset_86: 580987686
+      fantasy_dungeon_tileset_87: 26785369
+      fantasy_dungeon_tileset_88: 59739058
+      fantasy_dungeon_tileset_89: 492959635
+      fantasy_dungeon_tileset_9: 7630141509535108173
+      fantasy_dungeon_tileset_90: -109864252
+      fantasy_dungeon_tileset_91: 1676816910
+      fantasy_dungeon_tileset_92: -1584999211
+      fantasy_dungeon_tileset_93: 2126813231
+      fantasy_dungeon_tileset_94: -128791857
+      fantasy_dungeon_tileset_95: 1304534346
+      fantasy_dungeon_tileset_96: 487635910
+      fantasy_dungeon_tileset_97: -580784160
+      fantasy_dungeon_tileset_98: 1561727751
+      fantasy_dungeon_tileset_99: -644690873
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

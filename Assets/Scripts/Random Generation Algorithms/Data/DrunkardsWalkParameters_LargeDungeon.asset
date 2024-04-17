@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DrunkardsWalkParameters_LargeDungeon
   m_EditorClassIdentifier: 
   iterations: 100
-  walkLength: 100
+  walkLength: 50
   startRandomlyEachIteration: 1

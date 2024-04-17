@@ -106,15 +106,14 @@ public class PlayerController : MonoBehaviour
         shootDir = (dir - transform.position).normalized;
         myTimeBasicAttack = myTimeBasicAttack + Time.deltaTime;
         myTimeTeleport = myTimeTeleport + Time.deltaTime;
-        //world or local can be interchanged dependant on the effect wanted
+        //world or local can be interchanged dependant on the effect
         mousePosTest = cam.ScreenToWorldPoint(Input.mousePosition);
         lookdir = mousePosTest - rb.position;
         angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;
         
-        // Get a reference to your SpriteRenderer component (do this in Awake or Start)
+        // Gets a reference to SpriteRenderer component 
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-
-        // Then, in the Update method, where you're checking the mouse position:
+        
         if (lookdir.x >= 0)
         {
             spriteRenderer.flipX = false; // Face right
@@ -216,9 +215,7 @@ public class PlayerController : MonoBehaviour
             //if fails uncomment this line and add rigidbody to fireball
             /*newBasicAttackProjectile.GetComponent<Rigidbody2D>().rotation = angle;*/
             newBasicAttackProjectile.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
-
-            // code if animated
-
+            
             nextFire = nextFire - myTimeBasicAttack;
             myTimeBasicAttack = 0.0F;
         }
@@ -254,14 +251,13 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(death());
             //Destroy(this.gameObject);
-            //Add death animation and transion to checkpoint or some shit here
+            //Add death animation and transion to checkpoint
         }
     }
 
     IEnumerator death()
     {
         /*yield return new WaitForSeconds(.5f);*/
-        // Assuming you want to clear saved positions and other state-related tasks
         SavedPositionManager.savedPositions.Clear();
 
         yield return new WaitForSeconds(1f);

@@ -9,8 +9,8 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        // Start the coroutine to count enemies after a delay
-        StartCoroutine(CountEnemiesAfterDelay(1f)); // 1 second delay, adjust as needed
+        // coroutine to count enemies after a delay
+        StartCoroutine(CountEnemiesAfterDelay(1f)); // 1 second delay
     }
     
     IEnumerator CountEnemiesAfterDelay(float delay)
