@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
-    public GameObject door; // Assign your door GameObject here
+    public GameObject door; 
     private bool isPlayerNear = false;
 
     private void Update()
@@ -18,7 +18,7 @@ public class Switch : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // Make sure your player has the tag "Player"
+        if (other.CompareTag("Player")) 
         {
             isPlayerNear = true;
             Debug.Log("Player entered switch area");

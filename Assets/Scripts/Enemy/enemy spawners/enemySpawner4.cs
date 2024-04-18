@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemySpawner4 : MonoBehaviour
 {
     public GameObject[] enemies;
-    public BoxCollider2D spawnArea; // Assign this in the inspector
-    public GameObject healthUIPrefab; // Assign a prefab for the health UI
-    public int numberOfEnemiesToSpawn = 5; // Number of enemies to spawn
+    public BoxCollider2D spawnArea; 
+    public GameObject healthUIPrefab; 
+    public int numberOfEnemiesToSpawn = 5; 
     public bool wasTriggered = false;
     public GameObject bossHealth;
 
@@ -39,7 +39,7 @@ public class EnemySpawner4 : MonoBehaviour
 
             // Instantiate and attach the health UI
             GameObject enemyHealthUI = Instantiate(healthUIPrefab, Vector3.zero, Quaternion.identity, spawnedEnemy.transform);
-            enemyHealthUI.transform.localPosition = new Vector3(0, 1, 0); // Adjust Y offset as needed
+            enemyHealthUI.transform.localPosition = new Vector3(0, 1, 0); 
         }
     }
 }

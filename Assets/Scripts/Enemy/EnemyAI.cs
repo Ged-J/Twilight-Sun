@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour
     private bool isStuck = false;
     private float stuckTimer = 0f;
     private Vector2 lastPosition;
-    private float checkStuckInterval = 0.5f; // Check every half second
+    private float checkStuckInterval = 0.5f; 
 
     public float separationDistance = 1.5f; // The distance to maintain from other enemies
     
@@ -57,9 +57,9 @@ public class EnemyAI : MonoBehaviour
     private void AdjustDamageBasedOnDifficulty()
     {
         int difficultyScore = DifficultyManager.instance.GetCurrentDifficultyScore();
-        // Adjust slashDamage and projectileDamage based on the difficulty score. Adjust formula as needed.
-        slashDamage = 10 + (difficultyScore * 2); // Example: Starting at 10 damage, plus 2 for each difficulty level
-        projectileDamage = 5 + (difficultyScore * 2); // Adjust as needed
+        // Adjust slashDamage and projectileDamage based on the difficulty score
+        slashDamage = 10 + (difficultyScore * 2); 
+        projectileDamage = 5 + (difficultyScore * 2); 
     }
 
     void UpdatePath() {
@@ -113,7 +113,7 @@ public class EnemyAI : MonoBehaviour
         rb.AddForce(force);
 
         // Check if the enemy is moving significantly and update the animator
-        animator.SetBool("isMoving", force.magnitude > 0.00001f); // Adjust threshold as needed
+        animator.SetBool("isMoving", force.magnitude > 0.00001f); 
         
         // Access the SpriteRenderer component
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -135,7 +135,7 @@ public class EnemyAI : MonoBehaviour
         animator.SetFloat("Y", (target.position.y - transform.position.y));*/
         
         // Add simple forward obstacle detection to trigger path recalculation
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1f, LayerMask.GetMask("Midground")); // Adjust the distance as needed
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1f, LayerMask.GetMask("Midground")); 
         if (hit.collider != null) {
             // Detected an obstacle, trigger path recalculation
             UpdatePath();

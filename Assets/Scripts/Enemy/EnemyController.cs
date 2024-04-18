@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
 {
     public int maxHealth = 100;
     public int health;
+    public int adjustHealth = 50;
     public GameObject bloodSplatter;
     public GameObject damagePosition;
 
@@ -52,7 +53,7 @@ public class EnemyController : MonoBehaviour
     {
         int previousMaxHealth = maxHealth;
         maxHealth = CalculateMaxHealthBasedOnDifficulty();
-        health = Mathf.Clamp(health, 0, maxHealth); // Adjust current health proportionally
+        health = Mathf.Clamp(health, 1, maxHealth); // Adjust current health proportionally
     
         // Notify UI to update
         OnHealthChanged?.Invoke(health, maxHealth);
@@ -61,14 +62,14 @@ public class EnemyController : MonoBehaviour
     private int CalculateMaxHealthBasedOnDifficulty()
     {
         int difficultyScore = DifficultyManager.instance.GetCurrentDifficultyScore();
-        return 1 + (difficultyScore * 10); 
+        return 1 + (difficultyScore * adjustHealth); 
     }
 
     private int CalculateHealthBasedOnDifficulty()
     {
         int difficultyScore = DifficultyManager.instance.GetCurrentDifficultyScore();
         // Decrease or increase health based on difficulty score.
-        return 100 + (difficultyScore * 20); // Example: Starting at 100 health, plus 20 for each difficulty level
+        return 100 + (difficultyScore * 200); 
     }
 
     // Update is called once per frame

@@ -31,6 +31,9 @@ public class EnemyManager : MonoBehaviour
 
         if (enemyCount <= 0)
         {
+            // When all enemies are defeated, increase difficulty for the next level
+            DifficultyManager.instance.LevelCompleted();
+            
             // Load next scene when all enemies are defeated
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

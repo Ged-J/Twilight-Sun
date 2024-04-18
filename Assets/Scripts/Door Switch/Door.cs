@@ -8,8 +8,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     private bool isOpen = false;
-    private SpriteRenderer doorRenderer; // For visual representation
-    private Collider2D doorCollider;     // For physical blocking
+    private SpriteRenderer doorRenderer; 
+    private Collider2D doorCollider;     
 
     private void Start()
     {

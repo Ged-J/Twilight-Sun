@@ -6,12 +6,12 @@ using UnityEngine;
 public class DifficultyManager : MonoBehaviour
 {
     public static DifficultyManager instance;
-    private int difficultyScore = 0; // Higher means the game will be harder
+    private int difficultyScore = 1; // Higher means the game will be harder
     
     private int maxDifficultyScore = 5; // Maximum difficulty
-    private int minDifficultyScore = 0; // Minimum difficulty
+    private int minDifficultyScore = 1; // Minimum difficulty
     
-    public event Action OnDifficultyChanged; // Define an event
+    public event Action OnDifficultyChanged; 
 
     void Awake()
     {
@@ -19,7 +19,7 @@ public class DifficultyManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            difficultyScore = 5; // Starting difficulty score, adjust as needed
+            difficultyScore = 5; 
         }
         else
         {
@@ -31,7 +31,7 @@ public class DifficultyManager : MonoBehaviour
     {
         difficultyScore = Mathf.Max(minDifficultyScore, difficultyScore - 1);
         Debug.Log($"Player died. Decreasing difficulty to {difficultyScore}.");
-        OnDifficultyChanged?.Invoke(); // Invoke the event
+        OnDifficultyChanged?.Invoke(); 
     }
 
     public void LevelCompleted()
@@ -39,10 +39,9 @@ public class DifficultyManager : MonoBehaviour
         difficultyScore = Mathf.Min(maxDifficultyScore, difficultyScore + 1);
         
         Debug.Log($"Level completed. Increasing difficulty to {difficultyScore}.");
-        OnDifficultyChanged?.Invoke(); // Invoke the event
+        OnDifficultyChanged?.Invoke(); 
     }
-
-    // Provide a method to get the current difficultyScore
+    
     public int GetCurrentDifficultyScore()
     {
         return difficultyScore;

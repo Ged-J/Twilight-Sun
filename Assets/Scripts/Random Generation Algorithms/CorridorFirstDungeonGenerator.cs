@@ -183,9 +183,7 @@ public class CorridorFirstDungeonGenerator : DrunkardsWalkMapGenerator
                 // Expand the corridor to 2-tiles wide by adding adjacent tiles
                 foreach (var dir in Direction2D.cardinalDirectionsList) {
                     var adjacentPosition = position + dir;
-                
-                    // Optionally, check if the adjacentPosition is not part of the room or other corridors
-                    // This depends on your game's logic and needs
+                    
                     if (!floorPositions.Contains(adjacentPosition)) {
                         floorPositions.Add(adjacentPosition);
                     }

@@ -961,6 +961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   health: 0
+  adjustHealth: 7
   bloodSplatter: {fileID: 0}
   damagePosition: {fileID: 8212079855138562506}
   textGO: {fileID: 6313515480072186710, guid: d906ff331757ee74d88da12433dc6da3, type: 3}

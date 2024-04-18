@@ -17,7 +17,6 @@ public class EndSceneController : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         // Load the main menu scene
-        // Replace "MainMenu" with the actual name of your main menu scene
         SceneManager.LoadScene("Main_Menu");
     }
 }

@@ -104,6 +104,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PauseMenu, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 2414976627211518177, guid: b573fb08ea4a0e64bb4c5106825374dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203684050344362457, guid: b573fb08ea4a0e64bb4c5106825374dc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203684050344362457, guid: b573fb08ea4a0e64bb4c5106825374dc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203684050344362457, guid: b573fb08ea4a0e64bb4c5106825374dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 859
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203684050344362457, guid: b573fb08ea4a0e64bb4c5106825374dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -437
+      objectReference: {fileID: 0}
     - target: {fileID: 3347781249321614860, guid: b573fb08ea4a0e64bb4c5106825374dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ResetButton
@@ -112,6 +132,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4083185747968634760, guid: b573fb08ea4a0e64bb4c5106825374dc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6003790659568977904, guid: d9a4c17c7e6646240b0e68b1b4683a9b, type: 3}
     - target: {fileID: 4889326190302836558, guid: b573fb08ea4a0e64bb4c5106825374dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ExitButton

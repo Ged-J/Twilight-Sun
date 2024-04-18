@@ -42,7 +42,7 @@ public class enemySpawwner5 : MonoBehaviour
         spawnedEnemies.Remove(enemy);
         if (spawnedEnemies.Count == 0)
         {
-            SceneManager.LoadScene("RandomGenScene"); 
+            SceneManager.LoadScene("Level 1"); 
         }
     }
 }
