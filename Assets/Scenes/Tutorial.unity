@@ -93901,27 +93901,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2587823349749076564, guid: a895d385af243724f8b1f9d3fcfa4f17, type: 3}
       propertyPath: m_text
-      value: 'Welcome To Twilight Sun!
-
-
-        Here are the Controls -
-
-
-        Move
-        - WASD
-
-
-        Basic Spell - Left Click
-
-
-        Interact - F
-
-
-        Dash
-        - Space
-
-
-        Pause Menu - Esc '
+      value: "Welcome To Twilight Sun!\n\nHere are the Controls -\n\nMove - WASD\n\nBasic
+        Spell - Left Click\n\nInteract - F\n\nDash - Space \n(Grants Player Invincibilty
+        for a second)\n\nPause Menu - Esc "
       objectReference: {fileID: 0}
     - target: {fileID: 2587823349749076564, guid: a895d385af243724f8b1f9d3fcfa4f17, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'

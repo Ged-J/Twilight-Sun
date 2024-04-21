@@ -664,8 +664,11 @@ PrefabInstance:
 
         Dash - Space
 
+        (grants player invincibilty for a second)
 
-        Pause Menu - Esc
+
+        Pause
+        Menu - Esc
 
 '
       objectReference: {fileID: 0}

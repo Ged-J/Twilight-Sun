@@ -6,7 +6,7 @@ public class MusicManager : MonoBehaviour
     private static AudioSource audioSource;
     private static MusicManager instance;
 
-    private void Awake()
+    /*private void Awake()
     {
         if (instance == null)
         {
@@ -18,7 +18,7 @@ public class MusicManager : MonoBehaviour
             Destroy(gameObject);
         }
         audioSource = GetComponent<AudioSource>();
-    }
+    }*/
 
     public static float GetMusicPosition()
     {

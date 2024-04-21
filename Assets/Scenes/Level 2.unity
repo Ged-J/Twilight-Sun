@@ -13222,6 +13222,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2063167254937455276, guid: b573fb08ea4a0e64bb4c5106825374dc, type: 3}
+      propertyPath: m_text
+      value: '
+
+        Move - WASD
+
+
+        Basic Spell - Left Click
+
+
+        Interact
+        - F
+
+
+        Dash - Space
+
+        (grants player invincibilty for a second)
+
+
+        Pause
+        Menu - Esc
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 2219418906330642880, guid: b573fb08ea4a0e64bb4c5106825374dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1

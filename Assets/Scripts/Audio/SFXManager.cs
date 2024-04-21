@@ -9,7 +9,7 @@ public class SFXManager : MonoBehaviour
     private static AudioSource audioSource;
     private static SFXManager instance;
 
-    private void Awake()
+    /*private void Awake()
     {
         if (instance == null)
         {
@@ -20,7 +20,7 @@ public class SFXManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    }*/
     
     private void Start()
     {
