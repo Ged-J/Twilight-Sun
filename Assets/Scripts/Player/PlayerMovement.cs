@@ -32,23 +32,34 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePos = Input.mousePosition;
+        // Get input from the left stick for movement
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical");
+        
+        // Get input from the right stick for aiming
+        Vector2 aimInput = new Vector2(Input.GetAxis("AimHorizontal"), Input.GetAxis("AimVertical"));
+        
+        // Calculate the aim direction based on the right stick input
+        if (aimInput.magnitude > 0.1f)
+        {
+            Vector3 aimDirection = new Vector3(aimInput.x, aimInput.y, 0f);
+            mousePos = cam.WorldToScreenPoint(transform.position + aimDirection);
+        }
+        else
+        {
+            // Use mouse position if right stick is not being used
+            mousePos = Input.mousePosition;
+        }
+        
         mousePos.z = cam.nearClipPlane;
         var dir = mousePos - cam.WorldToScreenPoint(transform.position);
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
         
-        //if want wasd animations
-        //animator.SetFloat("Horizontal", movement.x);
-        //animator.SetFloat("Vertical", movement.y);
-        //animator.SetFloat("Speed", movement.sqrMagnitude);
-        
-        //mouse animations
+        // Set animator parameters based on movement and aim direction
         animator.SetFloat("Horizontal", dir.x);
         animator.SetFloat("Vertical", dir.y);
         
-        //dodge
-        if (Input.GetButtonDown("Dodge"))
+        // Check for dash input (X/A button on controller)
+        if (Input.GetButtonDown("Dash"))
         {
             isDashButtonDown = true;
         }
@@ -95,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
                     dashPosition = raycastHit2D.point;
                 }
 
-                //add mana cost, iframe, animaton and sfx :)
                 StartCoroutine(IFrames());
                 rb.MovePosition(dashPosition);
                 dashTimer = 0.8f;

@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    public float currentHealth, currentMana; 
-    
+    public float currentHealth, currentMana;
+
     public float maxHealth = 100, maxMana = 100;
     public GameObject basicAttackProjectile;
     public Camera cam;
@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     Vector2 mousePosTest;
     float angle;
     Vector3 shootDir;
-
 
     //Basic attack
     private float myTimeBasicAttack = 0.0F;
@@ -34,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     //Magic spells
     public float timeBetweenCasts = 0.25f;
-    
+
     private bool castingMagic = false;
     public float manaRechargeRate = 10f;
     public float manaRechargeDelay;
@@ -47,10 +46,9 @@ public class PlayerController : MonoBehaviour
 
     private PlayerMovement playerMovement;
     private Animator animator;
-    
-    /*public AudioSource backgroundMusicSource;
-    public AudioSource enemyMusicSource;*/
-    
+
+    private Vector2 aimInput;
+
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -64,7 +62,8 @@ public class PlayerController : MonoBehaviour
         if (currentHealth != maxHealth)
         {
             currentHealth = GameSession.RestoreCurrentHealth();
-        } else
+        }
+        else
         {
             currentHealth = maxHealth;
         }
@@ -72,11 +71,12 @@ public class PlayerController : MonoBehaviour
         if (currentMana != maxMana)
         {
             currentMana = GameSession.RestoreCurrentMana();
-        } else
+        }
+        else
         {
             currentMana = maxMana;
         }
-        
+
         // Find and assign the main camera
         cam = Camera.main;
     }
@@ -91,7 +91,6 @@ public class PlayerController : MonoBehaviour
         GameSession.StoreManaHealth(currentHealth, currentMana);
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -100,20 +99,36 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePos = Input.mousePosition;
+        // Get input from the right stick for aiming
+        aimInput = new Vector2(Input.GetAxis("AimHorizontal"), Input.GetAxis("AimVertical"));
+
+        // Calculate the aim direction based on the right stick input
+        if (aimInput.magnitude > 0.1f)
+        {
+            Vector3 aimDirection = new Vector3(aimInput.x, aimInput.y, 0f);
+            mousePos = cam.WorldToScreenPoint(transform.position) + aimDirection;
+        }
+        else
+        {
+            // Use mouse position if right stick is not being used
+            mousePos = Input.mousePosition;
+        }
+
         mousePos.z = cam.nearClipPlane;
         var dir = mousePos - cam.WorldToScreenPoint(transform.position);
         shootDir = (dir - transform.position).normalized;
+
         myTimeBasicAttack = myTimeBasicAttack + Time.deltaTime;
         myTimeTeleport = myTimeTeleport + Time.deltaTime;
+
         //world or local can be interchanged dependant on the effect
-        mousePosTest = cam.ScreenToWorldPoint(Input.mousePosition);
+        mousePosTest = cam.ScreenToWorldPoint(mousePos);
         lookdir = mousePosTest - rb.position;
         angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;
-        
+
         // Gets a reference to SpriteRenderer component 
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        
+
         if (lookdir.x >= 0)
         {
             spriteRenderer.flipX = false; // Face right
@@ -122,10 +137,11 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = true; // Face left
         }
-        
+
         //first spell slot
-        if (!castingMagic & canCast) {
-            if (Input.GetKeyDown(KeyCode.Q))
+        if (!castingMagic & canCast)
+        {
+            if (Input.GetKeyDown(KeyCode.Q) || Input.GetButtonDown("SpellSlot1"))
             {
                 if (abilities[0] == null)
                 {
@@ -137,11 +153,11 @@ public class PlayerController : MonoBehaviour
                 currentCastTimer = 0;
                 if (hasEnoughMana)
                 {
-                    //currentMana -= abilities[0].data.manaCost;
                     MPBar.instance.TakeDamage(abilities[0].data.manaCost);
                     CastSpell();
                 }
-            } else if (Input.GetKeyDown(KeyCode.E))
+            }
+            else if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("SpellSlot2"))
             {
                 if (abilities[1] == null)
                 {
@@ -153,11 +169,11 @@ public class PlayerController : MonoBehaviour
                 currentCastTimer = 0;
                 if (hasEnoughMana)
                 {
-                    //currentMana -= abilities[1].data.manaCost;
                     MPBar.instance.TakeDamage(abilities[1].data.manaCost);
                     CastSpell();
                 }
-            } else if (Input.GetKeyDown(KeyCode.R))
+            }
+            else if (Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("SpellSlot3"))
             {
                 if (abilities[2] == null)
                 {
@@ -169,7 +185,6 @@ public class PlayerController : MonoBehaviour
                 currentCastTimer = 0;
                 if (hasEnoughMana)
                 {
-                    //currentMana -= abilities[2].data.manaCost;
                     MPBar.instance.TakeDamage(abilities[2].data.manaCost);
                     CastSpell();
                 }
@@ -191,31 +206,29 @@ public class PlayerController : MonoBehaviour
         {
             manaRechargeDelay -= Time.deltaTime;
         }
-        
+
         if (currentMana < maxMana && !castingMagic && !Input.GetKey(KeyCode.Q))
         {
-            if (manaRechargeDelay <= 0) {
+            if (manaRechargeDelay <= 0)
+            {
                 currentMana += (manaRechargeRate * Time.deltaTime);
             }
             if (currentMana > maxMana) currentMana = maxMana;
         }
 
         //Basic attack
-        if (Input.GetButtonDown("BasicAttack") && myTimeBasicAttack > nextFire & canCast)
+        if ((Input.GetButtonDown("BasicAttack") || Input.GetButtonDown("joystick button 0")) && myTimeBasicAttack > nextFire & canCast)
         {
-            //print("yup");
             nextFire = myTimeBasicAttack + fireDelta;
             if (basicAttackProjectile != null)
             {
                 newBasicAttackProjectile = Instantiate(basicAttackProjectile, transform.position, transform.rotation);
             }
-            
+
             newBasicAttackProjectile.transform.GetComponent<BasicAttackProjectile>().Setup(shootDir);
-            
-            //if fails uncomment this line and add rigidbody to fireball
-            /*newBasicAttackProjectile.GetComponent<Rigidbody2D>().rotation = angle;*/
+
             newBasicAttackProjectile.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
-            
+
             nextFire = nextFire - myTimeBasicAttack;
             myTimeBasicAttack = 0.0F;
         }
@@ -225,7 +238,6 @@ public class PlayerController : MonoBehaviour
     {
         if (spellslot != 0)
         {
-            //print("non healing");
             newAbilityInstance = Instantiate(abilities[spellslot], transform.position, transform.rotation);
             newAbilityInstance.transform.GetComponent<Ability>().Setup(shootDir, spellslot);
             newAbilityInstance.transform.rotation =
@@ -233,7 +245,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //print("healing");
             newAbilityInstance = Instantiate(abilities[spellslot], transform.position, transform.rotation);
             newAbilityInstance.transform.parent = transform;
             newAbilityInstance.transform.GetComponent<Ability>().Setup(shootDir, spellslot);
@@ -245,44 +256,36 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= dmg;
         HPBar.instance.TakeDamage(dmg);
-        //print(currentHealth);
         StartCoroutine("DamageAnim");
         if (currentHealth <= 0)
         {
             StartCoroutine(death());
-            //Destroy(this.gameObject);
-            //Add death animation and transion to checkpoint
         }
     }
 
     IEnumerator death()
     {
-        /*yield return new WaitForSeconds(.5f);*/
         SavedPositionManager.savedPositions.Clear();
 
         yield return new WaitForSeconds(1f);
 
         // Find the RoomContentGenerator and call Regenerate
         var roomContentGenerator = FindObjectOfType<RoomContentGenerator>();
-        if(roomContentGenerator != null)
+        if (roomContentGenerator != null)
         {
             roomContentGenerator.Regenerate();
         }
-        
+
         DifficultyManager.instance.PlayerDied();
-        
+
         // Recount enemies after regeneration
         var enemyManager = FindObjectOfType<EnemyManager>();
         if (enemyManager != null)
         {
             enemyManager.RecountEnemies();
         }
-
-        // Reload the scene or do other necessary cleanup
-        /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);*/
     }
-    
+
     IEnumerator DamageAnim()
     {
         animator.SetBool("isDamaged", true);
@@ -302,7 +305,6 @@ public class PlayerController : MonoBehaviour
                 currentHealth = maxHealth;
             }
         }
-        //print("Current Health : " + currentHealth);
     }
 
     public GameObject GetGameObject()
@@ -314,63 +316,14 @@ public class PlayerController : MonoBehaviour
     {
         return transform.position;
     }
-    
+
     private bool isInCombat = false;
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Pit"))
         {
-            SceneManager.LoadScene("Main_Menu"); 
+            SceneManager.LoadScene("Main_Menu");
         }
-        /*else if (collision.gameObject.CompareTag("Enemy"))
-        {
-            isInCombat = true;
-            Debug.Log("Collided with Enemy");
-
-            // Stop the current background music
-            /*if (backgroundMusicSource.isPlaying)
-            {
-                backgroundMusicSource.Stop();
-            }#1#
-
-            // Start playing the enemy's music
-            AudioSource enemyAudio = collision.gameObject.GetComponent<AudioSource>();
-            if (enemyAudio != null)
-            {
-                Debug.Log("Enemy Audio Source found");
-
-                if (!enemyAudio.isPlaying)
-                {
-                    enemyMusicSource.clip = enemyAudio.clip;
-                    enemyMusicSource.Play();
-                    Debug.Log("Playing Enemy Music");
-                }
-                else
-                {
-                    Debug.Log("Enemy music is already playing");
-                }
-            }
-            else
-            {
-                Debug.Log("No AudioSource found on Enemy");
-            }
-        }*/
     }
-    
-    /*private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            isInCombat = false;
-            // Check if enemy music is playing, stop it and resume background music
-            if (enemyMusicSource.isPlaying)
-            {
-                enemyMusicSource.Stop();
-                backgroundMusicSource.Play();
-            }
-        }
-    }*/
-
-
 }
